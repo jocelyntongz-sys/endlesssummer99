@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ephemeral的空间 - 2016</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+button,input{font:inherit}
+body{color:#6a6172;background:#e8e2ea}
+#space2016{
+  min-height:100vh;position:relative;overflow-x:hidden;
+  background:
+    linear-gradient(rgba(255,255,255,.22),rgba(231,223,232,.48)),
+    url('./images/qzone2016/theme_bg.jpg') center/cover fixed no-repeat,
+    linear-gradient(180deg,#d9d2dc 0%,#eee7ef 45%,#d7ddea 100%);
+}
+#space2016:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 18% 24%,rgba(255,255,255,.52) 0 0,rgba(255,255,255,.52) 0 70px,transparent 140px),
+    radial-gradient(circle at 82% 20%,rgba(255,255,255,.40) 0 0,rgba(255,255,255,.40) 0 90px,transparent 170px),
+    radial-gradient(circle at 55% 74%,rgba(255,255,255,.33) 0 0,rgba(255,255,255,.33) 0 105px,transparent 180px);
+  filter:blur(25px);
+  opacity:.85;
+}
+#space2016:after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 2px,rgba(255,255,255,.06) 2px 4px);
+  mix-blend-mode:soft-light;
+}
+.qtop{
+  height:38px;background:rgba(135,125,147,.72);backdrop-filter:blur(10px);color:#f7f2f7;
+  display:flex;align-items:center;padding:0 max(18px,calc((100% - 1040px)/2));font-size:12px;
+  position:relative;z-index:10;border-bottom:1px solid rgba(255,255,255,.35)
+}
+.qtop b{color:#fff;margin-right:22px}
+.qtop span{margin-right:18px}
+.qtop .right{margin-left:auto;color:#ede7ef}
+.cover{
+  width:1040px;max-width:96vw;height:285px;margin:auto;position:relative;z-index:1;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.18),rgba(211,203,222,.22)),
+    url('./images/qzone2016/header.jpg') center/cover no-repeat,
+    linear-gradient(130deg,#dad4dd 0%,#f5f0f4 42%,#dbe0eb 100%);
+  border-left:1px solid rgba(255,255,255,.45);border-right:1px solid rgba(255,255,255,.45);
+  box-shadow:0 12px 34px rgba(100,90,111,.18);overflow:hidden
+}
+.cover:before{
+  content:"";position:absolute;inset:-10px;background:
+    radial-gradient(circle at 24% 40%,rgba(255,255,255,.30),transparent 30%),
+    radial-gradient(circle at 75% 33%,rgba(255,255,255,.18),transparent 26%),
+    radial-gradient(circle at 57% 72%,rgba(255,255,255,.28),transparent 24%);
+  filter:blur(16px)
+}
+.profile{
+  position:absolute;left:30px;bottom:25px;z-index:2;display:flex;align-items:flex-end;gap:16px;
+  color:#fff;text-shadow:0 1px 5px rgba(101,92,111,.45)
+}
+.avatar{
+  width:96px;height:96px;background:#eee url('./images/qzone2016/avatar.jpg') center/cover no-repeat;
+  border:4px solid rgba(255,255,255,.92);border-radius:7px;box-shadow:0 7px 20px rgba(109,96,120,.18)
+}
+.profile h1{font-size:27px;font-weight:normal;margin:0 0 6px;letter-spacing:.4px}
+.profile p{font-size:12px;margin:0;color:#f6f0f7}
+.cover-stats{
+  position:absolute;right:28px;bottom:27px;z-index:2;display:flex;gap:24px;color:#fff;text-align:center;
+  text-shadow:0 1px 4px rgba(92,84,102,.42)
+}
+.cover-stats b{display:block;font-size:18px}
+.cover-stats span{font-size:11px}
+.space-nav{
+  width:1040px;max-width:96vw;margin:auto;height:47px;position:relative;z-index:3;
+  display:flex;align-items:stretch;background:rgba(255,255,255,.72);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.82);border-top:0;box-shadow:0 6px 18px rgba(120,109,134,.12)
+}
+.space-nav button{
+  border:0;border-right:1px solid rgba(187,177,197,.32);background:transparent;padding:0 22px;
+  color:#7a6e84;cursor:pointer
+}
+.space-nav button.active,.space-nav button:hover{
+  background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(232,225,236,.60));color:#5f5468
+}
+.layout{
+  width:1040px;max-width:96vw;margin:13px auto 55px;display:grid;grid-template-columns:190px 1fr 190px;gap:12px;position:relative;z-index:1
+}
+.box{
+  background:rgba(255,255,255,.60);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.82);
+  margin-bottom:12px;border-radius:12px;overflow:hidden;
+  box-shadow:0 10px 26px rgba(120,109,134,.10), inset 0 1px 0 rgba(255,255,255,.92)
+}
+.box-title{
+  height:37px;display:flex;align-items:center;padding:0 12px;
+  background:linear-gradient(180deg,rgba(255,255,255,.74),rgba(232,228,235,.50));
+  border-bottom:1px solid rgba(208,201,214,.42);color:#6c6274;font-size:13px;font-weight:bold
+}
+.box-body{padding:13px;font-size:12px;line-height:1.8}
+.profile-name{text-align:center;color:#615767;font-weight:bold;margin:9px 0}
+.mini{color:#93889e;font-size:11px}
+.quote{color:#72687c;line-height:1.95}
+.qtab{display:none}.qtab.active{display:block}
+
+/* 首页 */
+.home-card-title{font-size:16px;color:#6b616f;margin-bottom:10px}
+.home-list{line-height:2.1;color:#726a79}
+
+/* 说说 */
+.feed{padding:16px}
+.post{padding:4px 0 20px;margin-bottom:15px;border-bottom:1px dashed rgba(176,168,186,.55)}
+.post:last-child{border-bottom:0}
+.post-head{display:flex;gap:10px}
+.post-avatar{width:43px;height:43px;background:#f6f0f6 url('./images/qzone2016/avatar.jpg') center/cover;border-radius:6px;border:1px solid rgba(193,183,203,.45)}
+.post-main{flex:1}
+.post-name{color:#62586a;font-weight:bold}
+.post-text{margin:7px 0;color:#6a6170;font-size:13px;line-height:1.84}
+.post-img{width:286px;height:176px;background:#ece6ee center/cover no-repeat;border:5px solid rgba(255,255,255,.92);box-shadow:0 0 0 1px rgba(183,175,192,.30),0 4px 12px rgba(116,105,129,.09);margin:9px 0;border-radius:6px;cursor:zoom-in;filter:saturate(.88) blur(.0px)}
+.post-time{font-size:11px;color:#998ea4}
+.actions{font-size:11px;color:#7a6e84;margin-top:8px}
+.actions span{margin-right:15px;cursor:pointer}
+.social{background:rgba(252,249,252,.75);border:1px solid rgba(201,193,209,.34);border-radius:6px;margin-top:9px;padding:8px 10px;font-size:11px;line-height:1.9}
+.likes{color:#74697d}
+.reposts{color:#8f8399}
+.comment b{color:#615567}
+
+/* 相册 */
+.album-grid{padding:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.album-card{background:rgba(255,255,255,.74);border:1px solid rgba(195,186,204,.36);padding:8px;cursor:pointer;border-radius:10px;box-shadow:0 5px 13px rgba(121,110,132,.10)}
+.album-cover{height:158px;background:#eee center/cover no-repeat;border:1px solid rgba(202,195,211,.30);border-radius:5px}
+.album-name{margin-top:8px;color:#63596b;font-size:13px}
+.album-count{font-size:11px;color:#9a90a3;margin-top:3px}
+.album-view{display:none;padding:18px}
+.back{color:#6b6074;cursor:pointer;font-size:12px;margin-bottom:15px;display:inline-block}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.photo{aspect-ratio:4/3;background:#eee center/cover no-repeat;border:5px solid rgba(255,255,255,.95);box-shadow:0 0 0 1px rgba(192,185,203,.32);border-radius:4px;cursor:zoom-in}
+.album-comments{margin-top:20px;border-top:1px dashed rgba(176,168,186,.55);padding-top:12px}
+.album-comment{font-size:12px;line-height:1.9}.album-comment b{color:#64586b}
+.lock-panel{padding:50px 20px;text-align:center}
+.lock-panel h3{font-size:17px;color:#63596a}
+.lock-panel input{height:35px;border:1px solid #beb3c6;padding:0 10px;outline:none;background:rgba(255,255,255,.92)}
+.lock-panel button{height:35px;border:0;background:linear-gradient(#a9a1b2,#867b92);color:#fff;padding:0 18px}
+.lock-hint{font-size:12px;color:#9a8fa3;margin:8px}
+.err{height:22px;padding-top:7px;font-size:12px;color:#b45d6b}
+
+/* 日志 */
+.logs{padding:18px}
+.log{padding:14px 3px;border-bottom:1px dashed rgba(176,168,186,.55)}
+.log.clickable{cursor:pointer}
+.log.clickable:hover h3{text-decoration:underline}
+.log h3{font-size:14px;color:#62586a;margin:0 0 7px}
+.log p{font-size:12px;color:#8a7f93;line-height:1.8;margin:0}
+.log-meta{font-size:11px;color:#a094a8;margin-top:7px}
+.article{display:none;padding:22px}
+.article.show{display:block}
+.article h1{font-size:21px;color:#62576b;font-weight:normal;margin:5px 0 6px}
+.article-meta{font-size:11px;color:#a196a9;border-bottom:1px dashed rgba(176,168,186,.55);padding-bottom:12px}
+.article p{font-size:13px;line-height:2;color:#6d6474}
+.article-img{width:100%;max-width:560px;height:300px;margin:16px auto;background:#ece7ef center/cover no-repeat;border:5px solid rgba(255,255,255,.92);box-shadow:0 0 0 1px rgba(192,185,203,.30),0 7px 18px rgba(116,105,129,.10);border-radius:6px;cursor:zoom-in}
+.article-comments{margin-top:20px;background:rgba(252,249,252,.75);border:1px solid rgba(201,193,209,.34);padding:11px;border-radius:6px}
+.article-comment{font-size:12px;line-height:1.9}.article-comment b{color:#62576b}
+
+/* 留言板 */
+.board-list{padding:5px 17px 18px}
+.board-item{padding:14px 0;border-bottom:1px dashed rgba(176,168,186,.55)}
+.board-name{font-size:13px;color:#615768;font-weight:bold}
+.board-text{font-size:13px;color:#6a6170;line-height:1.8;margin:5px 0}
+.board-time{font-size:11px;color:#a093a7}
+.board-reply{margin-top:8px;background:rgba(252,249,252,.75);padding:8px 10px;font-size:12px;line-height:1.85;border-radius:6px}
+.board-reply b{color:#62576b}
+
+/* lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(40,34,47,.82);z-index:200;align-items:center;justify-content:center;padding:30px}
+.lightbox.show{display:flex}
+.lightbox img{max-width:92vw;max-height:88vh;box-shadow:0 12px 45px #1d1921;border:5px solid rgba(255,255,255,.9);border-radius:6px}
+.lightbox .close{position:absolute;right:30px;top:22px;color:white;font-size:32px;cursor:pointer}
+.visitor{display:flex;align-items:center;gap:8px;padding:5px 0}
+.vava{width:26px;height:26px;border-radius:6px;background:linear-gradient(145deg,#f2edf4,#cbc1d4);border:1px solid rgba(255,255,255,.8)}
+.dream{text-align:center;font-size:14px;line-height:2.1;color:#766b7f}
+@media(max-width:830px){.layout{grid-template-columns:1fr}.leftcol,.rightcol{display:none}.photo-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<section id="space2016">
+  <div class="qtop"><b>QQ空间</b><span>个人中心</span><span>我的主页</span><span>好友动态</span><span>应用</span><div class="right">装扮　设置　退出</div></div>
+
+  <header class="cover">
+    <div class="profile">
+      <div class="avatar"></div>
+      <div><h1>Ephemeral的空间</h1><p>像梦一样的夏天，会不会一直停在这里。</p></div>
+    </div>
+    <div class="cover-stats"><div><b>172</b><span>说说</span></div><div><b>24</b><span>日志</span></div><div><b>15</b><span>相册</span></div></div>
+  </header>
+
+  <nav class="space-nav">
+    <button class="active" data-tab="home">主页</button>
+    <button data-tab="feedtab">说说</button>
+    <button data-tab="logs">日志</button>
+    <button data-tab="albums">相册</button>
+    <button data-tab="board">留言板</button>
+    <button>音乐</button><button>更多⌄</button>
+  </nav>
+
+  <div class="layout">
+    <aside class="leftcol">
+      <div class="box"><div class="box-title">个人资料</div><div class="box-body">
+        <div class="profile-name">Ephemeral</div>
+        <div class="mini">初三 · 惠言中学</div>
+        <div style="margin-top:9px">生日：9月27日<br>星座：天秤座<br>所在地：上城市</div>
+      </div></div>
+      <div class="box"><div class="box-title">心情签名</div><div class="box-body quote">“有时候会希望夏天永远都不要结束。”<br><span class="mini">2016 / dream / fade</span></div></div>
+    </aside>
+
+    <main>
+      <section class="qtab active" id="home">
+        <div class="box">
+          <div class="box-title">Ephemeral</div>
+          <div class="box-body">
+            <div class="home-card-title">Welcome to my space ☁</div>
+            最近：发呆 / 听歌 / 旅游 / 发疯写作业 / 吸猫。<br>
+            <span class="mini">空间刚换新装扮，低饱和万岁。</span>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-title">最近更新</div>
+          <div class="box-body home-list">
+            ◌ 新说说：为什么每天都有写不完的作业。<br>
+            ◌ 新相册：我们的夏天永远没有尽头。<br>
+            ◌ 新日志：还是贴吧最好玩。<br>
+            ◌ 留言板：W.、TuT、Reverie 最近来过
+          </div>
+        </div>
+      </section>
+
+      <section class="qtab" id="feedtab">
+        <div class="box"><div class="box-title">全部说说</div><div class="feed" id="feed"></div></div>
+      </section>
+
+      <section class="qtab" id="albums">
+        <div class="box"><div class="box-title">相册</div>
+          <div class="album-grid" id="albumIndex">
+            <div class="album-card" data-album="selfie"><div class="album-cover" style="background-image:url('./images/qzone2016/albums/selfie_01.jpg')"></div><div class="album-name">🔒 自拍</div><div class="album-count">2 张</div></div>
+            <div class="album-card" data-album="food"><div class="album-cover" style="background-image:url('./images/qzone2016/albums/food_01.jpg')"></div><div class="album-name">美食分享</div><div class="album-count">2 张</div></div>
+            <div class="album-card" data-album="cat"><div class="album-cover" style="background-image:url('./images/qzone2016/albums/cat_01.jpg')"></div><div class="album-name">校长威武</div><div class="album-count">2 张</div></div>
+            <div class="album-card" data-album="summer"><div class="album-cover" style="background-image:url('./images/qzone2016/albums/summer_01.jpg')"></div><div class="album-name">我们的夏天永远没有尽头</div><div class="album-count">4 张</div></div>
+          </div>
+          <div class="album-view" id="albumView"></div>
+        </div>
+      </section>
+
+      <section class="qtab" id="logs">
+        <div class="box"><div class="box-title">日志</div>
+          <div class="logs" id="logIndex">
+            <div class="log clickable" id="tiebaLog"><h3>还是贴吧最好玩</h3><p>刷了一圈最后还是觉得贴吧最有意思，表情包和神回复真的无敌。</p><div class="log-meta">2016年10月4日 22:11 · 分类：日常 / 吐槽</div></div>
+            <div class="log"><h3>开学后的一百件烦心事</h3><p>第一条：作业。第二条：还是作业。第三条：依然是作业。</p><div class="log-meta">2016年9月5日 20:15 · 分类：随笔</div></div>
+            <div class="log"><h3>今天听的歌</h3><p>适合放在傍晚和回家路上的那种，听起来有点想发呆。</p><div class="log-meta">2016年11月28日 19:30 · 分类：音乐</div></div>
+          </div>
+
+          <article class="article" id="tiebaArticle">
+            <span class="back" id="backLogs">‹ 返回日志列表</span>
+            <h1>还是贴吧最好玩</h1>
+            <div class="article-meta">2016年10月4日 22:11　·　日常 / 吐槽</div>
+            <p>又在贴吧里待了一个晚上，以前追星的时候一天能点进去好多次，现在看得少了，不过每次一打开还是能刷到一些莫名其妙又特别好笑的帖子，还有各种神回复和表情包，看着看着就停不下来</p>
+            <p>最近还开了一个只有我们三个人知道的小吧，有什么乱七八糟的或者想吐槽的东西就往里面丢</p>
+            <div class="article-img" data-src="./images/qzone2016/logs/tieba_secret_base.jpg" style="background-image:url('./images/qzone2016/logs/tieba_secret_base.jpg')" title="点击查看大图"></div>
+            <p>希望度娘服务器争气一点，别哪天突然把这些东西都吞了。感觉过个十年再翻出来看应该会很好笑吧</p>
+            <div class="article-comments">
+              <div class="article-comment"><b>W.</b>：天王盖地虎</div>
+              <div class="article-comment"><b>TuT</b>：天王盖地虎</div>
+              <div class="article-comment"><b>Ephemeral</b> 回复 <b>W.</b>：岁岁一米八！</div>
+              <div class="article-comment"><b>Ephemeral</b> 回复 <b>TuT</b>：岁岁一米八！</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="qtab" id="board">
+        <div class="box"><div class="box-title">留言板</div><div class="board-list">
+
+          <div class="board-item">
+            <div class="board-name">云朵奶昔</div>
+            <div class="board-text">踩踩～新装扮也太好看了吧，像做梦一样！先占个前排，以后换装扮记得通知我哈哈哈</div>
+            <div class="board-time">2016年2月20日 17:31</div>
+            <div class="board-reply"><b>Ephemeral</b>：嘿嘿我也超喜欢这个颜色！！</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">TuT</div>
+            <div class="board-text">来给岁岁的小窝留个爪印-3-顺便证明一下：某人趴窗边发呆的时候真的可以五分钟一动不动</div>
+            <div class="board-time">2016年3月25日 20:42</div>
+            <div class="board-reply"><b>Ephemeral</b>：我那是在思考人生！！</div>
+            <div class="board-reply"><b>W.</b>：她是在等小卖部人少一点</div>
+            <div class="board-reply"><b>Ephemeral</b>：你闭嘴！！</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">W.</div>
+            <div class="board-text">友情提醒：下次来高中部别再找错班</div>
+            <div class="board-time">2016年4月8日 21:16</div>
+            <div class="board-reply"><b>Ephemeral</b>：你们高中部走廊长得都一样好吗！！</div>
+            <div class="board-reply"><b>TuT</b>：我高一刚从外校考进来的时候也迷过路，理解你</div>
+            <div class="board-reply"><b>W.</b>：他至少一个星期就认路了</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">Reverie</div>
+            <div class="board-text">今日份踩空间√ 最近看你天天和那两位混在一起，已经很久没宠幸我了！！友情警告一次</div>
+            <div class="board-time">2016年5月19日 18:26</div>
+            <div class="board-reply"><b>Ephemeral</b>：冤枉！！明天小卖部赔罪！</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">TuT</div>
+            <div class="board-text">给管理员留个言：秘密基地很好，唯一的问题是管理员总是滥用职权想删自己的黑历史</div>
+            <div class="board-time">2016年6月17日 23:08</div>
+            <div class="board-reply"><b>W.</b>：支持楼上。</div>
+            <div class="board-reply"><b>Ephemeral</b>：你俩一起禁言谢谢。</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">W.</div>
+            <div class="board-text">出门前来踩一下。证件别忘，充电器别忘，最重要的是回来以后别忘了还有一沓可爱的数学卷子在等你</div>
+            <div class="board-time">2016年7月23日 21:51</div>
+            <div class="board-reply"><b>Ephemeral</b>：最后一句为什么要写在我的留言板上！！</div>
+            <div class="board-reply"><b>TuT</b>：因为这样证据保存得比较久哈哈哈哈</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">TuT</div>
+            <div class="board-text">回来记得把照片发空间！！不许删我们的合照。以后谁先删谁请另外两个人吃饭</div>
+            <div class="board-time">2016年7月24日 21:18</div>
+            <div class="board-reply"><b>Ephemeral</b>：成交！！一张都不删！</div>
+            <div class="board-reply"><b>W.</b>：包括拍糊的？</div>
+            <div class="board-reply"><b>Ephemeral</b>：包括！！糊掉的也是回忆！！</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">Ephemeral</div>
+            <div class="board-text">自己给自己占一层：2016暑假认证——超级开心！！！希望以后每年都还能一起出去玩</div>
+            <div class="board-time">2016年8月2日 23:06</div>
+            <div class="board-reply"><b>TuT</b>：认证有效，下次还去！</div>
+            <div class="board-reply"><b>W.</b>：一沓可爱的数学卷子正在吧嗒吧嗒向你走来^ ^</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">TuT</div>
+            <div class="board-text">高二开学前来踩一脚。小朋友初三加油，明年争取把“跑错高中部楼层”变成“跑错自己班”</div>
+            <div class="board-time">2016年8月29日 20:28</div>
+            <div class="board-reply"><b>Ephemeral</b>：我一定会考上本部的！！还有不许叫小朋友！！</div>
+            <div class="board-reply"><b>W.</b>：截图了</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">Reverie</div>
+            <div class="board-text">升初三纪念踩踩。别紧张啦，我们都要考上想去的地方！明年这个时候再来看这条</div>
+            <div class="board-time">2016年8月31日 19:42</div>
+            <div class="board-reply"><b>Ephemeral</b>：呜呜好！！明年回来打卡！</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">W.</div>
+            <div class="board-text">生日快乐，岁岁平安。继续占据零点附近的位置</div>
+            <div class="board-time">2016年9月27日 00:06</div>
+            <div class="board-reply"><b>Ephemeral</b>：今年晚了六分钟！！退步了！！</div>
+            <div class="board-reply"><b>TuT</b>：我作证，他闹钟定错时间了！</div>
+            <div class="board-reply"><b>W.</b>：你闭嘴</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">TuT</div>
+            <div class="board-text">生日快乐岁岁！祝你早日长到一米八，早日征服化学，以后每年生日都有我们陪你</div>
+            <div class="board-time">2016年9月27日 00:11</div>
+            <div class="board-reply"><b>Ephemeral</b>：前两个愿望可以删掉！！最后一个批准！！</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">TuT</div>
+            <div class="board-text">今天来翻你留言板才发现我今年留了好多条……算了，再留一条：某人最近记性越来越差，伞又落我这了</div>
+            <div class="board-time">2016年10月16日 22:03</div>
+            <div class="board-reply"><b>Ephemeral</b>：为什么我的东西总在你那里？？</div>
+            <div class="board-reply"><b>W.</b>：因为你昨天嫌书包太重自己塞给他的</div>
+            <div class="board-reply"><b>Ephemeral</b>：……当我没问</div>
+          </div>
+
+      
+
+          <div class="board-item">
+            <div class="board-name">W.</div>
+            <div class="board-text">来踩。顺便提醒某人，下次别再把我耳机顺走一整天</div>
+            <div class="board-time">2016年11月20日 21:37</div>
+            <div class="board-reply"><b>TuT</b>：你自己说“拿去用”的，现在又来告状</div>
+            <div class="board-reply"><b>Reverie</b>：磕到了</div>
+            <div class="board-reply"><b>Ephemeral</b>：我已经磕腻了</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">Ephemeral</div>
+            <div class="board-text">年底给自己留个戳。以后不管升学还是毕业，希望这个留言板下面还是你们几个</div>
+            <div class="board-time">2016年12月18日 22:46</div>
+            <div class="board-reply"><b>TuT</b>：肯定啊</div>
+            <div class="board-reply"><b>W.</b>：会的</div>
+            <div class="board-reply"><b>Reverie</b>：我先预约2017第一条！</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">W.</div>
+            <div class="board-text">2016最后一踩，明年也别天天乱跑</div>
+            <div class="board-time">2016年12月31日 23:58</div>
+            <div class="board-reply"><b>Ephemeral</b>：？？？新年祝福就这个？？</div>
+            <div class="board-reply"><b>TuT</b>：翻译一下：明年也一起玩</div>
+            <div class="board-reply"><b>W.</b>：你话很多</div>
+            <div class="board-reply"><b>Ephemeral</b>：那就说定了！！！</div>
+          </div>
+
+        </div></div>
+      </section>
+    </main>
+
+    <aside class="rightcol">
+      <div class="box"><div class="box-title">最近访客</div><div class="box-body">
+        <div class="visitor"><span class="vava"></span>Reverie</div>
+        <div class="visitor"><span class="vava"></span>W.</div>
+        <div class="visitor"><span class="vava"></span>TuT</div>
+        <div class="visitor"><span class="vava"></span>云朵奶昔</div>
+        <div class="visitor"><span class="vava"></span>纸月亮</div>
+      </div></div>
+      <div class="box"><div class="box-title">小角落</div><div class="box-body dream">dream / blur / faded sky<br><span class="mini">是梦吗。</span></div></div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><span class="close" id="lightboxClose">×</span><img id="lightboxImg" alt=""></div>
+
+<script>
+const posts=[
+{name:'Ephemeral',text:'新年第一顿就吃撑了……三个人点菜眼大肚皮小，最后谁都不承认剩下的锅包肉是自己点的= =。\n2016也请继续这样热热闹闹吧！！',date:'2016年1月2日 20:37',img:'',likes:['Reverie','W.','TuT','云朵奶昔'],reposts:[],comments:[['TuT','是谁说饿了一天点多少都吃得完的？'],['W.','反正不是我'],['Ephemeral','你俩少装无辜！！']]},
+{name:'Ephemeral',text:'今天放学三个人绕远路去买烤肠，结果一路聊到天黑才发现公交车都快没了……\n但是偶尔这样浪费时间也挺好的嘿嘿',date:'2016年2月5日 19:48',img:'',likes:['Reverie','W.','TuT','纸月亮'],reposts:[],comments:[['Reverie','你们三个每天到底哪来那么多话聊'],['TuT','主要是某人话多'],['W.','同意'],['Ephemeral','？？？你们两个统一口径了是吧']]},
+{name:'Ephemeral',text:'换了新空间装扮！终于不是前几年那种闪瞎眼系列了，我宣布这个颜色就是我的本命色',date:'2016年2月20日 18:09',img:'',likes:['Reverie','W.','TuT','云朵奶昔'],reposts:['云朵奶昔'],comments:[['W.','这个颜色对我的眼睛友好多了'],['TuT','好温柔！像梦里的世界'],['Reverie','这套好看诶，终于从高饱和未来世界毕业了哈哈哈'],['Ephemeral','谢谢各位认可我的审美-3-']]},
+{name:'Ephemeral',text:'化学我跟你拼了！！！为什么世界上会有这么多我看不懂的方程式啊？？',date:'2016年3月16日 21:13',img:'',likes:['Reverie','W.','TuT'],reposts:[],comments:[['Reverie','我也不会……一起死'],['W.','你先把欠的作业补完再拼'],['Ephemeral','W.','不要在我最脆弱的时候戳穿我']]},
+{name:'Ephemeral',text:'是不是每段暗恋都是无疾而终的？喜欢一个人这件事根本就不讲道理',date:'2016年4月19日 22:06',img:'',likes:['Reverie','W.','TuT','纸月亮'],reposts:['纸月亮'],comments:[['W.','截图了，等你结婚塞在红包里送给你'],['TuT','哟哟哟某人今晚开始走青春疼痛路线了'],['Reverie','好想帮你艾特那个谁'],['Ephemeral','你们几个都闭嘴！！']]},
+{name:'Ephemeral',text:'出去散散心',date:'2016年5月28日 19:34',img:'./images/qzone2016/posts/post_04.jpg',likes:['Reverie','W.','TuT'],reposts:[],comments:[['W.','等了某人三十分钟结果跑到小公园里喂猫'],['TuT','咪：感谢岁岁老大的投喂']]},
+{name:'Ephemeral',text:'今天三个人在奶茶店写作业写到店员都开始收桌子了\n写作业大计中道崩殂，但是聊天任务超额完成√',date:'2016年6月11日 21:26',img:'',likes:['Reverie','W.','TuT','云朵奶昔'],reposts:[],comments:[['W.','你一共写了三题'],['TuT','她至少认真写了第一题'],['Ephemeral','谢谢桐桐替我说话……']]},
+{name:'Ephemeral',text:'暑假了！！！过几天可以出去玩了好兴奋！！求了妈妈好久，发誓回来洗心革面奋发图强，还拉了████做保证说旅游回来给我补习数学，终于同意啦！',date:'2016年7月22日 20:28',img:'',likes:['Reverie','W.','TuT','云朵奶昔','纸月亮'],reposts:['Reverie'],comments:[['W.','行李收拾完了没'],['TuT','我也好兴奋！'],['Reverie','我在补习班里哭着看你出去浪']]},
+{name:'Ephemeral',text:'旅游回来之后一直在戒断反应，开心的时间总是这么短暂呢......',date:'2016年8月3日 21:40',img:'',likes:['Reverie','W.','TuT','云朵奶昔'],reposts:['TuT'],comments:[['TuT','没关系，以后我们还可以一起去很多地方旅游！！'],['W.','照片发群里']]},
+{name:'Ephemeral',text:'整理旅游照片发现好多表情包，████同学可堪称为惠言中学颜帝啊！（5毛一张，有需要请敲我小窗~）',date:'2016年8月12日 20:52',img:'',likes:['Reverie','W.','TuT','纸月亮'],reposts:['TuT'],comments:[['TuT','友情价1块钱打包发我'],['W.','沈 岁 你 完 了 知 道 不？']]},
+{name:'Ephemeral',text:'要开学了，升初三好可怕QAQ……但是我一定要考上本部高中！！不想跟好朋友们分开',date:'2016年8月31日 22:15',img:'',likes:['Reverie','W.','TuT','纸月亮'],reposts:[],comments:[['W.','你先别自己吓自己'],['TuT','我们在高中部等你！不许掉队！'],['Reverie','我们都会考上的！！'],['Ephemeral','好！那就一起冲！']]},
+{name:'Ephemeral',text:'本来以为今天要淋雨回家，结果到校门口发现那两位已经在等我了\n而且居然还记得给我买热奶茶，有点感动TAT',date:'2016年9月23日 18:47',img:'',likes:['Reverie','W.','TuT','云朵奶昔'],reposts:[],comments:[['Reverie','“那两位”又一起出现了→_→'],['TuT','我就知道有人会忘带伞'],['W.','楼上那位你也没带好吗']]},
+{name:'Ephemeral',text:'十五岁啦！！！今天真的好开心，蛋糕吃到撑，礼物也收了一堆，还被你们闹了一整天哈哈哈\n希望十五岁的我可以顺利考上本部高中~',date:'2016年9月27日 21:36',img:'./images/qzone2016/posts/post_birthday.jpg',likes:['Reverie','W.','TuT','云朵奶昔','纸月亮'],reposts:['Reverie'],comments:[['Reverie','生日快乐！！！十五岁也要天天开心！'],['TuT','生日快乐岁岁！明年继续闹你(-∀-)。'],['W.','生日快乐'],['Ephemeral','今年怎么一个比一个会说话TAT']]},
+{name:'Ephemeral',text:'为什么每天都有写不完的作业！！写完一张卷子又多出来三张，老师你们是不是都会复制粘贴？？',date:'2016年10月18日 21:57',img:'',likes:['Reverie','W.','TuT','云朵奶昔'],reposts:['云朵奶昔'],comments:[['Reverie','我已经写到灵魂出窍了'],['W.','别抱怨了，先写'],['Ephemeral','W.','你这个无情无耻无理取闹的人']]},
+{name:'Ephemeral',text:'放学去奶茶店的时候发现两位已经在店里坐半天了，连我的那杯都点好了\n嗯...懂得都懂！',date:'2016年11月5日 19:21',img:'',likes:['Reverie','W.','TuT','纸月亮'],reposts:[],comments:[['TuT','我不懂'],['W.','我也不懂'],['Reverie','我好像发现了什么但我不说']]},
+{name:'Ephemeral',text:'以前总觉得一年特别长，现在怎么感觉一眨眼就到年底了\n希望以后不管升学还是毕业，和朋友们都还能像现在这样，想见面的时候就能见面',date:'2016年11月27日 22:34',img:'',likes:['Reverie','W.','TuT','云朵奶昔','纸月亮'],reposts:[],comments:[['TuT','当然啊，这还用说~'],['W.','你先把高中考进来再发表感言'],['Ephemeral','气氛都被你毁了！！']]},
+{name:'Ephemeral',text:'今天晚自习回家路上风好大，耳机里的歌刚好放到喜欢的那一段~时间过得太快了，舍不得这一年TAT',date:'2016年12月6日 20:44',img:'./images/qzone2016/posts/post_09.jpg',likes:['Reverie','W.','TuT','纸月亮'],reposts:[],comments:[['TuT','突然文艺！'],['W.','风大记得把围巾系好']]},
+{name:'Ephemeral',text:'2016最后一天！！今年真的发生了好多好多开心的事\n希望明年也能这样，大家都别走散，想去哪玩就一起去，想吃什么就一起吃~',date:'2016年12月31日 23:41',img:'',likes:['Reverie','W.','TuT','云朵奶昔','纸月亮'],reposts:['Reverie','TuT'],comments:[['TuT','说定了'],['W.','嗯'],['Reverie','2017也要一起玩！！'],['Ephemeral','谁反悔谁是小狗！！']]}
+];
+
+function esc(s){return String(s).replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function postHTML(p){return `<article class="post"><div class="post-head"><div class="post-avatar"></div><div class="post-main"><div class="post-name">${p.name}</div><div class="post-text">${esc(p.text).replace(/\n/g,'<br>')}</div>${p.img?`<div class="post-img" data-src="${p.img}" style="background-image:url('${p.img}')" title="点击查看大图"></div>`:''}<div class="post-time">${p.date}</div><div class="actions"><span>赞 (${p.likes.length})</span><span>评论 (${p.comments.length})</span><span>转发${p.reposts.length?' ('+p.reposts.length+')':''}</span></div><div class="social"><div class="likes">❤ ${p.likes.join('、')}</div>${p.reposts.length?`<div class="reposts">↻ ${p.reposts.join('、')} 转发了这条说说</div>`:''}${p.comments.map(c=>c.length===2?`<div class="comment"><b>${c[0]}</b>：${c[1]}</div>`:`<div class="comment"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`).join('')}</div></div></div></article>`;}
+document.getElementById('feed').innerHTML=posts.map(postHTML).join('');
+
+const tabs=[...document.querySelectorAll('.space-nav button[data-tab]')];
+tabs.forEach(b=>b.onclick=()=>{
+  tabs.forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  document.querySelectorAll('.qtab').forEach(x=>x.classList.remove('active'));
+  document.getElementById(b.dataset.tab).classList.add('active');
+  if(b.dataset.tab==='logs'){
+    document.getElementById('logIndex').style.display='block';
+    document.getElementById('tiebaArticle').classList.remove('show');
+  }
+});
+
+const albumData={
+  selfie:{name:'自拍',locked:true,photos:['./images/qzone2016/albums/selfie_01.jpg','./images/qzone2016/albums/selfie_02.jpg'],comments:[['Reverie','这两张都好看！'],['W.','滤镜比本人白一个度。'],['Ephemeral','W.','你闭嘴。']]},
+  food:{name:'美食分享',photos:['./images/qzone2016/albums/food_01.jpg','./images/qzone2016/albums/food_02.jpg'],comments:[['Reverie','你们天天吃巡味记真的不会腻吗'],['TuT','永远吃不腻！']]},
+  cat:{name:'校长威武',photos:['./images/qzone2016/albums/cat_01.jpg','./images/qzone2016/albums/cat_02.jpg'],comments:[['W.','它看起来比去年更嚣张了'],['Ephemeral','校长一直都很有威严'],['TuT','猫中霸王！']]},
+  summer:{name:'我们的夏天永远没有尽头',photos:['./images/qzone2016/albums/summer_01.jpg','./images/qzone2016/albums/summer_02.jpg','./images/qzone2016/albums/summer_03.jpg','./images/qzone2016/albums/summer_04.jpg'],comments:[['TuT','每张都好喜欢！！'],['W.','第三张拍得还行'],['Ephemeral','下次再也不敢在机场喝咖啡了QAQ']]}
+};
+
+function commentsHTML(a){
+  return `<div class="album-comments">${a.comments.map(c=>c.length===2?`<div class="album-comment"><b>${c[0]}</b>：${c[1]}</div>`:`<div class="album-comment"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`).join('')}</div>`;
+}
+function bindPhotos(){
+  document.querySelectorAll('.photo[data-src],.post-img[data-src],.article-img[data-src]').forEach(el=>el.onclick=()=>{
+    document.getElementById('lightboxImg').src=el.dataset.src;
+    document.getElementById('lightbox').classList.add('show');
+  });
+}
+function renderPhotos(a){
+  const v=document.getElementById('albumView');
+  document.getElementById('albumIndex').style.display='none';v.style.display='block';
+  v.innerHTML=`<span class="back" id="albumBack">‹ 返回相册</span><h3 style="color:#62586a">${a.name}</h3><div class="photo-grid">${a.photos.map(p=>`<div class="photo" data-src="${p}" style="background-image:url('${p}')" title="点击查看大图"></div>`).join('')}</div>${commentsHTML(a)}`;
+  document.getElementById('albumBack').onclick=backAlbums;
+  bindPhotos();
+}
+function backAlbums(){document.getElementById('albumView').style.display='none';document.getElementById('albumIndex').style.display='grid'}
+document.querySelectorAll('.album-card').forEach(card=>card.onclick=()=>{
+  const a=albumData[card.dataset.album],v=document.getElementById('albumView');
+  if(a.locked){
+    document.getElementById('albumIndex').style.display='none';v.style.display='block';
+    v.innerHTML=`<span class="back" id="albumBack">‹ 返回相册</span><div class="lock-panel"><div style="font-size:31px">🔒</div><h3>主人设置了回答问题可见</h3><div class="lock-hint">问题提示：天王盖地虎</div><div><input id="albumPw" placeholder="请输入答案"><button id="unlockAlbum">确定</button></div><div class="err" id="albumErr"></div></div>`;
+    document.getElementById('albumBack').onclick=backAlbums;
+    document.getElementById('unlockAlbum').onclick=()=>{
+      if(document.getElementById('albumPw').value.trim()==='岁岁一米八')renderPhotos(a);
+      else document.getElementById('albumErr').textContent='回答错误。';
+    };
+    document.getElementById('albumPw').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('unlockAlbum').click()});
+  }else renderPhotos(a);
+});
+
+document.getElementById('tiebaLog').onclick=()=>{
+  document.getElementById('logIndex').style.display='none';
+  document.getElementById('tiebaArticle').classList.add('show');
+};
+document.getElementById('backLogs').onclick=()=>{
+  document.getElementById('tiebaArticle').classList.remove('show');
+  document.getElementById('logIndex').style.display='block';
+};
+
+bindPhotos();
+document.getElementById('lightboxClose').onclick=()=>document.getElementById('lightbox').classList.remove('show');
+document.getElementById('lightbox').onclick=e=>{if(e.target.id==='lightbox')e.currentTarget.classList.remove('show')};
+</script>
+</body>
+</html>

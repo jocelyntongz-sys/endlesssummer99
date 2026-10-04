@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>惠言中学 - 官方网站</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:"Microsoft YaHei","PingFang SC","SimSun",Arial,sans-serif;color:#333;background:#f4f1ea}a{text-decoration:none;color:inherit}button,input{font:inherit}:root{--red:#7b1018;--red2:#9b1b24;--gold:#c69b4b}.top-strip{height:34px;background:#4b080d;color:#e9d9bf;font-size:12px}.top-strip .inner,.header .inner,.nav .inner,.main,.footer .inner{width:1180px;max-width:94vw;margin:auto}.top-strip .inner{height:34px;display:flex;align-items:center;justify-content:space-between}.header{background:linear-gradient(90deg,#701017,#8f1820 52%,#6b0d14);color:#fff;border-bottom:4px solid var(--gold)}.header .inner{height:126px;display:flex;align-items:center}.school-name h1{font-family:"STKaiti","KaiTi","SimSun",serif;font-size:36px;letter-spacing:4px;margin:0 0 7px;font-weight:700}.school-name p{margin:0;color:#edd9ab;letter-spacing:2px;font-size:13px}.header-right{margin-left:auto;text-align:right;font-size:12px;color:#ead7b6;line-height:1.9}.nav{background:#fff;border-bottom:1px solid #d8cdb9;box-shadow:0 2px 5px #00000012}.nav .inner{height:50px;display:flex;align-items:stretch}.nav a{padding:0 25px;display:flex;align-items:center;font-size:15px;border-right:1px solid #eee8dc;color:#4e3b34}.nav a:first-child{background:var(--red);color:white}.nav a:hover{background:#f4ede2;color:var(--red)}.hero{height:340px;background:linear-gradient(90deg,#5f1018c7,#5f101844),linear-gradient(135deg,#bdb3a4,#e8e0d1 48%,#a28f78);position:relative;overflow:hidden}.hero .inner{width:1180px;max-width:94vw;margin:auto;height:100%;position:relative}.hero-card{position:absolute;left:0;bottom:42px;color:white;width:690px}.hero-kicker{display:inline-block;background:var(--gold);color:#5c0c12;padding:6px 12px;font-weight:bold;font-size:13px;margin-bottom:12px}.hero-card h2{font-family:"STKaiti","KaiTi",serif;font-size:36px;line-height:1.35;margin:0 0 10px;text-shadow:0 2px 3px #0006}.hero-card p{font-size:15px;line-height:1.9;margin:0;color:#f5ead6}.search-wrap{background:#fff;border-bottom:1px solid #ddd5c6;padding:16px 0}.search-box{width:1180px;max-width:94vw;margin:auto;display:flex}.search-box input{flex:1;height:42px;border:1px solid #cfc5b4;border-right:0;padding:0 14px;outline:none;background:#fff}.search-box button{width:110px;border:0;background:var(--red);color:#fff;cursor:pointer}.search-tip{width:1180px;max-width:94vw;margin:7px auto 0;font-size:12px;color:#8a7e70}.search-results{display:none;width:1180px;max-width:94vw;margin:16px auto 0;background:#fff;border:1px solid #d8cebd}.search-results.show{display:block}.search-head{padding:12px 16px;background:#f5efe5;border-bottom:1px solid #dfd6c8;color:#6f151c;font-weight:bold}.result-item{padding:14px 16px;border-bottom:1px dashed #ded6ca;cursor:pointer}.result-item:hover{background:#faf7f1}.result-title{color:#7c151c;font-size:15px;font-weight:600}.result-meta{color:#9b8d7b;font-size:11px;margin-top:5px}.result-desc{font-size:12px;color:#666;margin-top:6px;line-height:1.6}.empty{padding:22px 16px;color:#8b8176;font-size:13px}.main{padding:24px 0 45px}.section-grid{display:grid;grid-template-columns:2fr 1fr;gap:22px}.panel{background:#fff;border:1px solid #ddd5c7;box-shadow:0 1px 4px #0000000c}.panel-title{height:46px;border-bottom:2px solid var(--red);display:flex;align-items:center;padding:0 16px}.panel-title h3{margin:0;color:var(--red);font-size:18px;font-weight:600}.panel-title .en{margin-left:10px;color:#b7aa98;font-size:11px}.more{margin-left:auto;color:#8a7a68;font-size:12px}.news-feature{display:grid;grid-template-columns:280px 1fr;gap:18px;padding:18px}.feature-img{height:190px;background:linear-gradient(150deg,#6d141b,#d9c7a2 56%,#6d7b61);position:relative}.feature-img:after{content:"108周年校庆纪念仪式";position:absolute;left:0;right:0;bottom:0;color:#fff;background:linear-gradient(transparent,#000a);padding:35px 12px 10px;font-size:13px}.feature-content h4{font-size:20px;color:#6f151c;margin:4px 0 10px;line-height:1.5}.feature-content p{margin:0;color:#666;font-size:13px;line-height:1.9}.feature-content .date{margin-top:12px;color:#999;font-size:12px}.news-list{padding:0 18px 14px}.news-item{display:flex;padding:12px 0;border-top:1px dashed #ded6ca;cursor:pointer}.news-item:hover .news-title{color:var(--red)}.news-date{width:78px;color:#9b8d7a;font-size:12px;padding-top:2px}.news-title{flex:1;font-size:14px;line-height:1.5}.sidebar-card{padding:16px}.quick-links{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick{background:#f5f0e8;border:1px solid #e1d6c4;padding:16px 10px;text-align:center;color:#6a4b39;font-size:13px;cursor:pointer}.quick:hover{background:#efe4d2;color:var(--red)}.notice-list{padding:6px 16px 16px}.notice{padding:11px 0;border-bottom:1px dotted #ddd0be;font-size:13px;line-height:1.55}.notice span{color:#a3917f;font-size:11px;display:block;margin-top:4px}.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:22px}.simple-list{padding:8px 16px 15px}.simple-item{padding:10px 0;border-bottom:1px dotted #ddd5c8;font-size:13px;line-height:1.55;cursor:pointer}.simple-item:hover{color:var(--red)}.simple-item small{display:block;color:#aaa;margin-top:4px}.campus-strip{margin-top:22px;background:#fff;border:1px solid #ddd5c7;padding:18px}.campus-strip h3{margin:0 0 15px;color:var(--red);font-size:18px}.campus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.campus-photo{height:125px;background:linear-gradient(145deg,#9c8e79,#dfd5c5 55%,#6d775f);position:relative}.campus-photo span{position:absolute;left:0;right:0;bottom:0;background:#0007;color:#fff;padding:7px 9px;font-size:12px}.article-page{display:none;background:#fff;border:1px solid #d8cebd;padding:32px 46px 50px;margin-bottom:20px}.article-page.show{display:block}.home-content.hidden{display:none}.article-back{display:inline-block;color:#8a6a4f;font-size:13px;margin-bottom:18px;cursor:pointer}.article-page h1{font-family:"STKaiti","KaiTi",serif;font-size:30px;color:#6f151c;margin:0 0 10px}.article-meta{font-size:12px;color:#999;border-bottom:1px solid #eee4d7;padding-bottom:14px;margin-bottom:20px}.article-page p{font-family:"SimSun","Songti SC",serif;font-size:15px;line-height:2.05;margin:15px 0}.archive-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}.archive-table th,.archive-table td{border:1px solid #cabfae;padding:10px 12px;text-align:left}.archive-table th{background:#f3ede2;color:#6c3f32}.badge{display:inline-block;background:#7b1018;color:#fff;padding:3px 8px;font-size:11px}.archive-note{padding:14px 16px;background:#f7f2e8;border-left:4px solid var(--gold);color:#6f6459;font-size:13px;line-height:1.8}.footer{background:#5a0b10;color:#dbc7a8;border-top:4px solid var(--gold)}.footer .inner{padding:27px 0;display:flex;justify-content:space-between;gap:30px;font-size:12px;line-height:1.9}.footer strong{color:#fff}@media(max-width:850px){.section-grid,.three-col{grid-template-columns:1fr}.news-feature{grid-template-columns:1fr}.campus-grid{grid-template-columns:repeat(2,1fr)}.nav .inner{overflow:auto}.nav a{padding:0 15px;white-space:nowrap}.school-name h1{font-size:27px}.hero{height:280px}}
+
+/* Easter egg: 搜索 ████ */
+.glitch-overlay{
+  position:fixed;inset:0;z-index:99999;display:none;overflow:hidden;
+  background:#f5f1e7;color:#1f1b18;font-family:"SimSun","Songti SC",serif;
+}
+.glitch-overlay.show{display:block}
+.glitch-overlay::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;
+  background:repeating-linear-gradient(0deg,transparent 0 2px,#000 3px 4px);
+  animation:scanMove .18s linear infinite
+}
+.glitch-stage{position:absolute;inset:0;padding:26px;overflow:hidden}
+.glitch-top{
+  height:48px;border-bottom:1px solid #b8aa98;display:flex;align-items:center;
+  justify-content:space-between;font-size:12px;color:#6d6258
+}
+.glitch-title{font-size:20px;color:#711219;letter-spacing:2px}
+.glitch-searchline{
+  margin:20px 0 12px;padding:12px 14px;border:1px solid #cfc4b5;background:#fff;
+  font-size:14px;position:relative
+}
+.glitch-searchline::after{content:"";position:absolute;right:0;top:0;width:0;height:100%;background:#130709;opacity:.06}
+.glitch-grid{
+  display:grid;grid-template-columns:1.3fr .7fr;gap:18px;height:calc(100% - 125px)
+}
+.glitch-panel{
+  border:1px solid #d7ccbd;background:#fff;padding:16px;overflow:hidden;position:relative
+}
+.glitch-lines{font-size:13px;line-height:1.8;white-space:pre-wrap;word-break:break-all;color:#504841}
+.glitch-aside{font-size:12px;line-height:1.9;color:#6f655c}
+.glitch-word{display:inline-block;position:relative}
+.glitch-word.shift{animation:wordShift .12s steps(2,end) infinite}
+.glitch-overlay.phase2 .glitch-panel{filter:contrast(1.15)}
+.glitch-overlay.phase2 .glitch-lines{color:#3b2a2a}
+.glitch-overlay.phase3{background:#ece7dc}
+.glitch-overlay.phase3 .glitch-stage{animation:screenJerk .22s steps(2,end) infinite}
+.glitch-overlay.phase3 .glitch-panel{border-color:#6d1b23}
+.glitch-overlay.phase3 .glitch-title{color:#5e0008;text-shadow:2px 0 #9d6b6f,-1px 0 #36545c}
+.glitch-overlay.phase4{background:#120d0f;color:#e7ddd2}
+.glitch-overlay.phase4 .glitch-top,
+.glitch-overlay.phase4 .glitch-aside{color:#a99b91}
+.glitch-overlay.phase4 .glitch-panel{background:#171113;border-color:#3c292d}
+.glitch-overlay.phase4 .glitch-lines{color:#d8ceca}
+.glitch-overlay.phase4 .glitch-searchline{background:#171113;border-color:#3c292d;color:#eee}
+.glitch-overlay.phase4 .glitch-title{color:#f2d8d8}
+.glitch-close{
+  position:absolute;right:20px;bottom:18px;border:1px solid #786a60;background:transparent;
+  color:inherit;padding:7px 12px;font-size:12px;cursor:pointer;opacity:.55
+}
+.glitch-close:hover{opacity:1}
+.redact{background:#161214;color:#161214;padding:0 3px;border-radius:1px}
+.phase4 .redact{background:#e6d9d0;color:#e6d9d0}
+.corrupt{color:#7d111c;font-weight:bold}
+.phase4 .corrupt{color:#ff9ca5}
+.cursor-block{display:inline-block;width:8px;height:14px;background:currentColor;vertical-align:-2px;animation:blink .7s steps(1,end) infinite}
+@keyframes scanMove{from{transform:translateY(0)}to{transform:translateY(4px)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes wordShift{
+  0%{transform:translate(0)}
+  33%{transform:translate(2px,-1px)}
+  66%{transform:translate(-2px,1px)}
+}
+@keyframes screenJerk{
+  0%{transform:translate(0)}
+  50%{transform:translate(1px,0)}
+  100%{transform:translate(-1px,1px)}
+}
+
+
+.glitch-overlay::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:
+    radial-gradient(circle at 50% 45%,transparent 0 28%,rgba(0,0,0,.22) 72%,rgba(0,0,0,.72) 100%),
+    repeating-linear-gradient(90deg,transparent 0 3px,rgba(110,0,10,.035) 4px 5px);
+  transition:opacity .35s ease;
+}
+.glitch-overlay.phase3::after{opacity:.45}
+.glitch-overlay.phase4::after{opacity:.82}
+.glitch-overlay.phase4 .glitch-searchline{animation:searchFlicker .12s steps(2,end) infinite}
+.glitch-overlay.phase4 .glitch-lines{animation:textTear .16s steps(2,end) infinite}
+.glitch-overlay.phase4 .glitch-aside{animation:textTear .21s steps(2,end) infinite reverse}
+.glitch-overlay.phase4 .glitch-close{
+  opacity:.18;
+  border-color:#6d4a50;
+}
+.glitch-overlay.phase4 .glitch-close:hover{opacity:1}
+.glitch-noise{
+  position:absolute;inset:0;pointer-events:none;z-index:3;opacity:0;
+  background:
+    repeating-radial-gradient(circle at 20% 30%,rgba(255,255,255,.05) 0 1px,transparent 1px 3px),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px);
+}
+.glitch-overlay.phase3 .glitch-noise{opacity:.22;animation:noiseJump .09s steps(2,end) infinite}
+.glitch-overlay.phase4 .glitch-noise{opacity:.42;animation:noiseJump .06s steps(2,end) infinite}
+.glitch-flash{
+  position:absolute;inset:0;z-index:4;background:#efe7df;opacity:0;pointer-events:none
+}
+.glitch-overlay.phase3 .glitch-flash{animation:flashPulse 1.7s steps(1,end) infinite}
+.glitch-overlay.phase4 .glitch-flash{background:#2c0004;animation:flashPulseDark 1.1s steps(1,end) infinite}
+@keyframes searchFlicker{
+  0%{transform:translateX(0);filter:none}
+  35%{transform:translateX(-2px);filter:contrast(1.3)}
+  70%{transform:translateX(2px);filter:brightness(.7)}
+}
+@keyframes textTear{
+  0%{transform:translate(0)}
+  25%{transform:translate(-1px,0)}
+  50%{transform:translate(2px,1px)}
+  75%{transform:translate(-2px,-1px)}
+}
+@keyframes noiseJump{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(2px,-1px)}
+  50%{transform:translate(-2px,2px)}
+  75%{transform:translate(1px,-2px)}
+}
+@keyframes flashPulse{
+  0%,88%,100%{opacity:0}
+  89%{opacity:.12}
+  90%{opacity:0}
+}
+@keyframes flashPulseDark{
+  0%,72%,100%{opacity:0}
+  73%{opacity:.18}
+  74%{opacity:0}
+}
+
+</style>
+</head>
+<body>
+<div class="top-strip"><div class="inner"><span>欢迎访问惠言中学官方网站</span><span>校务公开　|　旧版入口　|　联系我们</span></div></div>
+<header class="header"><div class="inner"><div class="school-name"><h1>惠言中学</h1><p>HUIYAN MIDDLE SCHOOL · 创办于1918年</p></div><div class="header-right">上城市市重点中学<br>七年制初高中一体制学校</div></div></header>
+<nav class="nav"><div class="inner"><a href="#" data-home>网站首页</a><a href="#">学校概况</a><a href="#">新闻中心</a><a href="#">教育教学</a><a href="#">德育天地</a><a href="#">校园生活</a><a href="#">招生招聘</a><a href="#" data-open="archive">校史档案</a><a href="#">校务公开</a></div></nav>
+<section class="hero"><div class="inner"><div class="hero-card"><div class="hero-kicker">建校108周年</div><h2>百八载弦歌不辍<br>惠言中学108周年校庆圆满举行</h2><p>校友返校、校史展开放、校园参观与纪念活动于9月10日举行。</p></div></div></section>
+<div class="search-wrap"><form class="search-box" id="siteSearch"><input id="searchInput" placeholder="请输入关键词搜索站内内容"><button type="submit">站内搜索</button></form><div class="search-results" id="searchResults"></div></div>
+<main class="main">
+<div class="home-content" id="homeContent">
+<div class="section-grid">
+<section class="panel"><div class="panel-title"><h3>学校要闻</h3><span class="en">School News</span><span class="more">更多 ›</span></div><div class="news-feature"><div class="feature-img"></div><div class="feature-content"><h4>惠言中学举行建校108周年纪念活动</h4><p>来自不同届次的校友、退休教师、在校师生及家长代表齐聚校园。校史展厅同步开放部分旧档案数字化资料，并推出“百八惠言”主题展。</p><div class="date">2026-09-10</div></div></div><div class="news-list"><div class="news-item" data-open="anniversary"><div class="news-date">09-10</div><div class="news-title">一百零八年，仍在这里等你回家——惠言中学108周年校庆纪实</div></div><div class="news-item"><div class="news-date">09-08</div><div class="news-title">我校召开2026—2027学年第一学期教学工作会议</div></div><div class="news-item"><div class="news-date">09-05</div><div class="news-title">新学期升旗仪式暨“知礼明志”主题教育活动举行</div></div><div class="news-item"><div class="news-date">08-29</div><div class="news-title">惠言中学2026级新生入学教育顺利完成</div></div><div class="news-item"><div class="news-date">08-25</div><div class="news-title">市教研室来校开展初高中衔接课程调研</div></div></div></section>
+<aside><section class="panel"><div class="panel-title"><h3>通知公告</h3><span class="en">Notice</span></div><div class="notice-list"><div class="notice">2026年国庆节放假安排及安全提示<span>2026-09-22</span></div><div class="notice">校友返校登记系统开放说明<span>2026-09-06</span></div><div class="notice">108周年校庆校园开放安排<span>2026-09-03</span></div><div class="notice">2026学年秋季学期作息时间表<span>2026-08-27</span></div></div></section><section class="panel" style="margin-top:20px"><div class="panel-title"><h3>快捷入口</h3><span class="en">Quick Links</span></div><div class="sidebar-card"><div class="quick-links"><div class="quick">校园门户</div><div class="quick">教师平台</div><div class="quick">学生服务</div><div class="quick" data-open="archive">校史档案</div><div class="quick">图书馆</div><div class="quick">校友之家</div></div></div></section></aside>
+</div>
+<div class="three-col"><section class="panel"><div class="panel-title"><h3>校园资讯</h3><span class="en">Campus</span></div><div class="simple-list"><div class="simple-item">第十九届校园科技节开幕<small>2026-09-18</small></div><div class="simple-item">学生会招新工作启动<small>2026-09-15</small></div><div class="simple-item">高一年级开展城市历史研学活动<small>2026-09-12</small></div><div class="simple-item">“午间音乐会”本学期首场演出举行<small>2026-09-09</small></div></div></section><section class="panel"><div class="panel-title"><h3>教育教学</h3><span class="en">Teaching</span></div><div class="simple-list"><div class="simple-item">我校教师在市青年教师教学展示中获奖<small>2026-09-19</small></div><div class="simple-item">初二年级开展跨学科项目化学习周<small>2026-09-13</small></div><div class="simple-item">高中部举行新高考选科指导讲座<small>2026-09-07</small></div><div class="simple-item">校本课程《上城旧影》正式开课<small>2026-09-02</small></div></div></section><section class="panel"><div class="panel-title"><h3>活动与荣誉</h3><span class="en">Activities</span></div><div class="simple-list"><div class="simple-item">校田径队参加市中学生运动会获佳绩<small>2026-09-20</small></div><div class="simple-item">合唱团入选市中学生艺术展演<small>2026-09-14</small></div><div class="simple-item">魔方社在校社团展示周开放体验<small>2026-09-11</small></div><div class="simple-item">摄影社“旧校园”主题影展开展<small>2026-09-04</small></div></div></section></div>
+<section class="campus-strip">
+<h3>校园风采</h3>
+<div class="campus-grid">
+  <div class="campus-photo" style="background-image:url('./images/school/huiyan_gate.jpg');background-size:cover;background-position:center;"><span>校本部正门</span></div>
+  <div class="campus-photo" style="background-image:url('./images/school/wutong_road.jpg');background-size:cover;background-position:center;"><span>梧桐大道</span></div>
+  <div class="campus-photo" style="background-image:url('./images/school/huiyan_hall.jpg');background-size:cover;background-position:center;"><span>礼堂与校史馆</span></div>
+  <div class="campus-photo" style="background-image:url('./images/school/huiyan_track.jpg');background-size:cover;background-position:center;"><span>田径场</span></div>
+</div>
+</section>
+</div>
+<article class="article-page" id="article-anniversary">
+<span class="article-back" data-back>‹ 返回网站首页</span>
+<h1>一百零八年，仍在这里等你回家</h1>
+<div class="article-meta">发布时间：2026-09-10　来源：党政办公室 / 校友工作办公室</div>
+<p>九月的上城仍带着初秋的暖意。9月10日，惠言中学迎来建校108周年纪念日。当天清晨起，学校文惠路校门前陆续迎来返校校友，许多已经毕业多年的学生带着家人重新走进熟悉的校园。教学楼前悬挂起历届校庆照片，梧桐大道两侧布置了由学生志愿者整理的“惠言旧影”展板。</p>
+<p>上午九时，建校108周年纪念活动在校本部礼堂正式开始。退休教师代表、历届校友、在校师生及家长代表共同参加。学生管乐团演奏校歌后，现场播放了以“从1918到2026”为主题的校史影像。旧教学楼、早年的黑板报、历届运动会、艺术节、社团招新和毕业合影依次出现在大屏幕上，不少校友在熟悉的画面中认出了当年的老师、同学和自己。</p>
+<p>校长陈志强在致辞中回顾了学校百余年来的办学历程。他提到，惠言中学作为上城市七年制初高中一体制学校，在不同年代经历过校舍扩建、课程调整与校园改造，但“真正构成学校历史的，从来不只是建筑和年份，也是学生每天走过的楼梯、写过的黑板、参加过的比赛，以及那些多年以后仍然记得的人”。</p>
+<p>今年校庆的一项重点内容，是校史馆完成新一轮数字化整理。学校将过去保存于纸质档案盒、年级组资料册和老照片册中的部分材料重新扫描、分类和登记，其中包括历届田径运动会成绩、班级活动记录、校园刊物、社团影像、教师工作简报以及部分毕业纪念资料。经过公开范围审核后的内容，将分批上线学校官网。</p>
+<p>当天上午，校史馆与旧档案数字化展示区同步开放。许多校友在运动会成绩册、校园广播站记录和社团照片中寻找自己的名字。部分纸质材料因年代久远已有明显褪色，工作人员在展板旁标注了原始档案年份与保存情况，并邀请校友补充照片拍摄时间、活动名称及人物信息，以帮助学校继续完善历史资料。</p>
+<p>中午以后，校园进入自由参观时段。旧教学楼、礼堂、田径场、图书馆和学校后门成为校友停留最多的地方。有人按照十多年前的班级合影重新站回原来的位置，也有人带着孩子沿着当年的上学路线走了一遍。各年级学生志愿者则在校史馆、体育场和校园开放区域承担引导与讲解工作。</p>
+<p>下午举行的校友交流活动以“记忆里的惠言”为主题。不同届次的校友分享了自己在校期间的课堂、比赛与社团故事。学校同时公布了下一阶段档案整理计划，将继续对2000年以来的校园活动资料进行数字化，并尽可能保留原始记录中的日期、班级、项目和人员信息。</p>
+<p>108年并不是一个终点。学校希望通过此次校庆，让已经离开校园的人仍能找到与这里的连接，也让今天的学生知道，自己正在经历的普通一天，有一天同样可能成为校史的一部分。</p>
+<p>目前，惠言中学校史档案数字化查询栏目已开放部分公开资料。后续内容将在完成整理与审核后陆续更新。</p>
+</article>
+<article class="article-page" id="article-archive"><span class="article-back" data-back>‹ 返回网站首页</span><h1>惠言中学校史档案数字化查询</h1><div class="article-meta">校史馆 · 公开档案索引</div><div class="archive-note">本栏目收录经整理后可公开查询的历届校园活动资料。部分历史记录因原始档案缺失、隐私处理或数字化进度原因，仅显示摘要信息。</div><table class="archive-table"><tr><th>年份</th><th>资料名称</th><th>类别</th><th>状态</th></tr><tr><td>2013</td><td>2013学年校园体育活动资料目录</td><td>体育活动</td><td>暂未开放</td></tr><tr><td>2014</td><td>惠言中学2014年秋季运动会公开影像目录</td><td>体育活动</td><td>摘要</td></tr><tr><td>2015</td><td>第十二届校园文化艺术节节目单</td><td>校园活动</td><td>可查阅</td></tr><tr><td>2016</td><td>学生社团年度汇编</td><td>学生社团</td><td>整理中</td></tr></table></article>
+
+</main>
+<footer class="footer"><div class="inner"><div><strong>惠言中学</strong><br>地址：上城市惠言路123号<br>邮编：310000　联系电话：0571-XXXXXXX</div><div>版权所有 © 惠言中学<br>上城市教育局直属学校<br>网站维护：信息中心</div></div></footer>
+<script>
+const db=[
+{title:'一百零八年，仍在这里等你回家——惠言中学108周年校庆纪实',date:'2026-09-10',type:'学校新闻',desc:'惠言中学108周年校庆纪念活动、校史展开放及校友返校日。',keys:['校庆','108周年','一百零八年','校友'],open:'anniversary'},
+{title:'惠言中学校史档案数字化查询',date:'2026-09-08',type:'校史档案',desc:'历届校园刊物、社团活动与部分公开历史资料索引。',keys:['校史','校史档案','档案','旧档案','历史资料'],open:'archive'},
+{title:'魔方社在校社团展示周开放体验',date:'2026-09-11',type:'社团活动',desc:'学生社团展示周活动之一。',keys:['魔方','魔方社','社团'],open:null},
+{title:'摄影社“旧校园”主题影展开展',date:'2026-09-04',type:'社团活动',desc:'摄影社整理历届校园影像并举办主题展览。',keys:['摄影社','旧校园','社团','照片'],open:null}
+];
+
+const sportsQueries=['2014年秋季田径运动会','2014年秋季运动会','2014年运动会'];
+const photoQueries=['2015年惠言中学校际摄影比赛','2015年摄影比赛','摄影比赛'];
+const principalQueries=['校长','陈志强'];
+const home=document.getElementById('homeContent'),results=document.getElementById('searchResults'),input=document.getElementById('searchInput');
+
+function showHome(){document.querySelectorAll('.article-page').forEach(x=>x.classList.remove('show'));home.classList.remove('hidden');results.classList.remove('show');window.scrollTo({top:0,behavior:'smooth'})}
+function openArticle(id){document.querySelectorAll('.article-page').forEach(x=>x.classList.remove('show'));home.classList.add('hidden');results.classList.remove('show');const el=document.getElementById('article-'+id);if(el){el.classList.add('show');window.scrollTo({top:0,behavior:'smooth'})}}
+document.querySelectorAll('[data-open]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();openArticle(el.dataset.open)}));
+document.querySelectorAll('[data-back]').forEach(el=>el.addEventListener('click',showHome));
+document.querySelectorAll('[data-home]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();showHome()}));
+
+document.getElementById('siteSearch').addEventListener('submit',e=>{
+  e.preventDefault();
+  const raw=input.value.trim(), q=raw.toLowerCase();
+  results.innerHTML=''; results.classList.add('show');
+  if(!raw){results.innerHTML='<div class="empty">请输入搜索关键词。</div>';return;}
+
+  if(sportsQueries.includes(raw)){
+    results.innerHTML='<div class="search-head">站内搜索结果（1）</div><div class="result-item" id="sports2014Result"><div class="result-title">惠言中学2014年秋季田径运动会初中部比赛成绩</div><div class="result-meta">2014-11-08　校史档案 / 体育活动</div><div class="result-desc">2014年秋季田径运动会初中部各年级个人项目及团体接力比赛成绩。</div></div>';
+    document.getElementById('sports2014Result').addEventListener('click',()=>window.location.href='./59abd41e8c47f8939406b0a9.html');
+    return;
+  }
+
+  if(photoQueries.includes(raw)){
+    results.innerHTML='<div class="search-head">站内搜索结果（1）</div><div class="result-item" id="photo2015Result"><div class="result-title">2015年惠言中学校际摄影比赛高中组获奖作品展示</div><div class="result-meta">2015-10-20　校园文化 / 摄影比赛</div><div class="result-desc">高中部高一、高二、高三年级优秀作品展示及作者创作说明。</div></div>';
+    document.getElementById('photo2015Result').addEventListener('click',()=>window.location.href='./61a4387b63b313934160bb84.html');
+    return;
+  }
+
+  if(raw==='惠言论坛'||raw==='惠言中学论坛'){
+    results.innerHTML='<div class="search-head">站内搜索结果（1）</div><div class="result-item" id="huiyanForumResult"><div class="result-title">惠言校园论坛（历史社区）</div><div class="result-meta">校园互动 / 历史站点</div><div class="result-desc">惠言中学校园论坛旧站入口。包含校园生活、活动交流、闲聊与历年帖子存档。</div></div>';
+    document.getElementById('huiyanForumResult').addEventListener('click',()=>window.location.href='./36540b344b732795c36ba3c6.html');
+    return;
+  }
+
+  if(raw==='████'){
+    startGlitchEgg();
+    return;
+  }
+
+  if(principalQueries.includes(raw)){
+    results.innerHTML='<div class="search-head">站内搜索结果（1）</div><div class="result-item" id="principal2019Result"><div class="result-title">惠言中学校长交接公告：宋金满退休，陈志强接任校长</div><div class="result-meta">2019-08-30　学校公告 / 校务信息</div><div class="result-desc">原校长宋金满于2019年退休，陈志强同志接任惠言中学校长。</div></div>';
+    document.getElementById('principal2019Result').addEventListener('click',()=>window.location.href='./cbbfdba857dc2234c0312df3.html');
+    return;
+  }
+
+  if(raw==='201301092713'){
+    results.innerHTML='<div class="search-head">站内搜索结果（1）</div><div class="result-item" id="class2013Result"><div class="result-title">惠言中学2013级（1）班学生名册</div><div class="result-meta">学生档案 / 2013级</div><div class="result-desc">惠言中学2013级（1）班学生基础名册（公开字段）。</div></div>';
+    document.getElementById('class2013Result').addEventListener('click',()=>window.location.href='./dffe540653b1f986ee3d4b6d.html');
+    return;
+  }
+
+  if(['2014','运动会','秋季运动会','田径运动会','2014年'].includes(raw)){
+    results.innerHTML='<div class="search-head">站内搜索结果（0）</div><div class="empty">没有找到与“'+raw.replace(/[<>]/g,'')+'”完全匹配的公开内容。</div>';
+    return;
+  }
+
+  const found=db.filter(item=>[item.title,item.type,item.desc,...item.keys].join(' ').toLowerCase().includes(q));
+  results.innerHTML='<div class="search-head">站内搜索结果（'+found.length+'）</div>';
+  if(!found.length){results.innerHTML+='<div class="empty">没有找到与“'+raw.replace(/[<>]/g,'')+'”相关的公开内容。</div>';return;}
+  found.forEach(item=>{
+    const div=document.createElement('div'); div.className='result-item';
+    div.innerHTML='<div class="result-title">'+item.title+'</div><div class="result-meta">'+item.date+'　'+item.type+'</div><div class="result-desc">'+item.desc+'</div>';
+    if(item.open)div.addEventListener('click',()=>openArticle(item.open));
+    results.appendChild(div);
+  });
+});
+
+function startGlitchEgg(){
+  const overlay=document.getElementById('glitchOverlay');
+  const lines=document.getElementById('glitchLines');
+  const aside=document.getElementById('glitchAside');
+  overlay.style.removeProperty('display');
+  overlay.className='glitch-overlay show';
+  overlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+
+  const seq=[
+    {
+      t:0,
+      cls:'',
+      text:`正在连接历史索引……
+检索词：████
+匹配字段：学籍 / 活动记录 / 相册索引
+
+未找到可公开显示的结果。`,
+      aside:'索引状态：正常<br>数据源：公开档案<br>匹配结果：0<br>校验：等待中……'
+    },
+    {
+      t:700,
+      cls:'phase2',
+      text:`正在重试……
+检索词：████
+匹配记录：1
+
+记录号：HY-STU-2011-██-██-██
+字段：████████
+年级：██
+状态：<span class="corrupt">[字段受损]</span>
+
+索引返回：░▒▓▒░▒▓▒░▒▓▒░▒▓`,
+      aside:'索引状态：异常<br>数据源：历史快照<br>匹配结果：1<br>校验：<span class="corrupt">失败</span>'
+    },
+    {
+      t:1450,
+      cls:'phase3',
+      text:`档案读取错误
+
+记录号：████████
+记录号：███-██-██
+记录号：░▒▓▒░▒▓
+记录号：████
+
+2018-01-██
+2018-01-██
+2018-01-██
+
+<span class="corrupt">不要继续检索。</span>
+<span class="corrupt">不要继续检索。</span>
+<span class="corrupt">不要继续检索。</span>
+
+[缓存出现重复回写]
+[来源字段已被覆盖]`,
+      aside:'索引状态：<span class="corrupt">损坏</span><br>缓存：░▒▓▒░▒▓<br>权限：未知<br>返回码：0x██18'
+    },
+    {
+      t:2350,
+      cls:'phase4',
+      text:`▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+████　░▒▓▒　ERR
+████████████████
+
+<span class="corrupt">为什么还要继续检索？</span>
+
+2015 / 2016 / 2017 / 2018
+2015 / 2016 / 2017 / 2018
+2015 / 2016 / 2017 / <span class="corrupt">████</span>
+
+░▒▓ 记录不存在 ▓▒░
+░▒▓ 记录不存在 ▓▒░
+░▒▓ 记录不存在 ▓▒░
+
+<span class="corrupt">页面正在尝试返回一个不存在的结果。请停止。</span>
+<span class="corrupt">不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要</span>`,
+      aside:'索引状态：████<br>数据源：████<br>匹配结果：████<br>校验：████'
+    }
+  ];
+
+  seq.forEach(step=>{
+    setTimeout(()=>{
+      if(!overlay.classList.contains('show')) return;
+      overlay.className='glitch-overlay show '+step.cls;
+      lines.innerHTML=step.text;
+      aside.innerHTML=step.aside;
+    },step.t);
+  });
+}
+
+function closeGlitchEgg(){
+  const overlay=document.getElementById('glitchOverlay');
+  if(!overlay) return;
+  overlay.className='glitch-overlay';
+  overlay.style.display='none';
+  overlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  const lines=document.getElementById('glitchLines');
+  const aside=document.getElementById('glitchAside');
+  if(lines) lines.textContent='正在连接历史索引……';
+  if(aside) aside.innerHTML='索引状态：正常<br>数据源：公开档案<br>匹配结果：0<br>校验：等待中……';
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  const closeBtn=document.getElementById('glitchClose');
+  if(closeBtn) closeBtn.addEventListener('click',closeGlitchEgg);
+});
+
+</script>
+
+<div class="glitch-overlay" id="glitchOverlay" aria-hidden="true">
+  <div class="glitch-noise"></div><div class="glitch-flash"></div><div class="glitch-stage">
+    <div class="glitch-top">
+      <div class="glitch-title">惠言中学 · 站内检索</div>
+      <div id="glitchClock">ARCHIVE / SEARCH</div>
+    </div>
+    <div class="glitch-searchline">
+      正在检索：<span class="redact">████</span>
+      <span class="cursor-block"></span>
+    </div>
+    <div class="glitch-grid">
+      <div class="glitch-panel">
+        <div class="glitch-lines" id="glitchLines">正在连接历史索引……</div>
+      </div>
+      <div class="glitch-panel">
+        <div class="glitch-aside" id="glitchAside">
+          索引状态：正常<br>
+          数据源：公开档案<br>
+          匹配结果：0<br>
+          校验：等待中……
+        </div>
+      </div>
+    </div>
+    <button class="glitch-close" id="glitchClose" type="button">返回官网</button>
+  </div>
+</div>
+
+</body>
+</html>

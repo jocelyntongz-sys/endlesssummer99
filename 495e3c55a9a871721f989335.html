@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>W.的QQ空间</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;color:#d6d6d6;background:#111}
+body{background:linear-gradient(#161616,#101010 390px,#151515 390px)}
+.topbar{height:46px;background:#171717ef;border-bottom:1px solid #292929;display:flex;align-items:center;padding:0 28px;position:sticky;top:0;z-index:20}
+.logo{font-size:19px;font-weight:700;color:#f0f0f0;margin-right:34px}.logo span{font-weight:400;color:#888;font-size:13px;margin-left:7px}
+.topnav{display:flex;height:100%}.topnav div{padding:0 16px;display:flex;align-items:center;color:#aaa;font-size:13px}.topnav .active{background:#242424;color:#fff}
+.search{margin-left:auto;width:210px;height:28px;border:1px solid #383838;background:#202020;border-radius:3px;padding:0 10px;color:#aaa}
+.cover{height:290px;position:relative;border-bottom:1px solid #2a2a2a;background:radial-gradient(circle at 73% 18%,#383838 0,transparent 23%),linear-gradient(135deg,#282828,#171717 56%,#0e0e0e);overflow:hidden}
+.cover:before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 25%,#000b)}
+.profile{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:1000px;max-width:calc(100% - 40px);display:flex;align-items:flex-end}
+.avatar{width:92px;height:92px;border-radius:5px;border:3px solid #ddd;background:#333 url('./images/avatars/wujunyu.jpg') center/cover no-repeat;box-shadow:0 3px 18px #0009}
+.identity{margin-left:18px;padding-bottom:7px}.name{font-size:25px;color:#fff;font-weight:600}.signature{font-size:12px;color:#aaa;margin-top:8px}
+.visit{margin-left:auto;text-align:right;padding-bottom:8px;color:#999;font-size:12px}.visit b{font-size:21px;color:#ddd;font-weight:400}
+.nav{height:51px;background:#1c1c1c;border-bottom:1px solid #2b2b2b;display:flex;justify-content:center}
+.nav button{border:0;background:none;color:#aaa;padding:0 23px;cursor:pointer;font-size:14px;border-bottom:2px solid transparent}
+.nav button:hover{color:#eee}.nav button.active{color:#fff;border-bottom-color:#aaa}
+.page{width:1000px;max-width:calc(100% - 40px);margin:22px auto 70px}.content{display:none}.content.active{display:block}
+.panel{background:#1b1b1b;border:1px solid #2a2a2a;border-radius:3px;min-height:380px}.panel-head{height:52px;border-bottom:1px solid #292929;display:flex;align-items:center;padding:0 20px;color:#ddd;font-size:15px}.panel-head small{color:#777;margin-left:9px}
+.feed{padding:2px 22px}.post{padding:20px 2px;border-bottom:1px solid #292929}.post:last-child{border-bottom:0}.post-text{font-size:14px;line-height:1.85;color:#c6c6c6;white-space:pre-line}.post-time{margin-top:11px;font-size:11px;color:#666}.social{margin-top:12px;background:#171717;border-left:2px solid #333;padding:8px 11px;font-size:12px;line-height:1.8;color:#888}.social b{color:#a9a9a9;font-weight:500}
+.empty{height:320px;display:grid;place-items:center;text-align:center;color:#666}.empty strong{display:block;color:#888;font-size:14px;font-weight:400;margin-bottom:7px}.empty p{margin:0;font-size:12px;line-height:1.8}
+.lockbox{width:420px;max-width:86%;margin:56px auto;padding:30px;background:#181818;border:1px solid #303030;text-align:center}.lockicon{font-size:28px;color:#555;margin-bottom:12px}.locktitle{font-size:15px;color:#bbb;margin-bottom:18px}.pass{width:100%;height:38px;background:#111;border:1px solid #3a3a3a;color:#ddd;padding:0 11px;outline:none}.pass:focus{border-color:#666}.unlock{width:100%;height:38px;margin-top:10px;border:0;background:#ddd;color:#222;cursor:pointer}.err{height:22px;padding-top:7px;color:#a66;font-size:12px}
+.log-list{display:none;padding:0 20px}.log-list.show{display:block}.log{padding:19px 4px;border-bottom:1px solid #292929;cursor:pointer}.log:hover .log-date{color:#eee}.log-date{font-size:14px;color:#bbb}.log-excerpt{font-size:12px;color:#747474;margin-top:7px}
+.log.is-read .log-date,.log.is-read:hover .log-date{color:#666}.log.is-read .log-excerpt{color:#555}
+.article{display:none;padding:30px 42px 55px;max-width:760px;margin:auto}.article.show{display:block}.back{display:inline-block;color:#888;font-size:12px;cursor:pointer;margin-bottom:24px}.article-date{font-size:21px;color:#ddd;margin-bottom:25px}.article-body{white-space:pre-line;font-family:"Songti SC","SimSun",serif;font-size:15px;line-height:2.08;color:#aaa}
+.board{padding:4px 22px}.board-item{padding:17px 2px;border-bottom:1px solid #292929}.board-name{font-size:13px;color:#bcbcbc;margin-bottom:6px}.board-text{font-size:13px;color:#888;line-height:1.7}.board-time{font-size:11px;color:#555;margin-top:6px}
+.profilebox{padding:28px 30px;font-size:13px;line-height:2;color:#888}.profilebox b{color:#ccc;font-weight:500}
+.footer{text-align:center;color:#4f4f4f;font-size:11px;padding:0 0 35px}.all-read-fade{position:fixed;inset:0;background:#050505;z-index:999;opacity:0;pointer-events:none;transition:opacity 4s ease}.all-read-fade.show{opacity:.98;pointer-events:auto}
+.log-continue{display:block;margin:38px auto 0;min-width:64px;min-height:44px;padding:8px 20px;border:1px solid #444;border-radius:3px;background:#181818;color:#bbb;font:22px Georgia,serif;letter-spacing:5px;cursor:pointer}.log-continue:hover,.log-continue:focus-visible{color:#fff;border-color:#888;outline:2px solid #666;outline-offset:3px}.log-continue[hidden]{display:none}.log-continue:disabled{cursor:default;opacity:.5}
+@media(max-width:700px){.topnav{display:none}.profile{left:20px;transform:none}.visit{display:none}.nav{overflow-x:auto;justify-content:flex-start}.nav button{padding:0 16px}.article{padding:25px 22px}.avatar{width:72px;height:72px}.name{font-size:21px}}
+</style>
+</head>
+<body><div class="all-read-fade" id="allReadFade"></div>
+<div class="topbar"><div class="logo">QQ空间 <span>Qzone</span></div><div class="topnav"><div>个人中心</div><div class="active">他的主页</div><div>好友</div><div>应用</div></div><input class="search" placeholder="搜索"></div>
+<section class="cover"><div class="profile"><div class="avatar"></div><div class="identity"><div class="name">W.</div><div class="signature">……</div></div><div class="visit">今日访问 <b>1</b><br>历史空间</div></div></section>
+<nav class="nav">
+<button data-tab="home" class="active">主页</button>
+<button data-tab="posts">说说</button>
+<button data-tab="logs">日志</button>
+<button data-tab="albums">相册</button>
+<button data-tab="board">留言板</button>
+<button data-tab="profile">个人档</button>
+</nav>
+
+<main class="page">
+<section class="content active" id="home">
+  <div class="panel">
+    <div class="panel-head">主页</div>
+    <div class="empty">
+      <div>
+        <strong>这里什么也没有</strong>
+        <p>主人最近没有公开动态。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="posts"><div class="panel"><div class="panel-head">说说 <small>12</small></div><div class="feed"><div class="post"><div class="post-text">晚安</div><div class="post-time">2017年12月31日 23:58</div><div class="social"><b>。：</b>新年快乐<br><b>TnT：</b>新年快乐</div></div>
+<div class="post"><div class="post-text">......</div><div class="post-time">2017年12月14日 02:06</div><div class="social"><b>TnT：</b>别一个人扛<br><b>。：</b>你又这样<br><b>W.：</b>睡了</div></div>
+<div class="post"><div class="post-text">最近总觉得很累。明明也没做什么</div><div class="post-time">2017年10月22日 01:13</div><div class="social"><b>。：</b>你最近怪怪的 有事说<br><b>TnT：</b>我在<br><b>W.：</b>没事</div></div>
+<div class="post"><div class="post-text">今年挺好的</div><div class="post-time">2016年12月31日 23:48</div><div class="social"><b>。：</b>明年也要<br><b>TnT：</b>会的</div></div>
+<div class="post"><div class="post-text">耳机失踪一整天,犯人拒不承认。</div><div class="post-time">2016年11月20日 21:52</div><div class="social"><b>TnT：</b>你自己说拿去用的<br><b>。：</b>你们俩够了<br><b>Zora：</b>我什么都没说</div></div>
+<div class="post"><div class="post-text">南部岛的太阳太夸张了，某两个人还非要中午出去。</div><div class="post-time">2016年7月27日 17:29</div><div class="social"><b>。：</b>是谁说“来都来了”的？？<br><b>TnT：</b>反正不是我<br><b>W.：</b>你们两个都失忆了</div></div>
+<div class="post"><div class="post-text">三个人吃饭为什么最后永远是我去拿纸= =</div><div class="post-time">2016年2月11日 19:41</div><div class="social"><b>。：</b>因为你坐外面<br><b>TnT：</b>因为你善良<br><b>W.：</b>闭嘴</div></div>
+<div class="post"><div class="post-text">最近认识了一个很欠的人</div><div class="post-time">2015年12月3日 22:18</div><div class="social"><b>TnT：</b>？<br><b>。：</b>哈哈哈哈哈哈<br><b>W.：</b>没说你</div></div>
+<div class="post"><div class="post-text">优秀奖也是奖</div><div class="post-time">2015年10月21日 20:33</div><div class="social"><b>。：</b>切切切<br><b>Zora：</b>摄影大师请喝奶茶</div></div>
+<div class="post"><div class="post-text">为什么有人晚上十一点还来问我数学作业</div><div class="post-time">2014年12月16日 23:14</div><div class="social"><b>。：</b>因为不会TAT<br><b>W.：</b>明天自己写</div></div>
+<div class="post"><div class="post-text">运动会1000米，跑完以后感觉人已经没了</div><div class="post-time">2014年11月8日 16:21</div><div class="social"><b>。：</b>冠军还装<br><b>Zora：</b>请客请客</div></div>
+<div class="post"><div class="post-text">新学期第一周，某人已经在新学校迷路两次</div><div class="post-time">2013年9月7日 18:06</div><div class="social"><b>。：</b>不许说！！！<br><b>W.：</b>我又没说是谁</div></div></div></div></section>
+
+<section class="content" id="logs"><div class="panel" id="logsPanel">
+<div class="panel-head">日志 <small>已加密</small></div>
+<div id="logLock" class="lockbox"><div class="lockicon">⌁</div><div class="locktitle">日志已加密</div><input id="logPassword" class="pass" type="password" autocomplete="off" autocapitalize="none" spellcheck="false"><button id="unlockLogs" class="unlock">确认</button><div class="err" id="logError"></div></div>
+<div class="log-list" id="logList"></div>
+<div class="article" id="logArticle"><span class="back" id="backToLogs">‹ 返回日志列表</span><div class="article-date" id="articleDate"></div><div class="article-body" id="articleBody"></div><button type="button" class="log-continue" id="continueAfterLogs" aria-label="读完日志，继续" hidden>...</button></div>
+</div></section>
+
+<section class="content" id="albums"><div class="panel"><div class="panel-head">相册</div><div class="empty"><div><strong>暂无公开相册</strong><p>历史照片未公开展示。</p></div></div></div></section>
+
+<section class="content" id="board"><div class="panel"><div class="panel-head">留言板</div><div class="board">
+<div class="board-item"><div class="board-name">。</div><div class="board-text">踩！你欠我的奶茶别忘了</div><div class="board-time">2016年12月3日</div></div>
+<div class="board-item"><div class="board-name">TnT</div><div class="board-text">来过</div><div class="board-time">2016年11月20日</div></div>
+<div class="board-item"><div class="board-name">Zora</div><div class="board-text">你们三个能不能少在空间互相艾特一点= =</div><div class="board-time">2016年8月9日</div></div>
+<div class="board-item"><div class="board-name">。</div><div class="board-text">新年快乐，别消失</div><div class="board-time">2017年12月31日</div></div>
+</div></div></section>
+
+<section class="content" id="profile"><div class="panel"><div class="panel-head">个人档</div><div class="profilebox"><b>昵称：</b>W.<br><b>备注：</b>吴俊宇<br><b>所在地：</b>上城市<br><b>空间状态：</b>历史内容保留</div></div></section>
+</main>
+<div class="footer">QQ空间 · 2026　｜　游戏内虚构页面</div>
+
+<script>
+const logs=[
+  {
+    "date": "2014年3月22日",
+    "excerpt": "今天本来想一觉睡到中午，结果八点多就被我妈叫起来了。我感觉大人对“都几点了”这句话的理解可能跟我们不太一样，八点多到底哪里晚了……",
+    "body": "今天本来想一觉睡到中午，结果八点多就被我妈叫起来了。我感觉大人对“都几点了”这句话的理解可能跟我们不太一样，八点多到底哪里晚了……\n\n下午跟岁岁出去，她非要去试公园路那边新开的奶茶店，我说那家一看就不好喝，老板都把奶茶粉明目张胆直接摆柜台上了，生怕别人不知道是拿开水冲的\n\n她白了我一眼，说你都没喝过怎么知道，万一老板的奶茶粉里加了什么独家秘方\n\n然后她喝了一口\n\n跟我说，好难喝= =\n\n我真服了\n\n她把剩下的塞给我，美名其曰浪费粮食是可耻的云云，还非要算是她请我喝的，周一放学让我还她一杯麦香飘飘\n\n所以我现在一边写这个，一边帮她解决这杯很难喝的奶茶\n\n珍珠还挺多，嚼累了\n\n要回家的时候岁岁突然问我以后想去哪上大学\n\n我说还不知道，没想好\n\n以后这个词也太遥远了，我才几岁啊\n\n中考，高考，大学，工作，结婚，买房，再然后就退休了，别人一说这些我就头晕@ @\n\n而某人虽然这周数学作业一笔没动，但是坐在公园长凳上已经把后半辈子规划明白了，想的还挺美\n\n她说以后最好别离家太近，想去一个谁都不认识她的城市，有机会的话还想去留学\n\n我说那我也去\n\n她问我你去干嘛→_→\n\n我说继续烦你啊←_←\n\n她让我滚\n\n嘿嘿\n\n今天还挺开心的，希望明天别下雨:)"
+  },
+  {
+    "date": "2015年1月4日",
+    "excerpt": "天杀的，调休就算了，到底是谁想出来元旦节放完假第一天全校体测的？？？跑完一千米我差点死在操场上",
+    "body": "天杀的，调休就算了，到底是谁想出来元旦节放完假第一天全校体测的？？？跑完一千米我差点死在操场上\n\n一人血书请求教育局领导亲自来示范一下怎么3分40跑完一千米还能活着走下跑道= =\n\n沈同学八百米跑了5分20秒（真的算跑吗？这种程度跟散步没什么区别吧！），跑完以后直接躺地上了\n\n我说你现在特别像一只水鬼\n\n然后水鬼龇牙咧嘴地追了我半个操场\n\n看来还是有潜力的，再练练应该能挤进及格线\n\n马上要中考了，班里所有人都是那副紧张兮兮的表情，巴不得一天二十四个小时都把头埋进书里\n\n一模分数出了，老师说我考进本部高中应该问题不大\n\n老爸老妈经常跟我说放宽心，一次考试决定不了以后的人生\n\n其实去哪个学校都无所谓吧，想考本部是因为岁岁还在这里\n\n而且高中部的食堂比初中部看上去好吃太多了"
+  },
+  {
+    "date": "2015年10月19日",
+    "excerpt": "高中跟初中其实没什么区别，只是数学和物理的难度突然抽象到一个我很陌生的地步= =",
+    "body": "高中跟初中其实没什么区别，只是数学和物理的难度突然抽象到一个我很陌生的地步= =\n\n嗯......\n\n桐桐第一次走进教室的时候，我心想这哥们还挺帅，再帅一点就快把我比下去了\n\n然后他坐在我旁边跟我打招呼，莫名其妙感觉心跳加快了\n\n我还以为是没吃早饭低血糖了\n\n想起来以前每次岁岁跟我眉飞色舞地说她喜欢的那些男生，让我不要总摆出一副很无语的样子，问我没有过小鹿乱撞的时候吗\n\n我说没有，本人修的是无情道\n\n现在有了\n\n以前没想过自己会喜欢一个男生。也不是觉得有什么不对，就是压根没往这个方向想过\n\n发现自己好像真的很在意他的时候，我第一反应居然是完了，第二反应是——他好像也有一点喜欢我\n\n好好笑，这叫什么，自恋少男的心事？\n\n在一起的过程有点像很狗血的言情小说，现在想起来还有点羞耻，不写了......就是每天面对在学校跟桐桐演好兄弟的时候好像在演无间道\n\n本来我还挺紧张怎么跟岁岁说的，甚至已经提前在脑子里预演了好几种她的反应，万一她接受不了怎么办\n\n结果她知道以后对我露出了一个无比猥琐的表情= =，说怪不得我最近总是一副老妇怀春的样子，然后问我晚上吃什么\n\n我问她“就这样？”她一脸莫名其妙地看着我，说“不然呢？”\n\n对啊，不然呢"
+  },
+  {
+    "date": "2015年11月22日 星期日",
+    "excerpt": "带岁岁日认识了桐桐",
+    "body": "带岁岁日认识了桐桐\n\n我怀疑他们俩应该是失散多年的兄妹，怎么能有人一见如故到这个地步，第一次见面就有说不完的废话\n\n连名字都这么像\n\n恭喜二位终于在地球上找到了另一个跟自己脑电波一样奇怪的人\n\n岁岁非要发一条说说，还给我们三个起了一个很土的名字\n\n惠言中学侠客三人组= =\n\n我问她我们仨到底侠在哪？她说你不懂\n\n呵呵，这么多年了我确实依旧搞不懂她取名的品味\n\n不过她是真的很喜欢桐桐这个新朋友\n\n我也知道她其实是在给我们两个打掩护，这样以后我们三个经常一起出去，别人问起来也比较好解释\n\n看他们两个凑在一起不知道又在笑什么，我突然种很奇怪的感觉\n\n就是那种……\n\n很开心？很幸福？\n\n写出来怎么这么肉麻\n\n啊啊啊算了算了"
+  },
+  {
+    "date": "2016年8月3日 星期三",
+    "excerpt": "从南部岛回来了",
+    "body": "从南部岛回来了\n\n三个人每天都在吵今天去哪吃什么谁负责拎包\n\n最后都是岁岁两手空空大摇大摆，我跟桐桐苦哈哈地跟在后面\n\n她的理由是她要负责拍照= =\n\n沈摄影师拍照真的很麻烦，一会儿嫌我站太远，一会儿嫌桐桐挡光，一会儿又让我们两个站回去重拍\n\n桐桐每次嘴上都说“好晒好晒能不能快点”，结果她一记眼刀过来照还是老老实实站好\n\n有天下午什么都没干，就只是在沙滩上躺了很久\n\n岁岁在旁边不知道鼓捣什么东西，桐桐闭着眼睛装睡，我本来想起来买水，后来也懒得动了\n\n这个夏天能过得慢一点，再慢一点就好了\n\n不过有人开学要升初三，悲催悲催\n\n在此提前为沈同学献上一朵小菊花"
+  },
+  {
+    "date": "2016年9月27日",
+    "excerpt": "今天是岁岁的生日",
+    "body": "今天是岁岁的生日\n\n她每年过生日都要提前差不多一个月开始叨叨，什么“你不会忘了吧”，“你要是忘了你就死定了”，“礼物不要太敷衍”之类的\n\n今年终于多了一个人陪我一起受折磨\n\n谢谢桐桐！\n\n早知道就不给她买蛋糕了，上面的奶油最后基本没进嘴，全拿来抹我和桐桐脸上了\n\n小爷的发型= =我今天早上还特地抓了一下，全毁了\n\n她许了好久的愿，最后吹蜡烛的时候突然特别大声的说以后的每个生日都要和我们一起过\n\n我说愿望说出来不就不灵了吗\n\n她说你懂个屁，愿望之神一定会眷顾世界上最诚恳的她的\n\n呵呵"
+  },
+  {
+    "date": "2016年12月31日",
+    "excerpt": "希望以后的每一年都能像今年一样",
+    "body": "希望以后的每一年都能像今年一样"
+  },
+  {
+    "date": "2017年2月8日",
+    "excerpt": "某人因为想到要开学已经连续好几个晚上在群里哀嚎睡不着了",
+    "body": "某人因为想到要开学已经连续好几个晚上在群里哀嚎睡不着了\n\n本来就长得矮，再这么熬下去不是更长不高了吗= =\n\n我好心劝她早点睡只换来一句冷漠无情的让我滚\n\n不过我一看新学期的课表也很想找块豆腐一头撞死\n\n桐桐倒是淡定得很，学霸的世界就是我们这种凡人理解不了的\n\n算了，乐观点\n\n至少开学以后每天都能见到他们"
+  },
+  {
+    "date": "2017年4月17日",
+    "excerpt": ".......",
+    "body": ".......\n\n我妈现在看我手机的频率比看她自己手机还高\n\n昨天晚上问我跟沈桐到底到什么程度了\n\n什么叫“到什么程度”？\n\n我说就是在一起\n\n她听完那个表情，好像我刚刚是告诉她我杀人了，然后又开始哭，一边哭一边问我为什么会变成“这样”"
+  },
+  {
+    "date": "2017年5月1日",
+    "excerpt": "便利店店员看了我好几次，估计觉得我是来蹭空调的",
+    "body": "便利店店员看了我好几次，估计觉得我是来蹭空调的\n\n最后买了一瓶水，三块钱获得合法座位\n\n不想回家，可是还是要回去\n\n昨天出门一个小时，回去以后被问了二十多分钟\n\n去哪了，跟谁，为什么这么久，沈桐有没有一起\n\n自从他们发现我跟桐桐的事以后，每天都跟审犯人一样\n\n我都不知道他们到底想听什么答案\n\n他们还说趁五一放假带我去医院看看\n\n我说我没病\n\n他们说有没有病不是我自己说了算的"
+  },
+  {
+    "date": "2017年5月19日",
+    "excerpt": "本来想找岁岁，点开她头像以后看到她QQ空间发的说说",
+    "body": "本来想找岁岁，点开她头像以后看到她QQ空间发的说说\n\n最近她压力也很大，还是算了\n\n过几天就好了"
+  },
+  {
+    "date": "2017年5月27日",
+    "excerpt": "又去了",
+    "body": "又去了\n\n正规医院根本不收我，所以他们把我带去了什么心理健康学校\n\n每次进去都是差不多的问题\n\n什么时候开始喜欢男生，以前有没有喜欢过女生，是不是受过什么刺激\n\n是不是沈桐先来找我的\n\n我说没有，于是继续追问我真的没有吗\n\n我说真的没有，然后再换一种问法继续问\n\n我妈坐旁边一直帮我回答\n\n“他小时候不是这样的”\n\n“以前很正常”\n\n“就是上高中以后才开始”\n\n我坐在那里感觉自己特别像一个出了故障以后被送来检查的东西\n\n回家的路上她问我今天有没有想明白一点\n\n什么叫想明白，想明白喜欢一个人这件事其实是错的吗"
+  },
+  {
+    "date": "2017年6月13日",
+    "excerpt": "最近他们又开始折腾新的东西",
+    "body": "最近他们又开始折腾新的东西\n\n不知道谁给我妈介绍了个很有经验的人，说以前也见过我这种情况，我妈像抓到救命稻草一样\n\n然后这几天我就开始喝各种不知道是什么的东西，苦得要死\n\n有的喝完想吐，有的喝完头晕\n\n我问到底是什么，他们就说别管，喝就行\n\n我爸说你现在就是因为不配合所以才一直这样\n\n到底是哪样\n\n他们到底想把我变成什么样"
+  },
+  {
+    "date": "2017年7月3日",
+    "excerpt": "岁岁考砸了，很少见到她哭",
+    "body": "岁岁考砸了，很少见到她哭\n\n她哭着给我打电话说以后不能跟我们在一个学校的时候，我拿着手机半天不知道该说什么\n\n最后只说了两个字\n\n没事"
+  },
+  {
+    "date": "2017年8月31日",
+    "excerpt": "回家了",
+    "body": "回家了\n\n进去第一天手机就被收走了，不能随便出去，打电话也要申请\n\n每天几点起床，几点吃饭，几点上课，几点睡觉，全都安排好了\n\n我发现只要表现得配合一点事情就会简单很多\n\n让做什么就做什么，让写东西就写，问我有没有想明白一点，我就说有\n\n最后一次打电话的时候我妈问我现在是不是想通一点了？\n\n我说嗯\n\n她听起来特别高兴"
+  },
+  {
+    "date": "2017年9月8日",
+    "excerpt": "今天两边家长都被叫到学校了",
+    "body": "今天两边家长都被叫到学校了\n\n会议室门关着，但是偶尔还是能听见里面说话\n\n我听到我妈一直在哭，也听到有人说“影响”，不知道是在说影响学习，还是说我们两个互相影响\n\n桐桐低着头，我想跟他说点什么，想了半天也不知道说什么\n\n后来门开了，他爸出来的时候看了我一眼，那个眼神我大概一辈子都忘不了\n\n回家以后我爸问我，现在满意了吗\n\n好像所有事情都是因为我才变成这样\n\n如果我一开始没有喜欢桐桐，是不是就什么事都没有\n\n想问问岁岁在新学校过得好吗，她好像很不开心的样子\n\n但是不知道为什么这条消息一直没发出去"
+  },
+  {
+    "date": "2017年10月1日",
+    "excerpt": "桐桐被调到别的班去了，其实最近我也很怕见到他",
+    "body": "桐桐被调到别的班去了，其实最近我也很怕见到他\n\n之前我很讨厌听到爸妈说你们这样会害了对方，现在居然开始有一点相信了\n\n如果不是我，他就不会被家里骂，不会被老师叫去谈话，也不会每天这么提心吊胆\n\n都是我把他拖进来的\n\n今天又喝了很多奇怪的东西，喝完想吐\n\n我妈站在旁边说忍一下，这都是为了你好\n\n最近所有人都在说为了我好，可是为什么为了我好以后，我反而一天比一天难受\n\n可能真的是我太不识好歹了\n\n只有岁岁对我说再坚持一下，以后会好的\n\n以后是多久以后"
+  },
+  {
+    "date": "2017年10月8日",
+    "excerpt": "很累，放假一直躺在床上起不来",
+    "body": "很累，放假一直躺在床上起不来\n\n其实根本没怎么睡着，脑子里总有很多声音在转\n\n岁岁给我发了很多消息，但是我不知道怎么回\n\n今天应该去上学的，但是我爸帮我请假了，让我再去那个心理健康学校待几天\n\n他说每天看到我这副半死不活的样子就来气\n\n他说真后悔，早知道当初不生我了\n\n我妈说她整夜整夜的也睡不着，说家里以前明明不是这样的\n\n如果我没有喜欢沈桐，如果我正常一点\n\n是不是所有人都会过得轻松很多"
+  },
+  {
+    "date": "2017年11月5日",
+    "excerpt": "我是错的",
+    "body": "我是错的"
+  },
+  {
+    "date": "2017年12月9日",
+    "excerpt": "今天和岁岁吵架了，应该也不算吵架吧",
+    "body": "今天和岁岁吵架了，应该也不算吵架吧\n\n她一直问我最近好不好，她很担心我，想见我\n\n她问了好几遍，我还是只会说没事，后来她也急了，说再也不管我了\n\n她生气的时候讲话一直都挺狠的\n\n有一次我把她作业本藏起来，她跟我说她这辈子都不想再看见我，第二天早上又问我要不要吃她带的面包\n\n我知道她是在担心我，可是现在一听到别人问我怎么了我脑子里就变得好凌乱\n\n有很多话想说，又一句都说不出来\n\n最后我也说了不好听的话，发出去就后悔了\n\n等她气消一点我再去找她吧"
+  },
+  {
+    "date": "2017年12月31日",
+    "excerpt": "空间里好多人已经开始发什么2018请对我好一点",
+    "body": "空间里好多人已经开始发什么2018请对我好一点\n\n新的一年有什么愿望的话\n\n想好好睡一觉，睡很久很久，什么都不用想"
+  },
+  {
+    "date": "2018年1月2日",
+    "excerpt": "不知道你们以后会不会看到这个，但是有些话当面说不出来，还是留在这里吧",
+    "body": "不知道你们以后会不会看到这个，但是有些话当面说不出来，还是留在这里吧\n\n桐桐\n\n你之前问我是不是不喜欢你了，是不是放弃了\n\n不是这样的，我只是越来越不知道该怎么面对你\n\n所有人都告诉我我错了，说我这样会害了自己也会害了你\n\n一开始我觉得他们都在胡说八道，那时候我明明很确定喜欢一个人而已能有什么错\n\n可是后来听得太多了，到最后我居然有点想不起来自己最开始是怎么想的了\n\n看见你的时候还是会开心，但是脑子里马上就会有一个声音跟我说离他远一点，他现在这么难受都是因为你\n\n是我一直躲着你又什么都不肯说，让你一个人猜了那么久，对不起\n\n你之前还说过如果我再说一次对不起就让我请你吃一个月早饭，那估计现在欠你很多顿了\n\n但是我现在想明白了，我没有错，你也没有错\n\n到最后这件事情我还是只相信我自己\n\n不要因为我觉得自己应该一个人，也不要觉得喜欢一个人之前还要先问别人同不同意\n\n你已经因为我听了太多难听的话了，以后别听了\n\n谢谢你喜欢过我\n\n不对，应该是谢谢你喜欢我\n\n岁岁\n\n本来想写不要哭的，但是想了想你肯定不会听我的\n\n那就哭一会儿吧，别拿袖子擦脸\n\n我有点怕你看到这里，你这个人吧从小就特别爱钻牛角尖，现在大概又会开始想那天要是没生气就好了，再多问我一句就好了\n\n我们以前也吵过架的，你不理我我也不理你，哪次不是过两天谁都没道歉就又凑在一起和好了\n\n不要把最后发生的事情变成问题困住自己，然后一遍一遍去想重来一次会不会不一样，你也有不开心和难过的时候，我没能说出口的话不应该留给你来猜，更不是你的错\n\n我最近总是在想如果没有我是不是大家都会轻松一点，但是写到你们名字的时候又觉得自己这个想法好自私\n\n我做的这个决定只考虑了我自己，我只是太累了，醒过来就觉得很累，什么都没做也觉得很累，我想休息一会\n\n岁岁，你以前老说想离开上城，想出国留学，想去一个谁都不认识你的地方\n\n去吧，想去哪就去哪\n\n前面好不好我不知道，但你先往前走，永远都不要回头，不要为了记住我把自己一直留在原地，不要用难过证明我对你有多重要\n\n如果有一天你真的把我忘了，连我的脸都要看照片才能想起来也没关系，至少说明你已经往前走了很远\n\n谢谢你从小学开始烦了我这么多年\n\n每年生日你都嫌我敷衍，说我只有这么一句\n\n但是岁岁平安，一定要平安"
+  }
+];
+
+const LOG_READ_KEY='shensuiWReadLogs_v1';
+const readLogs=new Set();
+try{
+  const saved=JSON.parse(localStorage.getItem(LOG_READ_KEY)||'[]');
+  if(Array.isArray(saved))logs.forEach((log,i)=>{if(saved.includes(log.date))readLogs.add(i)});
+}catch(e){}
+function saveReadLogs(){
+  try{localStorage.setItem(LOG_READ_KEY,JSON.stringify([...readLogs].map(i=>logs[i].date)))}catch(e){}
+}
+function markReadTitles(){
+  document.querySelectorAll('[data-log]').forEach(el=>{
+    const isRead=readLogs.has(Number(el.dataset.log));
+    el.classList.toggle('is-read',isRead);
+    el.title=isRead?'已读':'未读';
+  });
+}
+let allLogsTriggered=false;
+async function triggerAllLogsRead(){
+  if(allLogsTriggered || !readLogs.has(logs.length-1))return;
+  allLogsTriggered=true;
+  document.getElementById('continueAfterLogs').disabled=true;
+  try{localStorage.setItem('wLogsAllRead','1')}catch(e){}
+  const fade=document.getElementById('allReadFade');
+  fade.classList.add('show');
+  await new Promise(r=>setTimeout(r,4300));
+  window.location.replace('./5c58f0ddef38f094673ff9fd.html?resume=after-logs');
+}
+
+const nav=[...document.querySelectorAll('.nav button')],sections=[...document.querySelectorAll('.content')];
+function openTab(id){nav.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));sections.forEach(s=>s.classList.toggle('active',s.id===id))}
+nav.forEach(b=>b.onclick=()=>openTab(b.dataset.tab));
+
+function renderLogList(){
+ const list=document.getElementById('logList');
+ list.innerHTML=logs.map((l,i)=>`<div class="log" data-log="${i}"><div class="log-date">${l.date}</div><div class="log-excerpt">${l.excerpt}</div></div>`).join('');
+ list.classList.add('show');
+ document.querySelectorAll('[data-log]').forEach(el=>el.onclick=()=>openLog(Number(el.dataset.log)));
+ markReadTitles();
+}
+function openLog(i){
+ document.getElementById('logList').style.display='none';
+ const a=document.getElementById('logArticle');a.classList.add('show');
+ document.getElementById('articleDate').textContent=logs[i].date;
+ document.getElementById('articleBody').textContent=logs[i].body;
+ readLogs.add(i);
+ saveReadLogs();
+ markReadTitles();
+ document.getElementById('continueAfterLogs').hidden=i!==logs.length-1;
+ a.scrollIntoView({block:'start'});
+}
+document.getElementById('continueAfterLogs').onclick=triggerAllLogsRead;
+document.getElementById('backToLogs').onclick=()=>{document.getElementById('logArticle').classList.remove('show');document.getElementById('logList').style.display='block'};
+function unlock(){
+ const raw=document.getElementById('logPassword').value.replace(/\s/g,'');
+ if(raw==='suisuipingan'){
+   document.getElementById('logLock').style.display='none';
+   renderLogList();
+ }else document.getElementById('logError').textContent='密码错误';
+}
+document.getElementById('unlockLogs').onclick=unlock;
+document.getElementById('logPassword').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+</script>
+</body>
+</html>

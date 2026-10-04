@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>沈岁的QQ空间</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;color:#d6d6d6;background:#111}
+body{background:linear-gradient(#161616,#101010 390px,#151515 390px)}
+a{color:inherit}
+.topbar{height:46px;background:#171717eF;border-bottom:1px solid #292929;display:flex;align-items:center;padding:0 28px;position:sticky;top:0;z-index:20}
+.logo{font-size:19px;font-weight:700;color:#f0f0f0;margin-right:34px}.logo span{font-weight:400;color:#888;font-size:13px;margin-left:7px}
+.topnav{display:flex;height:100%}.topnav div{padding:0 16px;display:flex;align-items:center;color:#aaa;font-size:13px}.topnav .active{background:#242424;color:#fff}
+.search{margin-left:auto;width:210px;height:28px;border:1px solid #383838;background:#202020;border-radius:3px;padding:0 10px;color:#aaa}
+.cover{height:290px;position:relative;border-bottom:1px solid #2a2a2a;background:
+radial-gradient(circle at 72% 22%,#393939 0,transparent 24%),
+linear-gradient(135deg,#292929,#171717 55%,#0e0e0e);overflow:hidden}
+.cover:before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 25%,#000b)}
+.profile{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:1000px;max-width:calc(100% - 40px);display:flex;align-items:flex-end}
+.avatar{width:92px;height:92px;border-radius:5px;border:3px solid #ddd;background:url('./images/avatars/shensui.jpg') center/cover,#333;box-shadow:0 3px 18px #0009}
+.identity{margin-left:18px;padding-bottom:7px}.name{font-size:25px;color:#fff;font-weight:600}.signature{font-size:12px;color:#aaa;margin-top:8px}
+.visit{margin-left:auto;text-align:right;padding-bottom:8px;color:#999;font-size:12px}.visit b{font-size:21px;color:#ddd;font-weight:400}
+.nav{height:51px;background:#1c1c1c;border-bottom:1px solid #2b2b2b;display:flex;justify-content:center}
+.nav button{border:0;background:none;color:#aaa;padding:0 23px;cursor:pointer;font-size:14px;border-bottom:2px solid transparent}
+.nav button:hover{color:#eee}.nav button.active{color:#fff;border-bottom-color:#aaa}
+.page{width:1000px;max-width:calc(100% - 40px);margin:22px auto 70px}
+.panel{background:#1b1b1b;border:1px solid #2a2a2a;border-radius:3px;min-height:380px}
+.panel-head{height:52px;border-bottom:1px solid #292929;display:flex;align-items:center;padding:0 20px;color:#ddd;font-size:15px}
+.panel-head small{color:#777;margin-left:9px}
+.content{display:none}.content.active{display:block}
+.empty{height:320px;display:grid;place-items:center;text-align:center;color:#666}.empty-icon{font-size:38px;color:#444;margin-bottom:12px}.empty strong{display:block;color:#888;font-size:14px;font-weight:400;margin-bottom:7px}.empty p{margin:0;font-size:12px;line-height:1.8}
+.disabled-note{margin:34px auto;width:420px;max-width:80%;padding:26px;text-align:center;border:1px dashed #353535;color:#666;background:#181818}.lock{font-size:26px;margin-bottom:10px;color:#555}
+.log-list{padding:0 20px}.log{padding:20px 4px;border-bottom:1px solid #292929}.log:last-child{border-bottom:0}.log-title{font-size:16px;color:#d8d8d8;margin-bottom:8px}.log-title.clickable{cursor:pointer}.log-title.clickable:hover{text-decoration:underline;color:#fff}.meta{font-size:11px;color:#666;margin-bottom:10px}.excerpt{font-size:13px;line-height:1.8;color:#8b8b8b}.repost{display:inline-block;margin-top:9px;font-size:11px;color:#666}
+.article{display:none;padding:30px 42px 55px;max-width:760px;margin:auto}.article.show{display:block}.article h1{font-size:25px;color:#e5e5e5;font-weight:500;margin:3px 0 10px}.article .article-meta{font-size:11px;color:#666;border-bottom:1px solid #2b2b2b;padding-bottom:18px;margin-bottom:25px}.article p{font-size:14px;line-height:2.05;color:#aaa;margin:16px 0}.article h3{font-size:16px;color:#ccc;margin-top:28px}.notice{background:#161616;border-left:3px solid #555;padding:14px 17px;color:#888;font-size:13px;line-height:1.9;margin:20px 0}
+.machine-link{display:block;margin-top:30px;padding:16px 18px;border:1px solid #3a3a3a;background:#222;text-decoration:none;color:#ddd;transition:.15s}.machine-link:hover{background:#292929;border-color:#555}.machine-link small{display:block;color:#777;margin-top:6px}
+.back{display:inline-block;color:#888;font-size:12px;cursor:pointer;margin-bottom:18px}.back:hover{color:#ddd}
+.footer{text-align:center;color:#4f4f4f;font-size:11px;padding:0 0 35px}
+
+/* ===== 2018 / 说说恢复异常 ===== */
+
+
+.san-text-layer{
+  position:fixed;inset:0;z-index:10020;pointer-events:none;overflow:hidden;
+}
+.san-word{
+  position:absolute;
+  white-space:nowrap;
+  opacity:0;
+  font-family:"STKaiti","KaiTi","FangSong","SimSun","Microsoft YaHei",serif;
+  font-weight:900;
+  letter-spacing:.05em;
+  color:rgba(170,0,0,.86);
+  -webkit-text-stroke:.3px rgba(255,40,40,.20);
+  text-shadow:
+    -5px 0 rgba(120,0,0,.70),
+     4px 1px rgba(255,0,0,.28),
+     0 0 6px rgba(255,0,0,.16),
+     0 0 18px rgba(70,0,0,.40);
+  filter:contrast(1.3) blur(.15px);
+  transform-origin:center;
+  animation:sanAppear var(--dur,1.3s) cubic-bezier(.2,.8,.15,1) forwards;
+}
+.san-word.dark{
+  color:rgba(92,0,0,.92);
+  text-shadow:
+    -4px 0 rgba(40,0,0,.95),
+     3px 0 rgba(150,0,0,.42),
+     0 0 15px rgba(65,0,0,.55);
+}
+.san-word.bright{
+  color:rgba(235,20,20,.94);
+  text-shadow:
+    -7px 0 rgba(100,0,0,.72),
+     5px 0 rgba(255,70,70,.35),
+     0 0 9px rgba(255,0,0,.35),
+     0 0 26px rgba(120,0,0,.45);
+}
+
+.san-word.blue{
+  color:rgba(110,150,190,.80);
+  text-shadow:
+    -5px 0 rgba(80,0,0,.55),
+     4px 0 rgba(0,80,120,.46),
+     0 0 16px rgba(20,70,110,.38);
+}
+.san-word.violet{
+  color:rgba(132,82,150,.82);
+  text-shadow:
+    -4px 0 rgba(90,0,0,.58),
+     4px 0 rgba(70,0,100,.42),
+     0 0 14px rgba(60,0,80,.45);
+}
+.san-word.pale{
+  color:rgba(225,215,205,.72);
+  text-shadow:
+    -5px 0 rgba(115,0,0,.42),
+     4px 0 rgba(0,70,85,.28),
+     0 0 12px rgba(255,255,255,.08);
+}
+.san-word.sick{
+  color:rgba(150,145,80,.72);
+  text-shadow:
+    -4px 0 rgba(100,0,0,.50),
+     4px 0 rgba(75,80,0,.26),
+     0 0 13px rgba(90,80,20,.28);
+}
+.san-word.scratched{
+  font-family:"FangSong","STKaiti","KaiTi","SimSun",serif;
+  font-style:italic;
+  letter-spacing:-.02em;
+  filter:contrast(1.55) blur(.35px);
+}
+.san-word.crushed{
+  font-family:"SimSun","FangSong",serif;
+  transform:scaleX(.72) skewX(-11deg) rotate(var(--rot,0deg));
+  letter-spacing:-.08em;
+}
+.san-word.stretched{
+  font-family:"KaiTi","STKaiti","FangSong",serif;
+  transform:scaleX(1.34) skewY(-4deg) rotate(var(--rot,0deg));
+  letter-spacing:.12em;
+}
+.san-word.huge{
+  font-size:clamp(48px,9vw,132px)!important;
+  letter-spacing:.04em;
+}
+.san-word.long{
+  white-space:normal;
+  width:130vw;
+  line-height:.95;
+  word-break:break-all;
+}
+.san-word.double:before,
+.san-word.double:after{
+  content:attr(data-text);
+  position:absolute;left:0;top:0;
+  opacity:.35;
+}
+.san-word.double:before{
+  transform:translate(-4px,2px);
+  color:#430000;
+  filter:blur(.8px);
+}
+.san-word.double:after{
+  transform:translate(5px,-2px);
+  color:#ff1e1e;
+  filter:blur(.7px);
+}
+body.corrupted.final-stage .san-text-layer{
+  background:
+    radial-gradient(circle at center,rgba(0,0,0,0) 0 40%,rgba(60,0,0,.16) 75%,rgba(15,0,0,.36) 100%);
+}
+body.corrupted.final-stage .topbar,
+body.corrupted.final-stage .cover,
+body.corrupted.final-stage .nav,
+body.corrupted.final-stage .page,
+body.corrupted.final-stage .footer{
+  filter:contrast(1.55) brightness(.52) saturate(.18);
+}
+
+body.corrupted.final-stage .topbar,
+body.corrupted.final-stage .cover,
+body.corrupted.final-stage .nav,
+body.corrupted.final-stage .page,
+body.corrupted.final-stage .footer{
+  animation:finalCollapse .085s steps(2,end) infinite;
+  transform-origin:center;
+}
+body.corrupted.final-stage .panel{
+  animation:panelWarp .16s steps(2,end) infinite;
+}
+body.corrupted.final-stage .san-text-layer{
+  animation:layerDrift .22s steps(2,end) infinite;
+}
+@keyframes finalCollapse{
+  0%{transform:translate(0,0) skewX(0deg) scale(1)}
+  20%{transform:translate(-4px,2px) skewX(-1.2deg) scale(1.008)}
+  40%{transform:translate(5px,-3px) skewX(1.4deg) scale(.995)}
+  60%{transform:translate(-2px,-2px) skewY(.8deg) scale(1.012)}
+  80%{transform:translate(4px,3px) skewX(-.9deg) scale(.997)}
+  100%{transform:translate(-3px,1px) skewY(-.6deg) scale(1.006)}
+}
+@keyframes panelWarp{
+  0%{transform:skewX(0deg) translateX(0)}
+  33%{transform:skewX(-.8deg) translateX(-2px)}
+  66%{transform:skewX(.9deg) translateX(3px)}
+  100%{transform:skewX(-.3deg) translateX(-1px)}
+}
+@keyframes layerDrift{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(2px,-2px) scale(1.006)}
+  100%{transform:translate(-2px,2px) scale(.998)}
+}
+@keyframes sanAppear{
+  0%{
+    opacity:0;
+    transform:
+      translate(var(--dx,0),var(--dy,0))
+      scale(.76)
+      skewX(var(--skew,-6deg))
+      rotate(var(--rot,0deg));
+    filter:blur(7px) contrast(1.8);
+  }
+  22%{
+    opacity:1;
+    transform:
+      translate(calc(var(--dx,0) * -.18),calc(var(--dy,0) * -.18))
+      scale(1.11)
+      skewX(calc(var(--skew,-6deg) * -1))
+      rotate(calc(var(--rot,0deg) * -1));
+    filter:blur(.6px) contrast(1.6);
+  }
+  35%{
+    transform:
+      translate(3px,-2px)
+      scale(.98)
+      skewX(var(--skew,-6deg))
+      rotate(var(--rot,0deg));
+  }
+  100%{
+    opacity:var(--op,.88);
+    transform:
+      translate(0,0)
+      scale(1)
+      skewX(0deg)
+      rotate(var(--rot,0deg));
+    filter:blur(.15px) contrast(1.25);
+  }
+}
+
+#posts .panel{position:relative;overflow:hidden}
+#posts .restored-feed{display:none;padding:6px 22px 28px}
+#posts.revealing .empty{display:none}
+#posts.revealing .restored-feed{display:block}
+.restored-post{
+  opacity:0;transform:translateY(12px);
+  border-bottom:1px solid #292929;padding:18px 4px;
+  animation:postAppear .34s ease forwards;
+}
+.restored-post:last-child{border-bottom:0}
+.restored-name{font-size:13px;color:#bdbdbd;margin-bottom:8px}
+.restored-text{font-size:17px;color:#e0e0e0;letter-spacing:.5px;line-height:1.8;white-space:pre-line}
+.restored-time{font-size:11px;color:#565656;margin-top:8px}
+@keyframes postAppear{
+  0%{opacity:0;transform:translateY(12px);filter:blur(3px)}
+  100%{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+
+body.corrupted{overflow-x:hidden}
+body.corrupted .topbar,
+body.corrupted .cover,
+body.corrupted .nav,
+body.corrupted .page,
+body.corrupted .footer{
+  animation:pageTremor .14s steps(2,end) infinite;
+}
+body.corrupted:before{
+  content:"";
+  position:fixed;inset:0;z-index:9998;pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px),
+    radial-gradient(circle at center,transparent 42%,rgba(75,0,0,.22) 76%,rgba(0,0,0,.58) 100%);
+  mix-blend-mode:screen;
+  animation:noisePulse .82s steps(2,end) infinite;
+}
+body.corrupted:after{
+  content:"为什么？　　....　　为什么？";
+  position:fixed;inset:auto 0 6vh 0;z-index:9999;pointer-events:none;
+  text-align:center;font-size:clamp(24px,5vw,68px);font-weight:700;
+  color:rgba(225,225,225,.06);letter-spacing:.16em;
+  text-shadow:-4px 0 rgba(140,0,0,.18),4px 0 rgba(0,70,90,.12);
+  animation:ghostText 2.1s steps(2,end) infinite;
+}
+body.corrupted .cover{filter:contrast(1.28) saturate(.42) brightness(.73)}
+body.corrupted .panel{box-shadow:
+  -5px 0 0 rgba(100,0,0,.12),
+   5px 0 0 rgba(0,55,70,.10),
+   0 0 45px rgba(0,0,0,.65)}
+body.corrupted .restored-post:nth-child(odd){
+  transform:translateX(-1px);
+  text-shadow:-2px 0 rgba(110,0,0,.17),2px 0 rgba(0,60,70,.12);
+}
+body.corrupted .restored-post:nth-child(even){
+  transform:translateX(1px);
+}
+body.corrupted .name,
+body.corrupted .signature,
+body.corrupted .panel-head{
+  text-shadow:-2px 0 rgba(130,0,0,.28),2px 0 rgba(0,65,80,.20);
+}
+body.corrupted .search{color:#555}
+.glitch-scar{
+  position:fixed;z-index:9997;pointer-events:none;left:0;right:0;
+  height:2px;background:rgba(190,190,190,.14);
+  box-shadow:0 0 10px rgba(255,255,255,.08);
+  animation:scarMove 1.4s steps(1,end) infinite;
+}
+@keyframes pageTremor{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(-1px,1px)}
+  50%{transform:translate(1px,-1px)}
+  75%{transform:translate(1px,1px)}
+  100%{transform:translate(-1px,0)}
+}
+@keyframes noisePulse{
+  0%,100%{opacity:.35}
+  50%{opacity:.68}
+}
+@keyframes ghostText{
+  0%,100%{transform:translate(0,0) scale(1);opacity:.55}
+  36%{transform:translate(-6px,2px) scale(1.02);opacity:.8}
+  38%{transform:translate(7px,-2px) scale(.99);opacity:.35}
+  67%{transform:translate(2px,1px) scale(1.01);opacity:.7}
+}
+@keyframes scarMove{
+  0%{top:13vh;opacity:.1}
+  18%{top:61vh;opacity:.45}
+  19%{top:61vh;opacity:0}
+  52%{top:28vh;opacity:.2}
+  80%{top:83vh;opacity:.35}
+  100%{top:13vh;opacity:.1}
+}
+@media (prefers-reduced-motion: reduce){
+  body.corrupted .topbar,
+  body.corrupted .cover,
+  body.corrupted .nav,
+  body.corrupted .page,
+  body.corrupted .footer,
+  body.corrupted:before,
+  body.corrupted:after,
+  .glitch-scar{animation:none!important}
+}
+
+@media(max-width:700px){.topnav{display:none}.profile{left:20px;transform:none}.visit{display:none}.nav{overflow-x:auto;justify-content:flex-start}.nav button{padding:0 16px}.article{padding:25px 22px}.avatar{width:72px;height:72px}.name{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">QQ空间 <span>Qzone</span></div>
+  <div class="topnav"><div>个人中心</div><div class="active">我的主页</div><div>好友</div><div>应用</div></div>
+  <input class="search" placeholder="搜索">
+</div>
+<section class="cover">
+  <div class="profile">
+    <div class="avatar"></div>
+    <div class="identity"><div class="name">沈岁</div><div class="signature">有些东西删掉就好了。</div></div>
+    <div class="visit">今日访问 <b>0</b><br>总访问量 1287</div>
+  </div>
+</section>
+<nav class="nav">
+  <button data-tab="home" class="active">主页</button>
+  <button data-tab="logs">日志</button>
+  <button data-tab="albums">相册</button>
+  <button data-tab="board">留言板</button>
+  <button data-tab="posts">说说</button>
+  <button data-tab="profile">个人档</button>
+  <button data-tab="more">更多</button>
+</nav>
+
+<main class="page">
+  <section class="content active" id="home">
+    <div class="panel"><div class="panel-head">主页</div><div class="empty"><div><div class="empty-icon">○</div><strong>这里什么也没有</strong><p>主人最近没有公开动态。</p></div></div></div>
+  </section>
+
+  <section class="content" id="posts">
+    <div class="panel">
+      <div class="panel-head">说说 <small id="postCount">0</small></div>
+      <div class="empty" id="postsEmpty"><div><div class="empty-icon">—</div><strong>暂无说说</strong><p>所有历史说说均已清空。</p></div></div>
+      <div class="restored-feed" id="restoredFeed"></div>
+    </div>
+  </section>
+
+  <section class="content" id="albums">
+    <div class="panel"><div class="panel-head">相册 <small>0</small></div><div class="empty"><div><div class="empty-icon">□</div><strong>暂无公开相册</strong><p>没有可以查看的照片。</p></div></div></div>
+  </section>
+
+  <section class="content" id="board">
+    <div class="panel"><div class="panel-head">留言板</div><div class="disabled-note"><div class="lock">⌁</div><div>该功能暂不可访问</div><p style="font-size:12px;color:#555;line-height:1.8">主人已关闭留言板展示。</p></div></div>
+  </section>
+
+  <section class="content" id="logs">
+    <div class="panel" id="logPanel">
+      <div id="logIndex">
+        <div class="panel-head">日志 <small>3篇</small></div>
+        <div class="log-list">
+          <article class="log">
+            <div class="log-title clickable" id="timeMachineLog">QQ空间时光机</div>
+            <div class="meta">转载于 2016-03-18　·　分类：默认分类</div>
+            <div class="excerpt">还记得你第一次进入QQ空间是什么时候吗？时光机可以帮助你重新寻找那些已经被遗忘的年份……</div>
+            <span class="repost">转载</span>
+          </article>
+          <article class="log">
+            <div class="log-title">关于旧照片备份的一些方法</div>
+            <div class="meta">转载于 2015-08-04　·　分类：默认分类</div>
+            <div class="excerpt">相册内容较多时，可以先按年份整理，再进行本地备份。本文内容来自旧版空间使用技巧整理。</div>
+            <span class="repost">转载</span>
+          </article>
+          <article class="log">
+            <div class="log-title">十年前你在听什么歌？</div>
+            <div class="meta">转载于 2014-12-29　·　分类：默认分类</div>
+            <div class="excerpt">一些歌只要前奏响起来，就会想起当时用过的头像、写过的签名和认识的人。</div>
+            <span class="repost">转载</span>
+          </article>
+        </div>
+      </div>
+
+      <article class="article" id="machineArticle">
+        <span class="back" id="backLogs">‹ 返回日志列表</span>
+        <h1>QQ空间时光机</h1>
+        <div class="article-meta">转载于 2016-03-18　　来源：藤寻空间产品日志</div>
+        <p>有些年份已经很久没有被打开过了。换过的头像、删掉的说说、曾经写下的日志，也许早就从现在的主页上消失。</p>
+        <p><b style="color:#ccc">QQ空间时光机</b>是藤寻公司于2011年上线的一项历史空间寻访功能。它按照年份保存用户在QQ空间中留下的部分历史页面状态，让用户可以从现在的空间返回过去某一个年份，重新浏览当时的个人主页。</p>
+        <h3>清空过空间，也还能回去吗？</h3>
+        <p>可以。时光机访问的是按年份留存的历史空间记录，因此，即使用户后来清空了当前QQ空间中的说说、日志或其他公开内容，仍有机会通过时光机访问对应年份曾经留存的页面。</p>
+        <div class="notice">为保护旧空间内容，历史年份不会直接开放。首次进入某个年份时，需要输入该年份曾经设置的<strong>独立访问密码</strong>。密码与当前QQ登录密码无关。</div>
+        <h3>如何使用</h3>
+        <p>进入时光机后选择年份。系统会显示该年份是否存在可寻访记录；若存在记录，输入对应年份的独立密码即可进入。不同年份可以使用不同密码。</p>
+        <p>部分被用户主动隐藏、删除或设置为私密的内容，可能以当年页面状态呈现。实际可恢复内容以时光机记录为准。</p>
+        <a class="machine-link" href="./6cae67047b6583e69c392167.html">
+          进入 QQ空间时光机　›
+          <small>选择年份，寻访过去的空间记录</small>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="content" id="profile">
+    <div class="panel"><div class="panel-head">个人档</div><div class="empty"><div><strong>沈岁</strong><p>QQ：260918890445<br>资料仅自己可见</p></div></div></div>
+  </section>
+  <section class="content" id="more">
+    <div class="panel"><div class="panel-head">更多</div><div class="empty"><div><p>没有更多公开内容。</p></div></div></div>
+  </section>
+</main>
+<div class="footer">QQ空间 · 2026　｜　游戏内虚构页面</div>
+<div class="san-text-layer" id="sanTextLayer"></div>
+<script>
+const buttons=[...document.querySelectorAll('.nav button')];
+const contents=[...document.querySelectorAll('.content')];
+
+const recoveredPosts=[
+  {text:'....',time:'2018年1月　00:47'},
+  {text:'为什么？',time:'2018年1月　00:53'},
+  {text:'....',time:'2018年1月　01:04'},
+  {text:'为什么？',time:'2018年1月　01:19'},
+  {text:'为什么？',time:'2018年1月　01:26'},
+  {text:'........',time:'2018年1月　01:41'},
+  {text:'为什么？',time:'2018年1月　02:03'},
+  {text:'....',time:'2018年1月　02:18'}
+];
+
+let recoveryStarted=false;
+let corruptionStarted=false;
+
+function openTab(id){
+  buttons.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
+  contents.forEach(c=>c.classList.toggle('active',c.id===id));
+  if(id==='logs'){
+    document.getElementById('logIndex').style.display='block';
+    document.getElementById('machineArticle').classList.remove('show');
+  }
+  if(id==='posts' && !recoveryStarted){
+    recoveryStarted=true;
+    setTimeout(beginRecovery,650);
+  }
+}
+buttons.forEach(b=>b.onclick=()=>openTab(b.dataset.tab));
+
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+
+async function beginRecovery(){
+  const section=document.getElementById('posts');
+  const feed=document.getElementById('restoredFeed');
+  const count=document.getElementById('postCount');
+
+  section.classList.add('revealing');
+  feed.innerHTML='';
+
+  for(let i=0;i<recoveredPosts.length;i++){
+    const p=recoveredPosts[i];
+    const node=document.createElement('article');
+    node.className='restored-post';
+    node.innerHTML=
+      '<div class="restored-name">沈岁</div>'+
+      '<div class="restored-text">'+p.text+'</div>'+
+      '<div class="restored-time">'+p.time+'</div>';
+    feed.appendChild(node);
+    count.textContent=String(i+1);
+    window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+    await sleep(i<2?900:650);
+  }
+
+  await sleep(900);
+  startCorruption();
+}
+
+function startCorruption(){
+  if(corruptionStarted)return;
+  corruptionStarted=true;
+  document.body.classList.add('corrupted');
+
+  const scar=document.createElement('div');
+  scar.className='glitch-scar';
+  document.body.appendChild(scar);
+
+  const signature=document.querySelector('.signature');
+  const footer=document.querySelector('.footer');
+  const postHead=document.querySelector('#posts .panel-head');
+
+  setTimeout(()=>{ if(signature)signature.textContent='为什么？'; },700);
+  setTimeout(()=>{ if(postHead)postHead.innerHTML='说说 <small>ERROR</small>'; },1450);
+  setTimeout(()=>{ if(footer)footer.textContent='QQ空间 · 2018　｜　记录恢复失败'; },2200);
+
+  setInterval(()=>{
+    if(!document.body.classList.contains('corrupted'))return;
+    const name=document.querySelector('.name');
+    if(!name)return;
+    const states=['沈岁','沈 岁','沈岁','沈岁？'];
+    name.textContent=states[Math.floor(Math.random()*states.length)];
+  },1700);
+
+  beginSanTextStorm();
+}
+
+function beginSanTextStorm(){
+  const layer=document.getElementById('sanTextLayer');
+  if(!layer)return;
+
+  const shortWords=['为什么','对不起','为什么？','对不起','不要','为什么','对不起','你是不是很痛？','我再也找不到你了','不要','为什么'];
+  const longNo='不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要不要';
+  let elapsed=0;
+  let spawned=0;
+  let delay=1150;
+
+  function addWord(forceLong=false){
+    const el=document.createElement('div');
+    const useLong=forceLong || spawned>28 && Math.random()<.28;
+    let word;
+    if(useLong){
+      word=longNo;
+    }else if(spawned>18 && Math.random()<.18){
+      word=Math.random()<.5?'你是不是很痛？':'我再也找不到你了';
+    }else{
+      word=shortWords[Math.floor(Math.random()*shortWords.length)];
+    }
+    const tone=Math.random();
+    const distortion=Math.random();
+    let toneClass='';
+    if(tone<.28) toneClass=' dark';
+    else if(tone<.64) toneClass=' bright';
+    else if(tone<.76) toneClass=' blue';
+    else if(tone<.86) toneClass=' violet';
+    else if(tone<.94) toneClass=' pale';
+    else toneClass=' sick';
+
+    el.className='san-word'
+      +toneClass
+      +(distortion<.20?' scratched':distortion<.41?' crushed':distortion<.62?' stretched':'')
+      +(Math.random()<.30?' double':'')
+      +(Math.random()<.22?' huge':'')
+      +(useLong?' long':'');
+    el.dataset.text=word;
+    el.textContent=word;
+
+    const left=Math.random()*92-4;
+    const top=Math.random()*92-4;
+    const size=useLong ? (22+Math.random()*24) : (18+Math.random()*54);
+    const rot=(Math.random()*18-9).toFixed(1);
+    const skew=(Math.random()*22-11).toFixed(1);
+    const op=(.58+Math.random()*.40).toFixed(2);
+    const dur=(.42+Math.random()*.95).toFixed(2)+'s';
+    const dx=(Math.random()*70-35).toFixed(0)+'px';
+    const dy=(Math.random()*42-21).toFixed(0)+'px';
+
+    el.style.left=left+'vw';
+    el.style.top=top+'vh';
+    el.style.fontSize=size+'px';
+    el.style.transform='rotate('+rot+'deg)';
+    el.style.setProperty('--op',op);
+    el.style.setProperty('--dur',dur);
+    el.style.setProperty('--dx',dx);
+    el.style.setProperty('--dy',dy);
+    el.style.setProperty('--rot',rot+'deg');
+    el.style.setProperty('--skew',skew+'deg');
+
+    layer.appendChild(el);
+    spawned++;
+
+    // 后期只保留大量文字，不再清理，让屏幕真的被铺满
+    if(spawned<24){
+      setTimeout(()=>{ if(el.parentNode)el.remove(); },6500);
+    }
+  }
+
+  function tick(){
+    if(!document.body.classList.contains('corrupted'))return;
+
+    elapsed+=delay;
+
+    // 前几秒慢慢出现；随后越来越快
+    if(elapsed<4200){
+      addWord(false);
+      delay=Math.max(650,delay-110);
+    }else if(elapsed<8000){
+      addWord(false);
+      if(Math.random()<.45)addWord(false);
+      delay=Math.max(260,delay-70);
+    }else if(elapsed<11800){
+      for(let i=0;i<3;i++)addWord(i===2 && Math.random()<.35);
+      delay=Math.max(110,delay-35);
+    }else{
+      document.body.classList.add('final-stage');
+      for(let i=0;i<10;i++){
+        addWord(i>=6 || (i>=3 && Math.random()<.35));
+      }
+      delay=65;
+    }
+
+    setTimeout(tick,delay);
+  }
+
+  // 第一批先安静地出现“为什么”
+  setTimeout(()=>addWord(false),600);
+  setTimeout(()=>addWord(false),1700);
+  setTimeout(()=>addWord(false),2700);
+  setTimeout(tick,3800);
+}
+
+document.getElementById('timeMachineLog').onclick=()=>{
+  document.getElementById('logIndex').style.display='none';
+  document.getElementById('machineArticle').classList.add('show');
+  window.scrollTo({top:330,behavior:'smooth'});
+};
+document.getElementById('backLogs').onclick=()=>{
+  document.getElementById('machineArticle').classList.remove('show');
+  document.getElementById('logIndex').style.display='block';
+};
+</script>
+</body>
+</html>

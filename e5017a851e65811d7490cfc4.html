@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>南有孤岛☆的空间 - 2014</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+body{color:#586c62;background:#dfe9df}
+button,input{font:inherit}
+#space2014{
+  min-height:100vh;
+  background:#dfe9df url('./images/qzone2014/theme_bg.jpg') top center/cover fixed no-repeat;
+}
+.qtop{
+  height:38px;background:#252525;color:#ddd;display:flex;align-items:center;
+  padding:0 max(18px,calc((100% - 1000px)/2));font-size:12px;position:relative;z-index:10
+}
+.qtop b{color:#ffd84c;margin-right:22px}.qtop span{margin-right:20px}.qtop .right{margin-left:auto;color:#aaa}
+.cover{
+  width:1000px;max-width:96vw;height:270px;margin:auto;position:relative;
+  background:#cdddcf url('./images/qzone2014/header.jpg') center/cover no-repeat;
+}
+.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#35463b55,transparent 55%)}
+.profile{
+  position:absolute;left:30px;bottom:24px;z-index:2;display:flex;align-items:flex-end;gap:16px;color:#fff;text-shadow:0 1px 3px #31443b
+}
+.avatar{width:94px;height:94px;background:#eef3eb url('./images/qzone2014/avatar.jpg') center/cover no-repeat;border:5px solid #fff;box-shadow:0 1px 6px #263d3266}
+.profile h1{font-size:25px;font-weight:normal;margin:0 0 6px}.profile p{font-size:12px;margin:0;color:#f3f7f2}
+.cover-stats{position:absolute;right:28px;bottom:26px;z-index:2;display:flex;gap:25px;color:#fff;text-align:center;text-shadow:0 1px 3px #31443b}
+.cover-stats b{display:block;font-size:18px}.cover-stats span{font-size:11px}
+.space-nav{
+  width:1000px;max-width:96vw;margin:auto;height:45px;background:#f7faf5e8;border:1px solid #c8d7c8;
+  display:flex;align-items:stretch;position:relative;z-index:3
+}
+.space-nav button{border:0;border-right:1px solid #d8e2d7;background:transparent;padding:0 20px;color:#607d6d;cursor:pointer}
+.space-nav button.active,.space-nav button:hover{background:#e6efe4;color:#3e6e55}
+.layout{width:1000px;max-width:96vw;margin:12px auto 55px;display:grid;grid-template-columns:190px 1fr 190px;gap:11px}
+.box{background:#fffefbe8;border:1px solid #ccd9cb;margin-bottom:11px;box-shadow:0 1px 3px #506b5720}
+.box-title{height:35px;display:flex;align-items:center;padding:0 12px;background:#eef4ebd9;border-bottom:1px solid #d5e0d3;color:#5c806b;font-size:13px;font-weight:bold}
+.box-body{padding:13px;font-size:12px;line-height:1.8}
+.profile-name{text-align:center;color:#698a76;font-weight:bold;margin:9px 0}.mini{color:#8d9f94;font-size:11px}
+.quote{font-family:Georgia,"Microsoft YaHei",serif;color:#74877c;line-height:1.9}
+.qtab{display:none}.qtab.active{display:block}
+
+/* 说说 */
+.feed{padding:16px}.post{padding:3px 0 20px;margin-bottom:15px;border-bottom:1px dashed #cbd9cd}.post:last-child{border-bottom:0}
+.post-head{display:flex;gap:10px}.post-avatar{width:42px;height:42px;background:#eef3eb url('./images/qzone2014/avatar.jpg') center/cover;border-radius:2px;border:1px solid #d4dfd2}
+.post-main{flex:1}.post-name{color:#5b826b;font-weight:bold}.post-text{margin:7px 0;color:#52675c;font-size:13px;line-height:1.8;white-space:normal}
+.post-img{width:270px;height:165px;background:#edf2eb center/cover no-repeat;border:5px solid #fff;box-shadow:0 0 0 1px #d4ded2;margin:9px 0}
+.post-time{font-size:11px;color:#9aa79f}.actions{font-size:11px;color:#668a74;margin-top:8px}.actions span{margin-right:14px}
+.social{background:#f3f7f1;border:1px solid #dce6da;margin-top:9px;padding:8px 10px;font-size:11px;line-height:1.9}
+.likes{color:#648970}.reposts{color:#84988c}.comment b{color:#5f836d}
+
+/* 相册 */
+.album-grid{padding:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.album-card{background:#fff;border:1px solid #d2ddd0;padding:8px;cursor:pointer;box-shadow:0 2px 5px #526c5820}
+.album-card:hover{transform:translateY(-1px)}.album-cover{height:155px;background:#edf2eb center/cover no-repeat;border:1px solid #d9e2d7}
+.album-name{margin-top:8px;color:#5b8069;font-size:13px}.album-count{font-size:11px;color:#98a69d;margin-top:3px}
+.album-view{display:none;padding:18px}.back{color:#5e846c;cursor:pointer;font-size:12px;margin-bottom:15px;display:inline-block}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.photo{aspect-ratio:4/3;background:#edf2eb center/cover no-repeat;border:5px solid #fff;box-shadow:0 0 0 1px #d3ded1}.photo.clickable,.post-img.clickable{cursor:zoom-in}.lightbox{display:none;position:fixed;inset:0;background:#000c;z-index:9999;align-items:center;justify-content:center;padding:35px}.lightbox.show{display:flex}.lightbox img{max-width:92vw;max-height:88vh;object-fit:contain;box-shadow:0 5px 30px #000}.lightbox-close{position:fixed;right:28px;top:18px;color:#fff;font-size:32px;cursor:pointer}
+.album-comments{margin-top:20px;border-top:1px dashed #cad8cc;padding-top:12px}.album-comment{font-size:12px;line-height:1.9}.album-comment b{color:#5c806a}
+.lock-panel{padding:50px 20px;text-align:center}.lock-panel h3{font-size:17px;color:#607c6c}
+.lock-panel input{height:35px;border:1px solid #bdcebf;padding:0 10px;outline:none}.lock-panel button{height:35px;border:0;background:#789a83;color:#fff;padding:0 18px}
+.lock-hint{font-size:12px;color:#92a197;margin:8px}.err{height:22px;padding-top:7px;font-size:12px;color:#b66a6a}
+
+/* 日志 */
+.logs{padding:18px}.log{padding:14px 3px;border-bottom:1px dashed #cad8cc;cursor:default}.log.clickable{cursor:pointer}.log.clickable:hover h3{text-decoration:underline}
+.log h3{font-size:14px;color:#587e67;margin:0 0 7px}.log p{font-size:12px;color:#7c9184;line-height:1.8;margin:0}.log-meta{font-size:11px;color:#a0aaa4;margin-top:7px}
+.article{display:none;padding:22px}.article.show{display:block}.article h1{font-size:21px;color:#536f5e;font-weight:normal;margin:5px 0 6px}
+.article-meta{font-size:11px;color:#9ba69f;border-bottom:1px dashed #ccd8ce;padding-bottom:12px}.article p{font-size:13px;line-height:2;color:#5c7064}
+.match-card{margin:18px 0;padding:18px;background:#f2f7ef;border:1px solid #d6e2d3;text-align:center}
+.match-card .pair{font-size:18px;color:#5e806a}.match-card .score{font-size:31px;color:#7d9f88;margin:7px 0}
+.article-comments{margin-top:24px;border-top:1px dashed #cad8cc;padding-top:12px}.article-comment{font-size:12px;line-height:1.95}.article-comment b{color:#5b8069}
+
+/* 留言板 */
+.board-list{padding:18px}.board-item{padding:13px 2px;border-bottom:1px dashed #cad8cc}
+.board-name{font-size:13px;color:#5b8069;font-weight:bold}.board-text{font-size:13px;color:#5d7065;line-height:1.8;margin:4px 0}.board-time{font-size:11px;color:#9aa69f}
+.board-reply{margin-top:7px;background:#f3f7f1;border:1px solid #dce6da;padding:7px 9px;font-size:12px}.board-reply b{color:#6a8c76}
+.visitor{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed #dae4d9}.vava{width:29px;height:29px;border-radius:2px;background:#dce9dd}
+.mori{font-size:12px;text-align:center;color:#7f9c89;line-height:2}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.left,.rightcol{display:none}.qtop{padding:0 12px}.cover{height:210px}.space-nav{overflow:auto}.photo-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<section id="space2014">
+  <div class="qtop"><b>★ QQ空间</b><span>个人中心</span><span>我的主页⌄</span><span>好友⌄</span><span>应用⌄</span><span>装扮⌄</span><div class="right">南有孤岛☆　|　退出　⚙</div></div>
+
+  <header class="cover">
+    <div class="profile">
+      <div class="avatar"></div>
+      <div><h1>南有孤岛☆的空间</h1><p>风吹过树梢，也吹过十三岁的夏天。</p></div>
+    </div>
+    <div class="cover-stats"><div><b>128</b><span>说说</span></div><div><b>16</b><span>日志</span></div><div><b>9</b><span>相册</span></div></div>
+  </header>
+
+  <nav class="space-nav">
+    <button class="active" data-tab="home">主页</button>
+    <button data-tab="posts">说说</button>
+    <button data-tab="logs">日志</button>
+    <button data-tab="albums">相册</button>
+    <button data-tab="board">留言板</button>
+    <button>音乐</button><button>个人档</button><button>更多⌄</button>
+  </nav>
+
+  <div class="layout">
+    <aside class="left">
+      <div class="box"><div class="box-title">主人资料</div><div class="box-body">
+        <div class="avatar" style="width:100%;height:155px;border-width:4px"></div>
+        <div class="profile-name">南有孤岛☆</div>
+        <div class="mini">星座：天秤座<br>状态：在线<br>空间等级：LV32</div>
+      </div></div>
+      <div class="box"><div class="box-title">碎碎念</div><div class="box-body quote">“╰＇你的笑容、<br>清澈得仿佛能看见世界的背面”</div></div>
+    </aside>
+
+    <main>
+      <section class="qtab active" id="home">
+        <div class="box"><div class="box-title">南有孤岛☆</div><div class="box-body">
+          <div style="font-size:14px;color:#65816f;margin-bottom:9px">欢迎来到我的小岛 ♪</div>
+          最近：补番 / 魔方 / 听歌 / 发呆。<br>
+          <span class="mini">禁止盗图。转载请说一声啦~</span>
+        </div></div>
+        <div class="box"><div class="box-title">最近更新</div><div class="box-body">
+          ♧ 新说说：运动会终于雪耻！！<br>
+          ♧ 新相册：运动会\(^o^)/<br>
+          ♧ 新日志：十二星座契合度大公开
+        </div></div>
+      </section>
+
+      <section class="qtab" id="posts"><div class="box"><div class="box-title">说说</div><div class="feed" id="feed"></div></div></section>
+
+      <section class="qtab" id="albums"><div class="box"><div class="box-title">相册</div>
+        <div class="album-grid" id="albumIndex">
+          <div class="album-card" data-album="selfie"><div class="album-cover" style="background-image:url('./images/qzone2014/albums/selfie_01.jpg')"></div><div class="album-name">🔒 自拍</div><div class="album-count">2张照片 · 回答问题可见</div></div>
+          <div class="album-card" data-album="food"><div class="album-cover" style="background-image:url('./images/qzone2014/albums/food_01.jpg')"></div><div class="album-name">美食分享</div><div class="album-count">2张照片</div></div>
+          <div class="album-card" data-album="aot"><div class="album-cover" style="background-image:url('./images/qzone2014/albums/aot_01.jpg')"></div><div class="album-name">撤退的矮子</div><div class="album-count">2张照片</div></div>
+          <div class="album-card" data-album="sports"><div class="album-cover" style="background-image:url('./images/qzone2014/albums/sports_01.jpg')"></div><div class="album-name">运动会\(^o^)/</div><div class="album-count">4张照片</div></div>
+        </div>
+        <div class="album-view" id="albumView"></div>
+      </div></section>
+
+      <section class="qtab" id="logs"><div class="box"><div class="box-title">日志</div>
+        <div class="logs" id="logIndex">
+          <div class="log clickable" id="zodiacLog"><h3>十二星座契合度大公开！！你和TA有多配？</h3><p>转载来的星座配对表……有的也太准了吧哈哈哈哈。</p><div class="log-meta">2014年6月18日 20:46 · 分类：转载</div></div>
+          <div class="log"><h3>最近单曲循环♪</h3><p>写作业必备歌单，听到第三首就开始发呆。</p><div class="log-meta">2014年7月9日 21:14 · 分类：随笔</div></div>
+          <div class="log"><h3>夏天要结束了TAT</h3><p>为什么暑假永远过得比上学快……不科学。</p><div class="log-meta">2014年8月27日 23:02 · 分类：随笔</div></div>
+        </div>
+        <article class="article" id="zodiacArticle">
+          <span class="back" id="backLogs">‹ 返回日志列表</span>
+          <h1>十二星座契合度大公开！！你和TA有多配？</h1>
+          <div class="article-meta">2014年6月18日 20:46　·　转载</div>
+          <p>据说星座之间也有“缘分值”，纯属娱乐啦，准不准自己看~</p>
+          <div class="match-card"><div class="pair">♒ 水瓶座 × ♎ 天秤座</div><div class="score">缘分值 99%</div><div class="mini">关键词：默契 / 好奇心 / 聊不完的话题</div></div>
+          <p>其它组合略……99%真的有点夸张哈哈哈</p>
+          <div class="article-comments">
+            <div class="article-comment"><b>青柠微凉დ</b>：哎哟哟这是在暗示谁呀</div>
+            <div class="article-comment"><b>南有孤岛☆</b> 回复 <b>青柠微凉დ</b>：滚粗</div>
+            <div class="article-comment"><b>青柠微凉დ</b> 回复 <b>南有孤岛☆</b>：据我所知我们班好像只有一个水瓶座的吧( ˶ˆ꒳ˆ˵ )</div>
+            <div class="article-comment"><b>南有孤岛☆</b> 回复 <b>青柠微凉დ</b>：你闭嘴！！！</div>
+            <div class="article-comment"><b>帅得拖网速</b>：呵呵- -有人桃花癫犯了</div>
+          </div>
+        </article>
+      </div></section>
+
+      <section class="qtab" id="board"><div class="box"><div class="box-title">留言板</div><div class="board-list">
+        <div class="board-item"><div class="board-name">青柠微凉დ</div><div class="board-text">换网名啦！！这个比你去年那个火星文正常多了哈哈哈哈</div><div class="board-time">2014年2月16日 17:22</div><div class="board-reply"><b>南有孤岛☆</b>：去年那个也很好听好吗！！</div></div>
+        <div class="board-item"><div class="board-name">帅得拖网速</div><div class="board-text">路过 你这个背景加载半天</div><div class="board-time">2014年3月2日 20:31</div><div class="board-reply"><b>南有孤岛☆</b>：是你网速配不上我的空间= =</div></div>
+        <div class="board-item"><div class="board-name">柠檬不萌°</div><div class="board-text">互踩~森系背景好好看！求原图！！</div><div class="board-time">2014年5月24日 15:09</div></div>
+        <div class="board-item"><div class="board-name">青柠微凉დ</div><div class="board-text">生日快乐啦岁岁~今年也要继续一起吃遍小卖部！！</div><div class="board-time">2014年9月27日 00:08</div><div class="board-reply"><b>南有孤岛☆</b>：批准！！明天先从烤肠开始！！</div></div>
+        <div class="board-item"><div class="board-name">帅得拖网速</div><div class="board-text">生日快乐 岁岁平安</div><div class="board-time">2014年9月27日 00:00</div><div class="board-reply"><b>南有孤岛☆</b>：你居然又卡零点！！谢啦哈哈哈</div></div>
+        <div class="board-item"><div class="board-name">帅得拖网速</div><div class="board-text">勉强承认你厉害一次= =</div><div class="board-time">2014年11月7日 20:58</div><div class="board-reply"><b>南有孤岛☆</b>：什么叫勉强！！！</div></div>
+        <div class="board-item"><div class="board-name">夏末薄荷</div><div class="board-text">踩踩~快放寒假吧我真的不想早起了TAT</div><div class="board-time">2014年12月11日 19:47</div></div>
+      </div></div></section>
+    </main>
+
+    <aside class="rightcol">
+      <div class="box"><div class="box-title">最近访客</div><div class="box-body">
+        <div class="visitor"><span class="vava"></span>青柠微凉დ</div>
+        <div class="visitor"><span class="vava"></span>帅得拖网速</div>
+        <div class="visitor"><span class="vava"></span>柠檬不萌°</div>
+        <div class="visitor"><span class="vava"></span>夏末薄荷</div>
+        <div class="visitor"><span class="vava"></span>栀子花开</div>
+      </div></div>
+      <div class="box"><div class="box-title">小岛天气</div><div class="box-body mori">☁　♧　☂<br>微风 / 22℃<br><span class="mini">适合发呆的一天</span></div></div>
+    </aside>
+  </div>
+</section>
+<div class="lightbox" id="lightbox"><span class="lightbox-close" id="lightboxClose">×</span><img id="lightboxImg" alt="运动会照片"></div>
+
+<script>
+
+function openLightbox(src){
+  document.getElementById('lightboxImg').src=src;
+  document.getElementById('lightbox').classList.add('show');
+}
+document.getElementById('lightboxClose').onclick=()=>document.getElementById('lightbox').classList.remove('show');
+document.getElementById('lightbox').onclick=e=>{if(e.target.id==='lightbox')e.currentTarget.classList.remove('show')};
+
+function bindPostImages(){
+  document.querySelectorAll('.post-img[data-src]').forEach(el=>{
+    el.onclick=()=>openLightbox(el.dataset.src);
+  });
+}
+
+
+const posts=[
+{name:'南有孤岛☆',text:'最近疯狂沉迷补番……撤退的矮子也太好看惹！！利艾一生推！！\\n看完只想问：调查兵团还招人吗，我现在报名来得及不= =',date:'2014年1月18日 22:13',img:'./images/qzone2014/posts/post_01.jpg',likes:['帅得拖网速','柠檬不萌°','夏末薄荷','青柠微凉დ'],reposts:['柠檬不萌°'],comments:[['柠檬不萌°','利艾！！！握爪！！！'],['帅得拖网速','你进去第一集就没了'],['南有孤岛☆','帅得拖网速','去你妹的！！'],['青柠微凉დ','我就知道你补完要疯哈哈哈哈']]},
+{name:'南有孤岛☆',text:'英雄联盟好难玩！！为什么别人都知道自己要去哪只有我在地图上乱跑QAQ',date:'2014年3月6日 20:48',img:'./images/qzone2014/posts/post_02.jpg',likes:['帅得拖网速','青柠微凉დ','一颗小蘑菇'],reposts:[],comments:[['帅得拖网速','因为你菜'],['南有孤岛☆','帅得拖网速','你闭嘴！！下次不跟你玩了'],['一颗小蘑菇','我玩了三天还在打人机2333'],['青柠微凉დ','带我一个！！一起坑']]},
+{name:'南有孤岛☆',text:'今天放学路上风超级舒服~~突然觉得春天还是蛮好的嘛~\\n如果不用写数学作业就更好啦~',date:'2014年4月19日 18:27',img:'./images/qzone2014/posts/post_03.jpg',likes:['青柠微凉დ','栀子花开','夏末薄荷','帅得拖网速'],reposts:[],comments:[['栀子花开','最后一句才是重点吧哈哈'],['帅得拖网速','卷子写完了没？'],['南有孤岛☆','帅得拖网速','不要破坏气氛！！']]},
+{name:'南有孤岛☆',text:'下雨天最适合窝在家里听歌+看漫画了\\n但是明天要交作业……这个世界为什么不能一直星期六TAT',date:'2014年6月21日 16:05',img:'./images/qzone2014/posts/post_04.jpg',likes:['青柠微凉დ','柠檬不萌°','一颗小蘑菇'],reposts:['夏末薄荷'],comments:[['青柠微凉დ','因为星期六后面有星期天！！'],['南有孤岛☆','青柠微凉დ','有道理 我又活了'],['柠檬不萌°','周一给我带一本 我也想看~']]},
+{name:'南有孤岛☆',text:'暑假为什么一眨眼就没了一半？？？\\n我明明什么都还没干啊啊啊啊',date:'2014年8月2日 23:16',img:'',likes:['青柠微凉დ','帅得拖网速','夏末薄荷','柠檬不萌°'],reposts:['青柠微凉დ'],comments:[['帅得拖网速','你每天睡到中午当然快'],['南有孤岛☆','帅得拖网速','暑假不睡觉那还叫暑假吗'],['青柠微凉დ','明天出来！！请你吃冰激凌~']]},
+{name:'南有孤岛☆',text:'加入魔方社团啦！！好复杂但是又莫名其妙很好玩……\\n就是背公式神马的真的太为难我惹TAT脑细胞已经全部阵亡',date:'2014年9月12日 19:34',img:'',likes:['青柠微凉დ','帅得拖网速','栀子花开','木槿未眠'],reposts:[],comments:[['青柠微凉დ','你居然真的去了哈哈哈'],['帅得拖网速','呵呵= ='],['南有孤岛☆','帅得拖网速','等着！！我迟早单手拧给你看'],['木槿未眠','公式背熟就超快的！']]},
+{name:'南有孤岛☆',text:'又长大一岁啦！！今天本寿星最大(๑•̀ㅂ•́)و✧\n谢谢大家的祝福和礼物嘿嘿~蛋糕也超好吃！！',date:'2014年9月27日 20:16',img:'',likes:['青柠微凉დ','帅得拖网速','柠檬不萌°','夏末薄荷','栀子花开','木槿未眠','一颗小蘑菇'],reposts:['青柠微凉დ'],comments:[['青柠微凉დ','生日快乐！！寿星明天请吃烤肠！！'],['南有孤岛☆','青柠微凉დ','为什么我生日还要我请客！！'],['帅得拖网速','又老一岁'],['南有孤岛☆','帅得拖网速','你才老！！！礼物拿来！！'],['柠檬不萌°','生日快乐呀~天天开心！！']]},
+{name:'南有孤岛☆',text:'运动会仰卧起坐第一名！！！终于一雪前耻哈哈哈哈哈哈！！\\n@帅得拖网速  ████给我滚粗来！！谁说矮子不行的！？',date:'2014年11月7日 17:52',img:'',likes:['青柠微凉დ','帅得拖网速','柠檬不萌°','夏末薄荷','栀子花开','木槿未眠'],reposts:['青柠微凉დ','柠檬不萌°'],comments:[['青柠微凉დ','第一名！！！请客请客！！！'],['帅得拖网速','果然矮子爆发力强'],['南有孤岛☆','帅得拖网速','你再说一遍？？？'],['柠檬不萌°','矮子爆发力强哈哈哈哈'],['南有孤岛☆','柠檬不萌°','不许跟着他学！！！']]},
+{name:'南有孤岛☆',text:'今天买到一条超喜欢的围巾嘿嘿\\n冬天最大的优点就是可以把自己裹成一颗球',date:'2014年12月6日 20:22',img:'./images/qzone2014/posts/post_08.jpg',likes:['青柠微凉დ','帅得拖网速','夏末薄荷'],reposts:[],comments:[['青柠微凉დ','明天戴来给我看！！'],['帅得拖网速','本来就圆'],['南有孤岛☆','帅得拖网速','滚粗！！！']]}
+];
+
+function esc(s){return s.replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+document.getElementById('feed').innerHTML=posts.map(p=>`<article class="post"><div class="post-head"><div class="post-avatar"></div><div class="post-main"><div class="post-name">${p.name}</div><div class="post-text">${esc(p.text).replace(/\\n/g,'<br>')}</div>${p.img?`<div class="post-img clickable" data-src="${p.img}" style="background-image:url('${p.img}')" title="点击查看大图"></div>`:''}<div class="post-time">${p.date}</div><div class="actions"><span>赞</span><span>评论</span><span>转发${p.reposts.length?' ('+p.reposts.length+')':''}</span></div><div class="social"><div class="likes">♡ ${p.likes.join('、')}</div>${p.reposts.length?`<div class="reposts">↗ ${p.reposts.join('、')} 转发了这条说说</div>`:''}${p.comments.map(c=>c.length===2?`<div class="comment"><b>${c[0]}</b>：${c[1]}</div>`:`<div class="comment"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`).join('')}</div></div></div></article>`).join('');
+bindPostImages();
+
+const tabs=[...document.querySelectorAll('.space-nav button[data-tab]')];
+tabs.forEach(b=>b.onclick=()=>{
+  tabs.forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  document.querySelectorAll('.qtab').forEach(x=>x.classList.remove('active'));
+  document.getElementById(b.dataset.tab).classList.add('active');
+  if(b.dataset.tab==='logs'){document.getElementById('logIndex').style.display='block';document.getElementById('zodiacArticle').classList.remove('show')}
+});
+
+const albumData={
+  selfie:{name:'自拍',locked:true,photos:['./images/qzone2014/albums/selfie_01.jpg','./images/qzone2014/albums/selfie_02.jpg'],comments:[['青柠微凉დ','这套好森女！！'],['柠檬不萌°','第二张好看！抱走~']]},
+  food:{name:'美食分享',photos:['./images/qzone2014/albums/food_01.jpg','./images/qzone2014/albums/food_02.jpg'],comments:[['青柠微凉დ','你怎么又背着我吃好吃的'],['南有孤岛☆','青柠微凉დ','下次带你啦！！']]},
+  aot:{name:'撤退的矮子',photos:['./images/qzone2014/albums/aot_01.jpg','./images/qzone2014/albums/aot_02.jpg'],comments:[['柠檬不萌°','利艾一生推！！'],['帅得拖网速','看不懂你们在说什么']]},
+  sports:{name:'运动会\\(^o^)/',photos:['./images/qzone2014/albums/sports_01.jpg','./images/qzone2014/albums/sports_02.jpg','./images/qzone2014/albums/sports_03.jpg','./images/qzone2014/albums/sports_04.jpg'],comments:[['青柠微凉დ','冠军沈岁请客！！！'],['帅得拖网速','还是小爷我更厉害一点'],['南有孤岛☆','帅得拖网速','少臭屁！！'],['折耳猫不乖','仰卧起坐第一名也有奖牌？？']] }
+};
+
+function commentsHTML(a){
+  if(!a.comments||!a.comments.length)return '';
+  return `<div class="album-comments">${a.comments.map(c=>c.length===2?`<div class="album-comment"><b>${c[0]}</b>：${c[1]}</div>`:`<div class="album-comment"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`).join('')}</div>`;
+}
+function renderPhotos(a){
+  const v=document.getElementById('albumView');
+  document.getElementById('albumIndex').style.display='none';v.style.display='block';
+  v.innerHTML=`<span class="back" id="albumBack">‹ 返回相册</span><h3 style="color:#5b8069">${a.name}</h3><div class="photo-grid">${a.photos.map(p=>`<div class="photo ${a.name.startsWith('运动会')?'clickable':''}" data-src="${p}" style="background-image:url('${p}')"></div>`).join('')}</div>${commentsHTML(a)}`;
+  document.getElementById('albumBack').onclick=backAlbums;
+  if(a.name.startsWith('运动会')){
+    v.querySelectorAll('.photo.clickable').forEach(el=>el.onclick=()=>openLightbox(el.dataset.src));
+  }
+}
+function backAlbums(){document.getElementById('albumView').style.display='none';document.getElementById('albumIndex').style.display='grid'}
+document.querySelectorAll('.album-card').forEach(card=>card.onclick=()=>{
+  const a=albumData[card.dataset.album],v=document.getElementById('albumView');
+  if(a.locked){
+    document.getElementById('albumIndex').style.display='none';v.style.display='block';
+    v.innerHTML=`<span class="back" id="albumBack">‹ 返回相册</span><div class="lock-panel"><div style="font-size:31px">🔒</div><h3>主人设置了回答问题可见</h3><div class="lock-hint">问题提示：天王盖地虎</div><div><input id="albumPw" placeholder="请输入答案"><button id="unlockAlbum">确定</button></div><div class="err" id="albumErr"></div></div>`;
+    document.getElementById('albumBack').onclick=backAlbums;
+    document.getElementById('unlockAlbum').onclick=()=>{
+      if(document.getElementById('albumPw').value.trim()==='宝塔镇河妖')renderPhotos(a);
+      else document.getElementById('albumErr').textContent='回答错误。';
+    };
+  }else renderPhotos(a);
+});
+
+document.getElementById('zodiacLog').onclick=()=>{
+  document.getElementById('logIndex').style.display='none';
+  document.getElementById('zodiacArticle').classList.add('show');
+};
+document.getElementById('backLogs').onclick=()=>{
+  document.getElementById('zodiacArticle').classList.remove('show');
+  document.getElementById('logIndex').style.display='block';
+};
+</script>
+</body>
+</html>

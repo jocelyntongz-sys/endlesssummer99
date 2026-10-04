@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>沈岁的电脑</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;color:#202124}button,input,textarea{font:inherit}
+body{
+ background-image:url('./images/wallpaper.jpg');
+ background-size:cover;
+ background-position:center;
+ background-repeat:no-repeat;
+}
+.wallpaper{position:fixed;inset:0;background:radial-gradient(circle at 77% 20%,rgba(255,255,255,.55),transparent 25%),radial-gradient(circle at 28% 78%,rgba(255,255,255,.32),transparent 34%),linear-gradient(120deg,rgba(83,126,160,.08),transparent 45%)}
+.desktop-grid{position:absolute;left:18px;top:18px;display:grid;grid-template-columns:84px 84px;grid-auto-rows:88px;gap:4px 6px;z-index:2}.desktop-icon{width:80px;text-align:center;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.58);user-select:none;cursor:default}.desktop-icon.active-app{cursor:pointer}.desktop-icon .icon{width:52px;height:52px;margin:auto;border-radius:12px;display:grid;place-items:center;box-shadow:0 3px 11px rgba(0,0,0,.18);font-weight:700;font-size:21px;position:relative}.desktop-icon .label{font-size:12px;margin-top:6px;white-space:nowrap}.ico-wechat{background:#07c160;color:#fff}.ico-qq{background:linear-gradient(#56b5ff,#1287e8);color:#fff}.ico-browser{background:linear-gradient(135deg,#4e8ee8 0 50%,#f7cd4b 50%);color:#fff}.ico-memo{background:#f1c84b;color:#fff}.ico-diary{background:linear-gradient(145deg,#57515f,#29262d);color:#efe8df;border:1px solid #756c7b}.ico-folder{background:#e9b945;color:#fff}.ico-wps{background:#e94f49;color:#fff}.ico-music{background:#e33b36;color:#fff}.ico-val{background:#ef4d55;color:#fff}.ico-lol{background:#1b3851;color:#d2ad55}.ico-bin{background:#eef2f6;color:#7690a5;border:1px solid #dce2e8}
+.wechat-mark{position:relative;width:36px;height:29px}.wechat-mark:before,.wechat-mark:after{content:"";position:absolute;background:#fff;border-radius:50%}.wechat-mark:before{width:29px;height:23px;left:0;top:0}.wechat-mark:after{width:23px;height:19px;right:0;bottom:0}.wechat-mark i:before,.wechat-mark i:after{content:"";position:absolute;width:3px;height:3px;border-radius:50%;background:#07c160;z-index:2;top:10px}.wechat-mark i:before{left:8px}.wechat-mark i:after{left:17px}
+.taskbar{position:fixed;bottom:0;left:0;right:0;height:48px;background:rgba(244,247,250,.84);backdrop-filter:blur(22px);border-top:1px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;z-index:80}.start{width:29px;height:29px;display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:4px}.start span{background:#4b89dc;border-radius:1px}.clock{position:absolute;right:16px;text-align:right;font-size:12px;line-height:16px;color:#3e4348}
+.app-window{display:none;position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);border-radius:9px;overflow:hidden;box-shadow:0 26px 78px rgba(18,37,54,.34);border:1px solid rgba(255,255,255,.68);z-index:30}.app-window.show{display:block}.window-close{cursor:pointer}.window-controls{margin-left:auto;display:flex;gap:17px;color:#777;font-size:14px}
+/* WeChat */
+.wechat-window{width:min(1080px,87vw);height:min(720px,84vh);background:#f5f5f5}.wechat-shell{display:grid;grid-template-columns:66px 1fr;height:100%}.wx-rail{background:#2d2d2d;color:#aaa;padding-top:18px;text-align:center}.rail-avatar{width:38px;height:38px;border-radius:5px;margin:0 auto 22px;background-size:cover;background-position:center}.rail-icon{width:42px;height:42px;margin:5px auto;display:grid;place-items:center;border-radius:6px;font-size:20px;cursor:pointer;position:relative}.rail-icon:hover{background:#383838;color:#ddd}.rail-icon.active{color:#07c160}.rail-spacer{height:10px}.wx-workspace{min-width:0;min-height:0;position:relative;background:#f5f5f5}.wx-mode{display:none;width:100%;height:100%;min-height:0}.wx-mode.show{display:flex}
+.chat-mode,.contacts-mode{display:none;grid-template-columns:292px 1fr;min-height:0;overflow:hidden}.chat-mode.show,.contacts-mode.show{display:grid}.side-panel{background:#ececec;border-right:1px solid #d8d8d8;min-width:0;min-height:0;overflow:hidden;display:flex;flex-direction:column}.side-search{height:62px;padding:16px 13px 10px;display:flex;gap:7px}.side-search input{width:100%;height:30px;border:0;background:#dcdcdc;border-radius:4px;padding:0 10px;outline:none;color:#333}.chat-list,.contact-list{overflow-y:auto;overflow-x:hidden;flex:1;min-height:0;overscroll-behavior:contain}.chat-item{height:68px;padding:10px 12px;display:flex;gap:10px;cursor:pointer;position:relative}.chat-item:hover,.chat-item.active{background:#d9d9d9}.cavatar,.msg-avatar{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}.cavatar{width:46px;height:46px;border-radius:5px;flex:none}.chatmeta{min-width:0;flex:1}.name{font-size:14px;margin:2px 0 7px}.preview{font-size:12px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.time-mini{position:absolute;right:11px;top:11px;color:#aaa;font-size:10px}.unread{position:absolute;left:47px;top:5px;background:#f04b4b;color:#fff;border-radius:10px;min-width:18px;height:18px;line-height:18px;text-align:center;font-size:10px;padding:0 5px}
+.mainchat{display:flex;flex-direction:column;min-width:0;min-height:0;background:#f5f5f5}.chat-header{height:62px;border-bottom:1px solid #ddd;display:flex;align-items:center;padding:0 20px;font-size:16px;flex:none}.status{font-size:11px;color:#999;margin-left:10px;opacity:0;transition:.2s}.status.show{opacity:1}.messages{flex:1;min-height:0;overflow-y:auto;padding:24px 24px 34px;scroll-behavior:smooth}.day{text-align:center;color:#aaa;font-size:11px;margin:4px 0 18px}.row{display:flex;margin:12px 0;align-items:flex-start}.row.me{justify-content:flex-end}.row.appear{animation:msgin .28s ease-out both}@keyframes msgin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.msg-avatar{width:36px;height:36px;border-radius:4px;flex:none}.row.other .msg-avatar{margin-right:10px}.row.me .msg-avatar{margin-left:10px;order:2}.bubble-wrap{max-width:72%}.sender-name{font-size:11px;color:#999;margin:0 0 4px 2px}.bubble-msg{padding:10px 12px;border-radius:5px;font-size:14px;line-height:1.62;box-shadow:0 1px 1px rgba(0,0,0,.03)}.other .bubble-msg{background:#fff}.me .bubble-msg{background:#95ec69}.composer{height:145px;border-top:1px solid #ddd;background:#fff;padding:10px 18px;position:relative;flex:none}.tools{font-size:19px;color:#555;letter-spacing:10px;height:26px}.composer textarea,.composer textarea[readonly]{width:100%;height:65px;border:0;resize:none;outline:none;padding:7px 0;background:#fff!important;color:#222!important;-webkit-text-fill-color:#222!important;caret-color:#222!important;opacity:1!important;cursor:text}.composer.locked textarea{cursor:default;color:#999!important;-webkit-text-fill-color:#999!important}.composer.waiting textarea{background:#fff!important}.send{position:absolute;right:18px;bottom:12px;border:0;background:#f5f5f5;color:#999;padding:7px 20px;border-radius:3px}.send.ready{background:#07c160;color:#fff}.link-card,.doc-card{width:335px;background:#fff;padding:13px 14px 10px;border-radius:5px;cursor:pointer;border:1px solid #e6e6e6;box-shadow:0 1px 1px rgba(0,0,0,.03)}.link-card:hover,.doc-card:hover{background:#fafafa}.link-title,.doc-title{font-size:14px;margin-bottom:8px;font-weight:500}.link-desc,.doc-desc{font-size:12px;color:#888;line-height:1.5}.link-footer,.doc-footer{border-top:1px solid #eee;margin-top:10px;padding-top:7px;font-size:11px;color:#aaa}
+/* contacts */
+.contact-toolbar{height:62px;padding:16px 13px 10px}.contact-toolbar input{width:100%;height:30px;background:#dcdcdc;border:0;border-radius:4px;padding:0 10px}.quick-contact{height:55px;display:flex;align-items:center;gap:11px;padding:7px 13px;cursor:default}.quick-icon{width:36px;height:36px;border-radius:5px;display:grid;place-items:center;background:#f2a546;color:#fff}.contact-letter{height:25px;padding:6px 14px 3px;font-size:11px;color:#999}.contact-person{height:52px;display:flex;align-items:center;gap:11px;padding:6px 13px;cursor:pointer}.contact-person:hover{background:#dedede}.contact-person.inactive{cursor:default}.contact-person .cavatar{width:38px;height:38px}.contact-profile{display:flex;align-items:center;justify-content:center;background:#f7f7f7}.profile-card{width:340px;text-align:center;color:#999}.profile-card .big-avatar{width:76px;height:76px;border-radius:7px;margin:0 auto 14px;background:#d7dde3}.profile-card h3{color:#333;margin:0 0 8px;font-weight:500}.profile-card p{font-size:12px;line-height:1.8}
+/* Moments */
+.single-mode{display:none;flex-direction:column}.single-mode.show{display:flex}.single-head{height:62px;border-bottom:1px solid #ddd;background:#fafafa;display:flex;align-items:center;padding:0 22px;font-size:16px;flex:none}.single-actions{margin-left:auto;color:#777;display:flex;gap:18px}.single-scroll{overflow-y:auto;flex:1;min-height:0}.moments-bg{background:#e9e9e9;padding:22px 0 50px}.moments-feed{width:min(650px,calc(100% - 36px));margin:auto;background:#fff;border-radius:5px;box-shadow:0 1px 4px #0000000d}.moment{display:flex;gap:12px;padding:18px 20px;border-bottom:1px solid #eee}.moment:last-child{border-bottom:0}.moment-avatar{width:42px;height:42px;border-radius:4px;background-size:cover;background-position:center;flex:none}.moment-main{flex:1;min-width:0}.moment-name{color:#576b95;font-weight:600;font-size:14px;margin-bottom:7px}.moment-text{font-size:14px;line-height:1.65;white-space:pre-line}.moment-photos{display:grid;grid-template-columns:repeat(3,112px);gap:4px;margin-top:9px;max-width:344px}.moment-photo{width:112px;height:112px;background:#d6dce1;border:1px solid #d0d5da;background-size:cover;background-position:center;position:relative;overflow:hidden}.moment-photo.food{background:linear-gradient(145deg,#d9ba82,#8b6848)}.moment-photo.rain{background:linear-gradient(160deg,#8ea4b7,#cdd9e2)}.moment-photo.cat{background:linear-gradient(160deg,#d2b28d,#6d777e)}.moment-photo.movie{background:linear-gradient(160deg,#263c56,#9e6d84)}.moment-photo.city{background:linear-gradient(160deg,#9fb8c8,#e0c9a5)}.moment-photo:after{content:attr(data-mark);position:absolute;right:7px;bottom:5px;color:#fff;font-size:22px;text-shadow:0 1px 4px #0008}.moment-meta{display:flex;align-items:center;margin-top:10px;color:#999;font-size:11px}.moment-menu-wrap{margin-left:auto;position:relative}.moment-more{border:0;background:#f3f3f3;color:#576b95;border-radius:3px;width:34px;height:22px;cursor:pointer}.moment-menu{display:none;position:absolute;right:40px;top:-4px;background:#4c4c4c;border-radius:4px;white-space:nowrap;overflow:hidden;z-index:3}.moment-menu.show{display:flex}.moment-menu button{border:0;background:transparent;color:#fff;padding:7px 13px;cursor:pointer}.social-box{margin-top:8px;background:#f5f5f5;border-radius:3px;font-size:12px;line-height:1.65}.likes{padding:6px 9px;color:#576b95;border-bottom:1px solid #e5e5e5}.comments{padding:5px 9px}.comment-line{margin:3px 0}.comment-line b{color:#576b95;font-weight:500}.comment-input{display:none;margin-top:7px;gap:6px}.comment-input.show{display:flex}.comment-input input{flex:1;border:1px solid #d8d8d8;border-radius:3px;padding:6px 8px}.comment-input button{border:0;background:#07c160;color:#fff;border-radius:3px;padding:0 12px}
+/* Official accounts */
+.official-layout{background:#f2f2f2;padding:18px 0 45px}.official-feed{width:min(720px,calc(100% - 36px));margin:auto}.oa-item{display:flex;gap:14px;padding:15px;background:#fff;border-bottom:1px solid #eee;cursor:pointer}.oa-item:first-child{border-radius:6px 6px 0 0}.oa-item:last-child{border-radius:0 0 6px 6px}.oa-item:hover{background:#fafafa}.oa-avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;flex:none}.oa-body{flex:1;min-width:0}.oa-title-row{display:flex;align-items:center;gap:8px}.oa-name{font-size:14px;font-weight:600}.oa-time{margin-left:auto;font-size:11px;color:#aaa}.oa-headline{font-size:14px;margin-top:7px}.oa-preview{font-size:12px;color:#999;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.article-page{background:#fff}.article-wrap{width:min(760px,calc(100% - 44px));margin:auto;padding:34px 0 70px}.article-back{color:#576b95;cursor:pointer;font-size:13px;margin-bottom:20px;display:inline-block}.article-title{font-size:27px;line-height:1.45;font-weight:650;margin:0 0 13px}.article-by{font-size:13px;color:#777;margin-bottom:28px}.article-by b{color:#576b95}.article-wrap p{font-size:15px;line-height:2;color:#333;margin:16px 0}.article-photo{height:300px;margin:22px 0 8px;border-radius:3px;position:relative;overflow:hidden;background:linear-gradient(155deg,#88a6bb 0%,#d8e0df 55%,#b8a47d 100%)}.article-photo.stage{background:linear-gradient(155deg,#8e2632,#d7b99a 55%,#6d7f8c)}.article-photo.gate{background:linear-gradient(155deg,#7897aa,#d8dfcf 55%,#8c9274)}.article-photo:after{content:attr(data-caption);position:absolute;left:0;right:0;bottom:0;padding:11px 14px;background:linear-gradient(transparent,#0008);color:#fff;font-size:13px}.article-caption{font-size:12px;color:#999;text-align:center;margin-bottom:20px}.article-quote{border-left:3px solid #d7d7d7;background:#fafafa;padding:14px 18px;color:#555;line-height:1.9;margin:20px 0}.official-site-link{display:block;margin-top:30px;padding:15px 18px;background:#f5f6f7;color:#576b95;text-decoration:none;border-radius:4px}.official-site-link:hover{background:#eef0f2}
+/* Modals */
+.modal-mask{display:none;position:fixed;inset:0;background:#0008;z-index:120;align-items:center;justify-content:center;padding:24px}.modal-mask.show{display:flex}.report-sheet{width:min(820px,94vw);max-height:88vh;background:#fff;box-shadow:0 24px 80px #0008;overflow:auto;padding:35px 45px 48px;position:relative;font-family:"Songti SC","SimSun",serif}.report-close{position:sticky;float:right;top:0;right:0;font-family:Arial;font-size:23px;cursor:pointer;color:#777}.hospital{text-align:center;font-size:24px;font-weight:700;letter-spacing:2px}.report-sub{text-align:center;font-size:17px;letter-spacing:4px;margin:7px 0 24px}.report-no{text-align:right;font-size:11px;color:#777;margin-bottom:8px}.report-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #555;border-left:1px solid #555;font-size:13px}.report-grid div{border-right:1px solid #555;border-bottom:1px solid #555;padding:8px 9px;min-height:36px}.report-grid .label{background:#f3f3f3;font-weight:700}.report-section{border:1px solid #555;border-top:0;padding:11px 13px;font-size:13px;line-height:1.9}.report-section h4{margin:0 0 5px;font-size:13px}.report-risk{display:grid;grid-template-columns:110px 1fr;border:1px solid #555;border-top:0;font-size:13px}.report-risk div{padding:9px 11px;border-right:1px solid #555;line-height:1.8}.report-risk div:last-child{border-right:0}.report-sign{display:flex;justify-content:flex-end;gap:45px;margin-top:28px;font-size:13px}.stamp{position:absolute;right:90px;bottom:35px;width:95px;height:95px;border:3px solid #ba2b2b;border-radius:50%;color:#ba2b2b;display:grid;place-items:center;text-align:center;font-family:"Microsoft YaHei";font-size:12px;transform:rotate(-12deg);opacity:.62}.report-foot{margin-top:35px;color:#888;font-size:11px;font-family:"Microsoft YaHei";border-top:1px dashed #bbb;padding-top:10px}
+/* Memo */
+.memo-window{width:min(680px,77vw);height:min(590px,76vh);background:#fbfaf5}.memo-head{height:50px;background:#f2f0e7;border-bottom:1px solid #ddd8c9;display:flex;align-items:center;padding:0 16px}.memo-scroll{overflow-y:auto;height:calc(100% - 50px);padding:18px 22px 35px}.memo-entry{background:#fffef9;border:1px solid #e7e1d3;border-radius:5px;padding:14px 16px;margin-bottom:12px}.memo-date{font-size:11px;color:#aaa;margin-bottom:7px}.memo-text{font-size:14px;line-height:1.75;white-space:pre-line;color:#444}
+/* QQ */
+.qq-window{width:min(960px,82vw);height:min(650px,80vh);background:#fff}.qq-titlebar{height:44px;background:rgba(249,250,252,.96);display:flex;align-items:center;padding:0 15px;border-bottom:1px solid #eceff2}.qq-brand{font-size:18px;color:#168cff;font-weight:700}.qq-login{height:calc(100% - 44px);display:grid;place-items:center;background:radial-gradient(circle at 50% 25%,#e8f4ff,#f9fbfd 45%,#eef3f8)}.qq-login-box{width:340px;text-align:center}.qq-penguin{width:82px;height:82px;border-radius:50%;background:#1d97f2;color:#fff;display:grid;place-items:center;margin:0 auto 15px;font-size:38px;font-weight:700;box-shadow:0 8px 25px #1d97f233}.qq-login-box h2{font-size:18px;font-weight:500;margin:0 0 22px}.qq-input{width:100%;height:42px;border:1px solid #dce2e8;padding:0 12px;outline:none;background:#fff;color:#202124!important;-webkit-text-fill-color:#202124!important;caret-color:#168cff!important;opacity:1!important}.qq-input:first-of-type{border-radius:6px 6px 0 0}.qq-input + .qq-input{border-top:0;border-radius:0 0 6px 6px}.qq-options{display:flex;justify-content:space-between;font-size:12px;color:#888;margin:11px 1px 16px}.qq-login-btn{width:100%;height:40px;border:0;border-radius:6px;background:#168cff;color:#fff;cursor:pointer}.qq-error{height:24px;color:#d44;font-size:12px;padding-top:7px}.qq-main{display:none;height:calc(100% - 44px);grid-template-columns:62px 280px 1fr}.qq-main.show{display:grid}.qq-rail{background:#f4f7fa;text-align:center;padding-top:16px;border-right:1px solid #e8edf1}.qq-rail .qra{width:36px;height:36px;border-radius:50%;margin:0 auto 18px;background:#ccd6df}.qq-rbtn{width:38px;height:38px;margin:4px auto;border-radius:7px;display:grid;place-items:center;color:#65717e;font-size:19px}.qq-rbtn.active{background:#dceeff;color:#168cff}.qq-side{border-right:1px solid #edf0f2;background:#fbfcfd;padding-top:12px}.qq-search{padding:0 12px 10px}.qq-search input{width:100%;height:32px;border:0;background:#f0f2f5;border-radius:6px;padding:0 10px}.qq-chat-item{height:66px;padding:9px 12px;display:flex;gap:10px;align-items:center}.qq-chat-item:hover{background:#f0f5f9}.qq-avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:13px}.qq-item-text b{font-size:13px;font-weight:500}.qq-item-text div{font-size:11px;color:#999;margin-top:5px}.qq-content{display:flex;align-items:center;justify-content:center;background:#fff;color:#9aa4ad}.qq-welcome{text-align:center}.qq-welcome .big{font-size:48px;color:#168cff;margin-bottom:8px}
+/* Browser */
+.browser-window{width:min(1000px,85vw);height:min(680px,82vh);background:#fff}.browser-top{height:74px;background:#f4f6f8;border-bottom:1px solid #dce1e6}.browser-tab{height:34px;display:flex;align-items:center;padding:0 12px;font-size:12px;color:#555}.browser-nav{display:flex;align-items:center;gap:8px;padding:0 10px}.navbtn{width:28px;height:28px;border:0;background:transparent;color:#6b747c;font-size:17px}.address{flex:1;height:32px;background:#fff;border:1px solid #dfe3e6;border-radius:16px;padding:0 14px;color:#666}.browser-body{height:calc(100% - 74px);display:grid;place-items:center;background:#fff}.baidu{width:min(650px,80%);text-align:center;margin-top:-90px}.baidu-logo{font-size:54px;font-weight:800;color:#306cff;letter-spacing:-4px;margin-bottom:24px}.baidu-logo span{color:#e33}.baidu-search{display:flex;height:44px}.baidu-search input{flex:1;border:2px solid #4e6ef2;border-right:0;border-radius:8px 0 0 8px;padding:0 13px;font-size:15px;outline:none}.baidu-search button{width:105px;border:0;background:#4e6ef2;color:#fff;border-radius:0 8px 8px 0;cursor:pointer}.baidu-links{margin-top:24px;color:#999;font-size:12px;word-spacing:18px}
+.toast{position:fixed;left:50%;bottom:68px;transform:translateX(-50%);background:rgba(30,30,30,.86);color:#fff;padding:9px 16px;border-radius:5px;font-size:13px;display:none;z-index:200}
+@media(max-width:820px){.wechat-window{width:94vw}.chat-mode,.contacts-mode{grid-template-columns:245px 1fr}.moment-photos{grid-template-columns:repeat(2,100px)}.moment-photo{width:100px;height:100px}.report-grid{grid-template-columns:1fr 1fr}.desktop-grid{grid-template-columns:78px}.article-photo{height:220px}}
+</style>
+</head>
+<body>
+<div class="wallpaper"></div>
+<div class="desktop-grid">
+  <div class="desktop-icon active-app" id="wechatIcon" title="双击打开微信"><div class="icon ico-wechat"><div class="wechat-mark"><i></i></div></div><div class="label">微信</div></div>
+  <div class="desktop-icon active-app" id="qqIcon" title="双击打开QQ"><div class="icon ico-qq">Q</div><div class="label">QQ</div></div>
+  <div class="desktop-icon active-app" id="browserIcon" title="双击打开浏览器"><div class="icon ico-browser">◎</div><div class="label">浏览器</div></div>
+  <div class="desktop-icon active-app" id="memoIcon" title="双击打开备忘录"><div class="icon ico-memo">≡</div><div class="label">备忘录</div></div>
+  <div class="desktop-icon" id="diaryIcon" title="日记"><div class="icon ico-diary">▤</div><div class="label">日记</div></div>
+  <div class="desktop-icon"><div class="icon ico-folder">▰</div><div class="label">文件</div></div>
+  <div class="desktop-icon"><div class="icon ico-wps">W</div><div class="label">WPS Office</div></div>
+  <div class="desktop-icon"><div class="icon ico-music">♪</div><div class="label">网易云音乐</div></div>
+  <div class="desktop-icon"><div class="icon ico-val">V</div><div class="label">无畏契约</div></div>
+  <div class="desktop-icon"><div class="icon ico-lol">L</div><div class="label">英雄联盟</div></div>
+  <div class="desktop-icon"><div class="icon ico-bin">♲</div><div class="label">回收站</div></div>
+</div>
+
+<!-- WeChat -->
+<div class="app-window wechat-window" id="wechatWindow">
+<div class="wechat-shell">
+  <aside class="wx-rail">
+    <div class="rail-avatar" id="selfRail"></div>
+    <div class="rail-icon active" data-mode="chat" title="聊天">●</div>
+    <div class="rail-icon" data-mode="contacts" title="通讯录">♙</div>
+    <div class="rail-icon" data-mode="moments" title="朋友圈">◉</div>
+    <div class="rail-icon" data-mode="official" title="公众号">▣</div>
+    <div class="rail-spacer"></div>
+    <div class="rail-icon" style="font-size:17px;color:#777" title="小程序">◇</div>
+  </aside>
+  <section class="wx-workspace">
+    <div class="wx-mode chat-mode show" id="mode-chat">
+      <section class="side-panel">
+        <div class="side-search"><input placeholder="搜索" /></div>
+        <div class="chat-list">
+          <div class="chat-item active" data-chat="therapist"><div class="cavatar" data-avatar="doctor"></div><div class="chatmeta"><div class="name">周医生</div><div class="preview">我给你发一个整理表，你有空的时候看看。</div></div><div class="time-mini">15:42</div><div class="unread" id="unread">7</div></div>
+          <div class="chat-item" data-chat="friend"><div class="cavatar" data-avatar="lin"></div><div class="chatmeta"><div class="name">林嘉</div><div class="preview">你先吃点东西再说</div></div><div class="time-mini">12:18</div></div>
+          <div class="chat-item" data-chat="mom"><div class="cavatar" data-avatar="mom"></div><div class="chatmeta"><div class="name">妈妈</div><div class="preview">知道了就回我一下</div></div><div class="time-mini">昨天</div></div>
+          <div class="chat-item" data-chat="wang"><div class="cavatar" data-avatar="wang"></div><div class="chatmeta"><div class="name">汪怡菲</div><div class="preview">你别一个人扛着，有事就找我</div></div><div class="time-mini">9月2日</div></div>
+          <div class="chat-item" data-chat="jiang"><div class="cavatar" data-avatar="jiang"></div><div class="chatmeta"><div class="name">江旭然</div><div class="preview">下次听你的</div></div><div class="time-mini">星期二</div></div>
+          <div class="chat-item" data-chat="group"><div class="cavatar" data-avatar="group"></div><div class="chatmeta"><div class="name">以前同事</div><div class="preview">许妍：下周聚餐谁来？</div></div><div class="time-mini">星期一</div></div>
+        </div>
+      </section>
+      <main class="mainchat">
+        <div class="chat-header"><span id="chatTitle">周医生</span><span class="status" id="typingStatus">对方正在输入…</span><div class="window-controls"><span>—</span><span>□</span><span class="window-close" id="wechatClose">×</span></div></div>
+        <div class="messages" id="messages"></div>
+        <div class="composer" id="composer"><div class="tools">☺ ⌕ ▱</div><textarea id="replyBox" readonly spellcheck="false"></textarea><button class="send" id="sendBtn">发送(S)</button></div>
+      </main>
+    </div>
+
+    <div class="wx-mode contacts-mode" id="mode-contacts">
+      <section class="side-panel">
+        <div class="contact-toolbar"><input placeholder="搜索联系人" /></div>
+        <div class="contact-list">
+          <div class="quick-contact"><div class="quick-icon">＋</div><span>新的朋友</span></div>
+          <div class="quick-contact"><div class="quick-icon" style="background:#69a8df">♟</div><span>群聊</span></div>
+          <div class="quick-contact"><div class="quick-icon" style="background:#6db77c">▤</div><span>标签</span></div>
+          <div class="quick-contact"><div class="quick-icon" style="background:#8a78b8">▣</div><span>公众号</span></div>
+          <div class="contact-letter">C</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="chen"></div><span>陈航</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="chensiyu"></div><span>陈思雨</span></div>
+
+          <div class="contact-letter">D</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="duwenxin"></div><span>杜文欣</span></div>
+
+          <div class="contact-letter">F</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="fangyuan"></div><span>方圆</span></div>
+
+          <div class="contact-letter">H</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="hejiayi"></div><span>何嘉怡</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="huyuhang"></div><span>胡宇航</span></div>
+
+          <div class="contact-letter">J</div>
+          <div class="contact-person" data-gochat="jiang"><div class="cavatar" data-avatar="jiang"></div><span>江旭然</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="jiangwen"></div><span>蒋雯</span></div>
+
+          <div class="contact-letter">L</div>
+          <div class="contact-person" data-gochat="friend"><div class="cavatar" data-avatar="lin"></div><span>林嘉</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="limu"></div><span>李沐</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="liukexin"></div><span>刘可欣</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="luoyan"></div><span>罗言</span></div>
+
+          <div class="contact-letter">M</div>
+          <div class="contact-person" data-gochat="mom"><div class="cavatar" data-avatar="mom"></div><span>妈妈</span></div>
+
+          <div class="contact-letter">P</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="paojiao"></div><span>泡椒</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="pengyue"></div><span>彭越</span></div>
+
+          <div class="contact-letter">Q</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="qinman"></div><span>秦曼</span></div>
+
+          <div class="contact-letter">S</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="sunyueran"></div><span>孙悦然</span></div>
+
+          <div class="contact-letter">T</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="tangning"></div><span>唐宁</span></div>
+
+          <div class="contact-letter">W</div>
+          <div class="contact-person" data-gochat="wang"><div class="cavatar" data-avatar="wang"></div><span>汪怡菲</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="wangsiqi"></div><span>王思齐</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="wuqian"></div><span>吴倩</span></div>
+
+          <div class="contact-letter">X</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="xu"></div><span>许妍</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="xuzihan"></div><span>徐子涵</span></div>
+
+          <div class="contact-letter">Y</div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="yangke"></div><span>杨可</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="yeqing"></div><span>叶晴</span></div>
+
+          <div class="contact-letter">Z</div>
+          <div class="contact-person" data-gochat="therapist"><div class="cavatar" data-avatar="doctor"></div><span>周医生</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="zhao"></div><span>赵谦</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="zhuxiaomeng"></div><span>朱晓萌</span></div>
+          <div class="contact-person inactive"><div class="cavatar" data-avatar="zhangyan"></div><span>张妍</span></div>
+        </div>
+      </section>
+      <div class="contact-profile"><div class="profile-card"><div class="big-avatar"></div><h3>通讯录</h3><p>选择联系人可查看资料。<br>已有聊天记录的联系人可以直接跳转到聊天。</p></div></div>
+    </div>
+
+    <div class="wx-mode single-mode" id="mode-moments">
+      <div class="single-head">朋友圈<div class="single-actions"><span>⌕</span><span>◌</span><span>☷</span></div></div>
+      <div class="single-scroll moments-bg"><div class="moments-feed" id="momentsFeed"></div></div>
+    </div>
+
+    <div class="wx-mode single-mode" id="mode-official">
+      <div class="single-head">公众号<div class="single-actions"><span>⌕</span><span>＋</span></div></div>
+      <div class="single-scroll official-layout"><div class="official-feed">
+        <div class="oa-item"><div class="oa-avatar" style="background:#3b8bd8">城</div><div class="oa-body"><div class="oa-title-row"><span class="oa-name">上城发布</span><span class="oa-time">今天</span></div><div class="oa-headline">本周城市公共文化活动安排</div><div class="oa-preview">图书馆延时开放、秋季市集和公共展览信息汇总……</div></div></div>
+        <div class="oa-item"><div class="oa-avatar" style="background:#d46b59">读</div><div class="oa-body"><div class="oa-title-row"><span class="oa-name">一页阅读</span><span class="oa-time">昨天</span></div><div class="oa-headline">九月书单｜适合入秋以后慢慢读的五本书</div><div class="oa-preview">天气开始转凉以后，也许适合重新找一本很久没翻开的书。</div></div></div>
+        <div class="oa-item" id="huiyanArticleEntry"><div class="oa-avatar" style="background:#59775e">惠</div><div class="oa-body"><div class="oa-title-row"><span class="oa-name">惠言中学</span><span class="oa-time">9月10日</span></div><div class="oa-headline">校庆特辑｜一百零八年，仍在这里等你回家</div><div class="oa-preview">校庆活动回顾、校友返校日、校园开放与校长陈志强致辞……</div></div></div>
+        <div class="oa-item"><div class="oa-avatar" style="background:#7d8fb4">气</div><div class="oa-body"><div class="oa-title-row"><span class="oa-name">上城天气</span><span class="oa-time">9月9日</span></div><div class="oa-headline">未来三日夜间降温，请注意添衣</div><div class="oa-preview">受冷空气影响，明后两天夜间最低气温将有所下降。</div></div></div>
+        <div class="oa-item"><div class="oa-avatar" style="background:#a98255">食</div><div class="oa-body"><div class="oa-title-row"><span class="oa-name">上城吃什么</span><span class="oa-time">9月8日</span></div><div class="oa-headline">老城区新开的小店，我们替你吃过了</div><div class="oa-preview">五家店，三家值得去，两家可以绕开。</div></div></div>
+      </div></div>
+    </div>
+
+    <div class="wx-mode single-mode article-page" id="mode-article">
+      <div class="single-head">文章<div class="window-controls"><span class="window-close" id="articleClose">×</span></div></div>
+      <div class="single-scroll"><article class="article-wrap">
+        <span class="article-back" id="articleBack">‹ 返回公众号</span>
+        <h1 class="article-title">校庆特辑｜一百零八年，仍在这里等你回家</h1>
+        <div class="article-by"><b>惠言中学</b>　2026年9月10日　上城市</div>
+        <p>九月的校园里，梧桐叶已经开始泛黄。9月10日上午，惠言中学建校108周年校庆活动在校本部举行。来自不同届次的校友、退休教师、在校师生及家长代表再次走进熟悉的校门，共同参加校史展开放、校园参观、文艺汇演与校友交流活动。</p>
+        <div class="article-photo gate" style="background-image:url('./images/school/huiyan_gate.jpg');background-size:cover;background-position:center;" data-caption="校庆当天的惠言中学校门与返校校友"></div>
+        <div class="article-caption">校庆返校日 · 校门旧影与新景</div>
+        <p>上午九时，校庆纪念仪式在学校礼堂开始。学生管乐团演奏校歌后，大屏幕播放了由历届校园影像剪辑而成的短片。从旧教学楼、操场、广播站，到历届运动会、艺术节与毕业照，不少校友在画面里找到了自己熟悉的角落。</p>
+        <div class="article-photo stage" style="background-image:url('./images/school/huiyan_ceremony.jpg');background-size:cover;background-position:center;" data-caption="校庆纪念仪式现场"></div>
+        <div class="article-caption">校庆纪念仪式现场</div>
+        <p>校长陈志强在致辞中回顾了学校近年的变化，也特别提到“学校的历史并不只写在校志里，更留在每一位学生曾经走过的楼梯、坐过的教室和记得的人身上”。他表示，校庆并不仅仅是一次庆典，也是一次重新整理和保存校园记忆的机会。</p>
+        <div class="article-quote">“我们希望今天回来的每个人，都还能在这里找到一点熟悉的东西。学校会变化，人会长大，但那些真实发生过的日常，本身就是惠言中学最重要的校史。”——校长 陈志强</div>
+        <p>今年校庆期间，学校还首次开放了“旧档案数字化展示区”。部分历届班级活动、运动会成绩册、社团照片和校园刊物经过整理后向校友展示。校方表示，后续还会继续补充可公开的历史资料。</p>
+        <div class="article-photo" style="background-image:url('./images/school/huiyan_archive.jpg');background-size:cover;background-position:center;" data-caption="校史资料与历届校园活动展区"></div>
+        <div class="article-caption">校史展厅中的历届校园活动资料</div>
+        <p>下午的校友返校活动以自由参观为主。旧教学楼前、操场看台和学校后门成为拍照最多的几个地点。很多人拿出学生时代的照片，对照着寻找曾经站过的位置。</p>
+        <p>感谢每一位回到惠言中学的人。也欢迎无法到场的校友通过学校官网继续查看校庆专题、学校历史与公开档案。</p>
+        <a class="official-site-link" href="./5256276024d6aaee327637a7.html" target="_blank" rel="noopener">进入惠言中学官网　›</a>
+      </article></div>
+    </div>
+  </section>
+</div>
+</div>
+
+<!-- Memo -->
+<div class="app-window memo-window" id="memoWindow"><div class="memo-head"><b>备忘录</b><div class="window-controls"><span>—</span><span>□</span><span class="window-close" id="memoClose">×</span></div></div><div class="memo-scroll">
+  
+  <div class="memo-entry"><div class="memo-date">9月12日　18:43</div><div class="memo-text">去医院换药</div></div>
+  <div class="memo-entry"><div class="memo-date">9月8日　00:31</div><div class="memo-text">看医生</div></div>
+  <div class="memo-entry"><div class="memo-date">8月29日　21:07</div><div class="memo-text">猫粮</div></div>
+  <div class="memo-entry"><div class="memo-date">8月21日　03:14</div><div class="memo-text">猫砂</div></div>
+  <div class="memo-entry"><div class="memo-date">7月3日　16:20</div><div class="memo-text">QQ：260918890445</div></div>
+  <div class="memo-entry"><div class="memo-date">6月18日　23:51</div><div class="memo-text">买牛奶</div></div>
+</div></div>
+
+<!-- QQ -->
+<div class="app-window qq-window" id="qqWindow"><div class="qq-titlebar"><div class="qq-brand">QQ</div><div class="window-controls"><span>—</span><span>□</span><span class="window-close" id="qqClose">×</span></div></div>
+  <div class="qq-login" id="qqLogin"><div class="qq-login-box"><div class="qq-penguin">Q</div><h2>登录 QQ</h2><input class="qq-input" id="qqAccount" autocomplete="off" placeholder="QQ号码" /><input class="qq-input" id="qqPassword" type="password" autocomplete="off" placeholder="密码" /><div class="qq-options"><label><input type="checkbox"> 记住密码</label><span>找回密码</span></div><button class="qq-login-btn" id="qqLoginBtn">登录</button><div class="qq-error" id="qqError"></div></div></div>
+  <div class="qq-main" id="qqMain"><aside class="qq-rail"><div class="qra" data-avatar-bg="self"></div><div class="qq-rbtn active">●</div><div class="qq-rbtn">♙</div><div class="qq-rbtn">☆</div><div class="qq-rbtn">◎</div><div class="qq-rbtn" id="qqSpaceBtn" title="QQ空间" style="cursor:pointer">☆</div><div class="qq-rbtn">▣</div></aside><section class="qq-side"><div class="qq-search"><input placeholder="搜索" /></div><div class="qq-chat-item"><div class="qq-avatar" style="background:#168cff">Q</div><div class="qq-item-text"><b>QQ团队</b><div>欢迎回来</div></div></div><div class="qq-chat-item"><div class="qq-avatar" style="background:#68a27a">我</div><div class="qq-item-text"><b>我的手机</b><div>文件传输</div></div></div><div class="qq-chat-item"><div class="qq-avatar" style="background:#a483bd">群</div><div class="qq-item-text"><b>群助手</b><div>3个群有新消息</div></div></div><div class="qq-chat-item"><div class="qq-avatar" style="background:#c68c62">林</div><div class="qq-item-text"><b>林嘉</b><div>[图片]</div></div></div></section><main class="qq-content"><div class="qq-welcome"><div class="big">QQ</div><div>选择一个会话开始聊天</div></div></main></div>
+</div>
+
+<!-- Browser -->
+<div class="app-window browser-window" id="browserWindow"><div class="browser-top"><div class="browser-tab">百度一下，你就知道<div class="window-controls"><span>—</span><span>□</span><span class="window-close" id="browserClose">×</span></div></div><div class="browser-nav"><button class="navbtn">‹</button><button class="navbtn">›</button><button class="navbtn">↻</button><input class="address" value="https://www.baidu.com" readonly></div></div><div class="browser-body"><div class="baidu"><div class="baidu-logo">Bai<span>du</span></div><form class="baidu-search" id="baiduForm"><input id="baiduQuery" autocomplete="off"><button>百度一下</button></form><div class="baidu-links">新闻　hao123　地图　贴吧　视频　图片　网盘</div></div></div></div>
+
+<!-- Diagnosis modal -->
+<div class="modal-mask" id="diagnosisModal"><div class="report-sheet"><span class="report-close" id="reportClose">×</span><div class="hospital">上城市澄宁精神卫生中心</div><div class="report-sub">门诊心理评估与诊断说明</div><div class="report-no">病历记录号：SC-CN-2026-0916-042　　文书类型：阶段性评估记录</div>
+<div class="report-grid"><div class="label">姓名</div><div>沈岁</div><div class="label">年龄</div><div>24岁</div><div class="label">就诊科室</div><div>心理治疗门诊</div><div class="label">就诊形式</div><div>门诊 / 持续随访</div></div>
+<div class="report-section"><h4>一、主诉及就诊原因</h4>来访者近阶段持续出现心情低落、兴趣与动力下降、易疲惫、睡眠受影响及反复哭泣等情况，自述负面情绪存在明显波动，部分时段能够维持基本日常活动，但在受到较小刺激后情绪可迅速恶化。近期社会功能及日常生活节律受到不同程度影响。</div>
+<div class="report-section"><h4>二、现病史与相关风险事件</h4>来访者此前曾出现自杀行为，后被及时发现并接受救助。事件后开始接受心理咨询与持续随访。当前访谈中能够配合交流，对既往风险事件有基本认识，但在谈及具体诱因及部分过往经历时可见明显回避。鉴于既往自杀行为史，后续咨询中仍需持续进行安全风险评估，并关注睡眠、情绪骤降、明显绝望感及社会退缩等变化。</div>
+<div class="report-section"><h4>三、精神心理状态观察</h4>访谈过程中意识清楚，定向力完整，基本交流连贯。情绪基调偏低，自我评价偏负面，对近期生活事件存在较明显无力感。部分话题可正常叙述，但涉及较早时期某一阶段的经历时，叙述明显变得笼统、断裂或中止，并倾向快速转移话题。未见明显形式性思维障碍。当前资料不足以将其记忆表现简单归结为器质性记忆障碍。</div>
+<div class="report-section"><h4>四、记忆、回避与情绪关联</h4>来访者能够回忆童年及近期生活中的大量具体信息，但对过去某一连续阶段的个人经历呈现选择性模糊、压抑及回避。结合访谈内容，现阶段更倾向理解为与强烈负性情绪、内疚体验及长期主动回避相关的记忆提取困难，而非完全遗忘。相关记忆是否涉及创伤性体验、复杂性哀伤或其他心理因素，仍需在后续咨询中逐步评估，不宜在当前阶段作过度推断。</div>
+<div class="report-risk"><div><b>风险评估</b></div><div>既往存在自杀行为史，属于需要持续关注的重要风险因素。当前应保持规律随访，建立可执行的安全支持方案；如出现明显加重的自杀意念、失控感或无法维持基本安全，应优先寻求即时专业支持。</div></div>
+<div class="report-section"><h4>五、阶段性临床印象</h4>1. 持续性抑郁情绪及相关功能受损，需继续评估其严重程度与持续时间。<br>2. 既往自杀行为史，需持续进行风险管理。<br>3. 对部分既往经历存在显著回避、压抑及记忆叙述断裂；暂不宜将其描述为完全性失忆，建议结合后续访谈进一步厘清。</div>
+<div class="report-section"><h4>六、咨询与治疗建议</h4>建议维持规律心理咨询，不以“必须想起来”为目标，不强迫一次性追溯高情绪负荷内容。在来访者主观可承受的前提下，可从较中性、可核实的生活材料开始进行记忆整理，例如曾就读的学校、日常活动、旧照片、聊天记录、社交平台记录等，以帮助恢复时间线的连续性与现实感。整理过程中如出现明显情绪恶化、躯体不适或强烈回避，应暂停，并将相关反应带回咨询中讨论。后续根据情绪变化、睡眠情况及风险水平评估是否需要进一步精神科复诊或其他支持。</div>
+<div class="report-sign"><span>评估医师：周　○○</span><span>心理治疗门诊</span></div><div class="stamp">上城市澄宁<br>精神卫生中心<br>门诊专用</div><div class="report-foot">本页面为游戏世界观内的虚构医疗文书，用于叙事与线索展示，不对应现实医疗机构或真实患者记录。</div></div></div>
+
+<div class="taskbar"><div class="start"><span></span><span></span><span></span><span></span></div><div class="clock"><div id="time">17:36</div><div>2026/9/16</div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+function svgData(svg){return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
+function avatarSvg(bg,skin,hair,shirt){return svgData(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="${bg}"/><circle cx="50" cy="39" r="20" fill="${skin}"/><path d="M21 100c4-27 17-39 29-39 14 0 27 12 30 39" fill="${shirt}"/><path d="M27 39c1-26 44-31 47 1-14-9-31-13-47-1z" fill="${hair}"/></svg>`)}
+const avatars={
+ // 同一个头像变量会同时用于聊天/群聊/通讯录。以后直接替换 images/avatars 里的同名 PNG 即可。
+ self:'./images/avatars/shensui.jpg', doctor:'./images/avatars/doctor.jpg',lin:'./images/avatars/lin.jpg', mom:'./images/avatars/mom.jpg',group:svgData(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ddd"/><circle cx="30" cy="32" r="18" fill="#d7a58a"/><circle cx="70" cy="32" r="18" fill="#c5a2bc"/><circle cx="30" cy="70" r="18" fill="#9dbac8"/><circle cx="70" cy="70" r="18" fill="#ccb77e"/></svg>`),
+ wang:'./images/avatars/wangyifei.jpg', jiang:'./images/avatars/jiangxuran.jpg', chen:'./images/avatars/chenhang.jpg', xu:'./images/avatars/xuyan.jpg', zhao:'./images/avatars/zhaoqian.jpg',
+  // 路人联系人：每个人独立对应 images/avatars 下的 PNG 文件。
+  chensiyu:'./images/avatars/chensiyu.jpg', // 陈思雨
+  duwenxin:'./images/avatars/duwenxin.jpg', // 杜文欣
+  fangyuan:'./images/avatars/fangyuan.jpg', // 方圆
+  hejiayi:'./images/avatars/hejiayi.jpg', // 何嘉怡
+  huyuhang:'./images/avatars/huyuhang.jpg', // 胡宇航
+  jiangwen:'./images/avatars/jiangwen.jpg', // 蒋雯
+  limu:'./images/avatars/limu.jpg', // 李沐
+  liukexin:'./images/avatars/liukexin.jpg', // 刘可欣
+  luoyan:'./images/avatars/luoyan.jpg', // 罗言
+  paojiao:'./images/avatars/paojiao.jpg', // 泡椒
+  pengyue:'./images/avatars/pengyue.jpg', // 彭越
+  qinman:'./images/avatars/qinman.jpg', // 秦曼
+  sunyueran:'./images/avatars/sunyueran.jpg', // 孙悦然
+  tangning:'./images/avatars/tangning.jpg', // 唐宁
+  wangsiqi:'./images/avatars/wangsiqi.jpg', // 王思齐
+  wuqian:'./images/avatars/wuqian.jpg', // 吴倩
+  xuzihan:'./images/avatars/xuzihan.jpg', // 徐子涵
+  yangke:'./images/avatars/yangke.jpg', // 杨可
+  yeqing:'./images/avatars/yeqing.jpg', // 叶晴
+  zhuxiaomeng:'./images/avatars/zhuxiaomeng.jpg', // 朱晓萌
+  zhangyan:'./images/avatars/zhangyan.jpg', // 张妍
+};
+document.getElementById('selfRail').style.backgroundImage=`url("${avatars.self}")`;
+document.querySelectorAll('[data-avatar]').forEach(el=>{const a=avatars[el.dataset.avatar];if(a)el.style.backgroundImage=`url("${a}")`});
+const qra=document.querySelector('[data-avatar-bg="self"]'); if(qra)qra.style.backgroundImage=`url("${avatars.self}")`,qra.style.backgroundSize='cover';
+
+const staticConversations={
+ friend:{title:'林嘉',messages:[
+  {type:'day',text:'今天 11:42'},{side:'other',avatar:'lin',text:'你醒了吗'},{side:'me',avatar:'self',text:'刚醒'},{side:'other',avatar:'lin',text:'我就知道 你昨天是不是又很晚才睡'},{side:'me',avatar:'self',text:'差不多'},{side:'other',avatar:'lin',text:'我下午去你那附近拿东西 本来想叫你出来吃饭'},{side:'me',avatar:'self',text:'今天不太想出门'},{side:'other',avatar:'lin',text:'行吧'},{side:'other',avatar:'lin',text:'冰箱里有东西吗'},{side:'me',avatar:'self',text:'有面包'},{side:'other',avatar:'lin',text:'……这不叫有东西'},{side:'other',avatar:'lin',text:'你先吃点东西再说'},{side:'me',avatar:'self',text:'知道了'}]},
+ mom:{title:'妈妈',messages:[
+  {type:'day',text:'8月16日 22:47'},{side:'other',avatar:'mom',text:'你怎么不接电话'},{side:'other',avatar:'mom',text:'给你打了好几个了'},{side:'other',avatar:'mom',text:'看到消息回我一下'},{side:'other',avatar:'mom',text:'你到底在哪'},{type:'day',text:'8月17日 08:12'},{side:'other',avatar:'mom',text:'醒了吗'},{side:'other',avatar:'mom',text:'醒了给我回个消息'},{type:'day',text:'一周前 20:31'},{side:'other',avatar:'mom',text:'这几天好点了没有'},{side:'me',avatar:'self',text:'好一点了'},{side:'other',avatar:'mom',text:'晚上还是睡不好吗'},{side:'me',avatar:'self',text:'还行'},{side:'other',avatar:'mom',text:'吃饭呢'},{side:'me',avatar:'self',text:'吃了'},{side:'other',avatar:'mom',text:'别骗我'},{side:'me',avatar:'self',text:'真的'},{side:'other',avatar:'mom',text:'有什么事情就跟我说 不要一个人憋着'},{side:'me',avatar:'self',text:'嗯'},{type:'day',text:'昨天 19:08'},{side:'other',avatar:'mom',text:'岁岁 搬回家住吧'},{side:'me',avatar:'self',text:'不了'},{side:'other',avatar:'mom',text:'你一个人住在外面妈妈真的很担心'},{side:'other',avatar:'mom',text:'你知不知道上次我都快吓疯了'},{side:'me',avatar:'self',text:'对不起'},{side:'other',avatar:'mom',text:'我不是让你跟我道歉'},{side:'other',avatar:'mom',text:'就是想让你有事跟我们说一声'},{side:'me',avatar:'self',text:'嗯'},{side:'other',avatar:'mom',text:'明天给你送点东西'}]},
+ wang:{title:'汪怡菲',messages:[
+  {type:'day',text:'2019年7月18日 21:14'},
+  {side:'other',avatar:'wang',text:'岁岁！！录取结果出了没'},
+  {side:'me',avatar:'self',text:'出了'},
+  {side:'other',avatar:'wang',text:'快快快 你去哪'},
+  {side:'me',avatar:'self',text:'上城大学'},
+  {side:'other',avatar:'wang',text:'？？？你还真留上城了'},
+  {side:'me',avatar:'self',text:'嗯 不想折腾'},
+  {side:'other',avatar:'wang',text:'我去南州大'},
+  {side:'me',avatar:'self',text:'这么远'},
+  {side:'other',avatar:'wang',text:'所以你以后放假必须出来见我 不准失联'},
+  {side:'me',avatar:'self',text:'知道啦'},
+
+  {type:'day',text:'2020年10月7日 23:26'},
+  {side:'other',avatar:'wang',text:'大学怎么样'},
+  {side:'me',avatar:'self',text:'就那样 上课 食堂 宿舍'},
+  {side:'other',avatar:'wang',text:'你怎么把大学说得像坐牢'},
+  {side:'me',avatar:'self',text:'本来就差不多'},
+  {side:'other',avatar:'wang',text:'我参加了个社团 每周都有人拉我出去玩'},
+  {side:'me',avatar:'self',text:'挺好的'},
+  {side:'other',avatar:'wang',text:'你呢 认识新朋友没有'},
+  {side:'me',avatar:'self',text:'有几个吧'},
+  {side:'other',avatar:'wang',text:'那就好 我还怕你每天一个人闷着'},
+
+  {type:'day',text:'2021年12月31日 22:52'},
+  {side:'other',avatar:'wang',text:'今年最后一天了'},
+  {side:'me',avatar:'self',text:'嗯'},
+  {side:'other',avatar:'wang',text:'感觉我们上大学以后聊天少好多'},
+  {side:'me',avatar:'self',text:'大家都忙'},
+  {side:'other',avatar:'wang',text:'忙也可以给我发废话啊'},
+  {side:'other',avatar:'wang',text:'你以前一天能给我发八百条'},
+  {side:'me',avatar:'self',text:'哪有那么夸张'},
+  {side:'other',avatar:'wang',text:'反正别突然消失就行'},
+  {side:'me',avatar:'self',text:'知道了'},
+
+  {type:'day',text:'2023年6月28日 19:36'},
+  {side:'other',avatar:'wang',text:'毕业快乐！！！'},
+  {side:'me',avatar:'self',text:'你也是'},
+  {side:'other',avatar:'wang',text:'终于不用写论文了 我人都活了'},
+  {side:'me',avatar:'self',text:'你工作找得怎么样'},
+  {side:'other',avatar:'wang',text:'拿了一个offer 先干着看'},
+  {side:'other',avatar:'wang',text:'你呢'},
+  {side:'me',avatar:'self',text:'也找到了 在上城'},
+  {side:'other',avatar:'wang',text:'行 那以后我回来还能抓你吃饭'},
+  {side:'me',avatar:'self',text:'好'},
+
+  {type:'day',text:'2024年11月9日 00:21'},
+  {side:'other',avatar:'wang',text:'上班好累 你最近怎么样？'},
+  {side:'me',avatar:'self',text:'还行吧'},
+  {side:'other',avatar:'wang',text:'你每次说还行...我都不知道到底是行还是不行'},
+  {side:'me',avatar:'self',text:'就那样'},
+  {side:'other',avatar:'wang',text:'我最近天天想辞职'},
+  {side:'me',avatar:'self',text:'你去年也这么说'},
+  {side:'other',avatar:'wang',text:'哈哈哈哈那说明我的梦想很稳定'},
+  {side:'other',avatar:'wang',text:'你要是哪天也烦了就找我骂两句 别自己憋着'},
+
+  {type:'day',text:'2025年8月30日 22:08'},
+  {side:'other',avatar:'wang',text:'你最近怎么又不太回消息'},
+  {side:'me',avatar:'self',text:'工作有点烦'},
+  {side:'other',avatar:'wang',text:'只是工作？'},
+  {side:'me',avatar:'self',text:'嗯'},
+  {side:'other',avatar:'wang',text:'以前的事...'},
+  {side:'me',avatar:'self',text:'什么？'},
+  {side:'other',avatar:'wang',text:'没什么'},
+  {side:'other',avatar:'wang',text:'你要好好吃饭啊'},
+  {side:'other',avatar:'wang',text:'我上次看你瘦了好多'},
+  {side:'me',avatar:'self',text:'嗯'},
+  {side:'other',avatar:'wang',text:'我一直都在的'},
+
+  {type:'day',text:'2026年8月10日 20:58'},
+  {side:'other',avatar:'wang',text:'岁岁你有空吗'},
+  {side:'me',avatar:'self',text:'怎么了'},
+  {side:'other',avatar:'wang',text:'救命 我QQ那个小号今天死活登不上去'},
+  {side:'other',avatar:'wang',text:'借你号用一下行不行 就一会儿'},
+  {side:'me',avatar:'self',text:'你怎么突然要登QQ'},
+  {side:'other',avatar:'wang',text:'找以前群里的一个文件 我自己号密码想不起来了'},
+  {side:'me',avatar:'self',text:'行'},
+  {side:'other',avatar:'wang',text:'账号我有 你密码多少'},
+  {side:'me',avatar:'self',text:'我生日 八位'},
+  {side:'other',avatar:'wang',text:'？你密码这么好猜'},
+  {side:'me',avatar:'self',text:'懒得记'},
+  {side:'other',avatar:'wang',text:'行 那我登一下你的号'},
+  {side:'other',avatar:'wang',text:'用完我就退'},
+  {side:'me',avatar:'self',text:'嗯'},
+
+  {type:'day',text:'2026年8月17日 09:06'},
+  {side:'other',avatar:'wang',text:'岁岁 你醒了吗'},
+  {side:'other',avatar:'wang',text:'我听说昨天的事了'},
+  {side:'other',avatar:'wang',text:'你不用现在回我 看到就行'},
+  {side:'other',avatar:'wang',text:'我真的很担心你'},
+  {side:'other',avatar:'wang',text:'你先好好休息'},
+  {side:'other',avatar:'wang',text:'等你想说话的时候再找我 我一直都在'},
+
+  {type:'day',text:'2026年8月19日 18:42'},
+  {side:'other',avatar:'wang',text:'岁岁 今天怎么样'},
+  {side:'me',avatar:'self',text:'还行'},
+  {side:'other',avatar:'wang',text:'吃东西了吗'},
+  {side:'me',avatar:'self',text:'吃了'},
+  {side:'other',avatar:'wang',text:'晚上要是睡不着可以给我发消息'},
+  {side:'me',avatar:'self',text:'嗯'},
+
+
+
+  {type:'day',text:'2026年8月24日 21:11'},
+  {side:'other',avatar:'wang',text:'今天有出门吗'},
+  {side:'me',avatar:'self',text:'没有'},
+  {side:'other',avatar:'wang',text:'那明天要不要我陪你去楼下走走'},
+  {side:'me',avatar:'self',text:'再看吧'},
+  {side:'other',avatar:'wang',text:'行'},
+  {side:'other',avatar:'wang',text:'你什么时候想出来随时告诉我'},
+
+  {type:'day',text:'2026年9月2日 23:17'},
+  {side:'other',avatar:'wang',text:'最近有比前几天好一点吗'},
+  {side:'me',avatar:'self',text:'一点点'},
+  {side:'other',avatar:'wang',text:'一点点也算'},
+  {side:'other',avatar:'wang',text:'有事随时联系我'},
+  {side:'me',avatar:'self',text:'好'}
+ ]},
+ jiang:{title:'江旭然',messages:[
+  {type:'day',text:'2025年9月27日 09:18'},{side:'other',avatar:'jiang',text:'生日快乐啊沈岁！'},{side:'other',avatar:'jiang',text:'今天别加班了 去吃点好的'},{side:'me',avatar:'self',text:'哈哈谢谢'},{side:'other',avatar:'jiang',text:'礼物先欠着 下次见面给你'},{side:'me',avatar:'self',text:'记账了'},{type:'day',text:'4月12日 18:34'},{side:'other',avatar:'jiang',text:'你上次发我的那个店叫什么来着'},{side:'me',avatar:'self',text:'南街那家？'},{side:'other',avatar:'jiang',text:'对 就门口有只很肥的猫那个'},{side:'me',avatar:'self',text:'禾木'},{side:'other',avatar:'jiang',text:'ok 我周末去'},{type:'day',text:'星期二 18:06'},{side:'other',avatar:'jiang',text:'我去了'},{side:'me',avatar:'self',text:'怎么样'},{side:'other',avatar:'jiang',text:'味道还行'},{side:'other',avatar:'jiang',text:'但是排队排了四十分钟 我站到怀疑人生'},{side:'me',avatar:'self',text:'我就说不要周末去'},{side:'other',avatar:'jiang',text:'下次听你的'},{side:'other',avatar:'jiang',text:'你最近是不是也没怎么出门'},{side:'me',avatar:'self',text:'嗯 有点懒'},{side:'other',avatar:'jiang',text:'哪天状态好点叫我 改天一起吃饭'}]},
+ group:{title:'以前同事',group:true,messages:[
+  {type:'day',text:'星期一 11:57'},{side:'other',avatar:'chen',sender:'陈航',text:'中午有人下楼吗'},{side:'other',avatar:'xu',sender:'许妍',text:'我十二点半有会 不下了'},{side:'other',avatar:'zhao',sender:'赵谦',text:'我去 买咖啡吗'},{side:'other',avatar:'chen',sender:'陈航',text:'帮我带冰美式 不加糖'},{side:'other',avatar:'xu',sender:'许妍',text:'你不是昨天才说戒咖啡吗'},{side:'other',avatar:'chen',sender:'陈航',text:'昨天的我已经死了'},{side:'other',avatar:'zhao',sender:'赵谦',text:'[图片]'},{side:'other',avatar:'xu',sender:'许妍',text:'笑死'},{type:'day',text:'星期一 17:26'},{side:'other',avatar:'xu',sender:'许妍',text:'下周聚餐谁来？'},{side:'other',avatar:'chen',sender:'陈航',text:'我'},{side:'other',avatar:'zhao',sender:'赵谦',text:'看地点'},{side:'other',avatar:'xu',sender:'许妍',text:'还没定 先数人'}]}
+};
+
+const therapistFlow=[
+ {kind:'day',text:'今天 15:39'},
+ {kind:'doctor',text:'沈岁，下午好。我把我们上次聊的内容稍微整理了一下'},
+ {kind:'doctor',text:'评估记录的电子版也发你一份'},
+ {kind:'diagnosis'},
+ {kind:'doctor',text:'上次说起初中和高中的那几年，你的记忆比较混乱'},
+ {kind:'user',text:'嗯 记不太清了'},
+ {kind:'doctor',text:'下次见面之前，如果你愿意，可以试着翻翻以前的照片或者聊天记录'},
+ {kind:'doctor',text:'比如那几年在学校里做过哪些事情或者放假去过什么地方'},
+ {kind:'user',text:'一定要看以前的东西吗？'},
+ {kind:'doctor',text:'不用勉强，觉得不舒服就停下来。我提这个建议是想看看能不能从中找到一些线索，可能会帮助我们更好地理解你现在一些反复出现的感受'},
+ {kind:'user',text:'那我试一下'},
+ {kind:'doctor',text:'我给你做了一个简单的整理表，你可以一边看一边记'},
+ {kind:'link'},
+ {kind:'user',text:'我今天看看'},
+ {kind:'doctor',text:'好，慢慢来不着急'}
+];
+
+const win=document.getElementById('wechatWindow'),messagesEl=document.getElementById('messages'),titleEl=document.getElementById('chatTitle'),typingEl=document.getElementById('typingStatus'),unread=document.getElementById('unread'),composer=document.getElementById('composer'),replyBox=document.getElementById('replyBox'),sendBtn=document.getElementById('sendBtn');
+const STATE_KEY='shensuiTherapistStage_v5';let therapistStage=Math.max(0,Math.min(therapistFlow.length,Number(localStorage.getItem(STATE_KEY)||0))),currentChat='therapist',driving=false,waitingForPlayer=false,sessionToken=0;
+function bubbleHtml(m,group=false){
+ if(m.type==='day'||m.kind==='day')return `<div class="day">${m.text}</div>`;
+ if(m.kind==='diagnosis')return `<div class="row other"><div class="msg-avatar" style="background-image:url('${avatars.doctor}')"></div><div class="bubble-wrap"><div class="doc-card" id="diagnosisLink"><div class="doc-title">▤　门诊心理评估与诊断说明</div><div class="doc-desc">上城市澄宁精神卫生中心<br>沈岁 · 24岁 · 阶段性评估记录</div><div class="doc-footer">文档 · 点击查看</div></div></div></div>`;
+ if(m.link||m.kind==='link')return `<div class="row other"><div class="msg-avatar" style="background-image:url('${avatars.doctor}')"></div><div class="bubble-wrap"><div class="link-card" id="questionnaireLink"><div class="link-title">过去记忆整理 · 调查问卷</div><div class="link-desc">根据能够找到的旧记录，逐项确认答案。</div><div class="link-footer">网页链接 · 点击打开</div></div></div></div>`;
+ const side=m.kind==='doctor'?'other':m.kind==='user'?'me':m.side,avatar=m.kind==='doctor'?'doctor':m.kind==='user'?'self':m.avatar,name=(group&&side==='other'&&m.sender)?`<div class="sender-name">${m.sender}</div>`:'',text=(m.text||'').replace(/\n/g,'<br>');
+ return `<div class="row ${side}"><div class="msg-avatar" style="background-image:url('${avatars[avatar]}')"></div><div class="bubble-wrap">${name}<div class="bubble-msg">${text}</div></div></div>`;
+}
+function bindSpecialCards(){const q=document.getElementById('questionnaireLink');if(q)q.onclick=()=>window.open('./c3ba06847879f4fafc172e94.html','shensuiQuestionnaire');const d=document.getElementById('diagnosisLink');if(d)d.onclick=()=>document.getElementById('diagnosisModal').classList.add('show')}
+function scrollBottom(){requestAnimationFrame(()=>messagesEl.scrollTop=messagesEl.scrollHeight)}
+function appendMessage(item,animate=true){const h=document.createElement('div');h.innerHTML=bubbleHtml(item);const n=h.firstElementChild;if(animate)n.classList.add('appear');messagesEl.appendChild(n);bindSpecialCards();scrollBottom()}
+function saveStage(){localStorage.setItem(STATE_KEY,String(therapistStage))}
+function renderTherapistHistory(){messagesEl.innerHTML='';for(let i=0;i<therapistStage;i++)appendMessage(therapistFlow[i],false);bindSpecialCards();scrollBottom()}
+function setComposerWaiting(text){waitingForPlayer=true;composer.classList.add('waiting');composer.classList.remove('locked');replyBox.value='';replyBox.placeholder='点击这里回复';replyBox.dataset.reply=text;sendBtn.classList.add('ready')}
+function setComposerLocked(){waitingForPlayer=false;composer.classList.remove('waiting');composer.classList.add('locked');replyBox.value='';replyBox.placeholder='';replyBox.dataset.reply='';sendBtn.classList.remove('ready')}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function typeAndSendPlayerReply(){if(currentChat!=='therapist'||!waitingForPlayer||driving)return;const action=therapistFlow[therapistStage];if(!action||action.kind!=='user')return;waitingForPlayer=false;composer.classList.remove('waiting');composer.classList.add('locked');sendBtn.classList.remove('ready');replyBox.placeholder='';replyBox.value='';const token=sessionToken;for(let i=0;i<action.text.length;i++){if(token!==sessionToken||currentChat!=='therapist')return;replyBox.value+=action.text[i];await sleep(action.text[i]==='\n'?100:38+Math.random()*25)}await sleep(330);if(token!==sessionToken||currentChat!=='therapist')return;appendMessage(action,true);replyBox.value='';therapistStage++;saveStage();await sleep(350);driveTherapist()}
+async function driveTherapist(){if(driving||currentChat!=='therapist')return;driving=true;const token=sessionToken;while(therapistStage<therapistFlow.length&&currentChat==='therapist'&&token===sessionToken){const action=therapistFlow[therapistStage];if(action.kind==='user'){setComposerWaiting(action.text);driving=false;return}setComposerLocked();if(action.kind==='day'){appendMessage(action,false);therapistStage++;saveStage();continue}if(['doctor','link','diagnosis'].includes(action.kind)){typingEl.classList.add('show');const wait=action.kind==='doctor'?Math.min(2600,850+action.text.length*16):850;await sleep(wait);if(token!==sessionToken||currentChat!=='therapist'){typingEl.classList.remove('show');driving=false;return}typingEl.classList.remove('show');await sleep(220);appendMessage(action,true);therapistStage++;saveStage();await sleep(420);continue}}setComposerLocked();driving=false}
+function renderStaticConversation(key){const c=staticConversations[key];titleEl.textContent=c.title;messagesEl.innerHTML=c.messages.map(m=>bubbleHtml(m,!!c.group)).join('');setComposerLocked();scrollBottom()}
+function selectContact(key){sessionToken++;driving=false;typingEl.classList.remove('show');currentChat=key;document.querySelectorAll('.chat-item').forEach(x=>x.classList.toggle('active',x.dataset.chat===key));if(key==='therapist'){titleEl.textContent='周医生';unread.style.display='none';renderTherapistHistory();driveTherapist()}else renderStaticConversation(key)}
+function showMode(mode){document.querySelectorAll('.rail-icon[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode===mode));document.querySelectorAll('.wx-mode').forEach(x=>x.classList.remove('show'));const el=document.getElementById('mode-'+mode);if(el)el.classList.add('show');if(mode==='chat')selectContact(currentChat)}
+document.querySelectorAll('.rail-icon[data-mode]').forEach(x=>x.onclick=()=>showMode(x.dataset.mode));document.querySelectorAll('.chat-item').forEach(x=>x.onclick=()=>selectContact(x.dataset.chat));document.querySelectorAll('[data-gochat]').forEach(x=>x.onclick=()=>{showMode('chat');selectContact(x.dataset.gochat)});
+replyBox.onclick=()=>{if(currentChat==='therapist'&&waitingForPlayer)typeAndSendPlayerReply()};replyBox.onfocus=replyBox.onclick;sendBtn.onclick=replyBox.onclick;
+
+// Moments
+const moments=[
+ {name:'林嘉',avatar:'lin',text:'今天终于没加班。下班路上买到了最近一直想吃的栗子蛋糕。\n本来只想买一块，最后还是买了两块。',time:'2小时前',photos:['./images/moments/linjia_01.jpg','./images/moments/linjia_02.jpg'],likes:['许妍','江旭然'],comments:[['许妍','你不是昨天才说减糖吗'],['林嘉','许妍','明天再减']]},
+ {name:'许妍',avatar:'xu',text:'下雨天 + 空调 + 不想出门。',time:'昨天 22:16',photos:['./images/moments/xuyan_01.jpg'],likes:['林嘉'],comments:[['陈航','你明天还得上班'],['许妍','陈航','不要提醒我']]},
+ {name:'江旭然',avatar:'jiang',text:'今年第一次认真做饭。卖相一般，味道居然还行。',time:'昨天 19:42',photos:['./images/moments/jiangxuran_01.jpg','./images/moments/jiangxuran_02.jpg','./images/moments/jiangxuran_03.jpg'],likes:['许妍','赵谦'],comments:[['许妍','你居然会做饭？'],['江旭然','许妍','尊重一下厨房新星']]},
+ {name:'陈航',avatar:'chen',text:'周末有人去看电影吗？想看九点那场。',time:'3天前',photos:['./images/moments/chenhang_01.jpg'],likes:['赵谦'],comments:[['赵谦','九点也太晚了'],['陈航','赵谦','看完刚好吃夜宵']]},
+ {name:'汪怡菲',avatar:'wang',text:'“就打一把”是世界上最大的谎言。',time:'5天前',photos:[],likes:[],comments:[]},
+ {name:'王思齐',avatar:'dummy1',text:'出差回来，还是觉得上城晚上最舒服。',time:'6天前',photos:['./images/moments/wangsiqi_01.jpg','./images/moments/wangsiqi_02.jpg'],likes:['林嘉'],comments:[]}
+];
+function renderMoments(){const box=document.getElementById('momentsFeed');box.innerHTML=moments.map((m,i)=>`<div class="moment" data-i="${i}"><div class="moment-avatar" style="background-image:url('${avatars[m.avatar]}')"></div><div class="moment-main"><div class="moment-name">${m.name}</div><div class="moment-text">${m.text}</div>${m.photos.length?`<div class="moment-photos">${m.photos.map(p=>`<div class="moment-photo" style="background-image:url('${p}')"></div>`).join('')}</div>`:''}<div class="moment-meta"><span>${m.time}</span><div class="moment-menu-wrap"><button class="moment-more" onclick="toggleMomentMenu(${i})">••</button><div class="moment-menu" id="mm${i}"><button onclick="likeMoment(${i})">♡ 赞</button><button onclick="commentMoment(${i})">⌨ 评论</button></div></div></div><div class="social-box" id="social${i}">${m.likes.length?`<div class="likes">♡ ${m.likes.join('，')}</div>`:''}<div class="comments" id="comments${i}">${m.comments.map(c=>c.length>=3?`<div class="comment-line"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`:`<div class="comment-line"><b>${c[0]}：</b>${c[1]}</div>`).join('')}</div></div><div class="comment-input" id="ci${i}"><input placeholder="评论" onkeydown="if(event.key==='Enter')submitComment(${i})"><button onclick="submitComment(${i})">发送</button></div></div></div>`).join('')}
+window.toggleMomentMenu=i=>document.getElementById('mm'+i).classList.toggle('show');
+window.likeMoment=i=>{const m=moments[i];const me='沈岁',idx=m.likes.indexOf(me);idx>=0?m.likes.splice(idx,1):m.likes.push(me);renderMoments()};
+window.commentMoment=i=>{document.getElementById('mm'+i).classList.remove('show');const ci=document.getElementById('ci'+i);ci.classList.add('show');ci.querySelector('input').focus()};
+window.submitComment=i=>{const ci=document.getElementById('ci'+i),inp=ci.querySelector('input'),v=inp.value.trim();if(!v)return;moments[i].comments.push(['沈岁',v]);renderMoments()};renderMoments();
+
+// Official article
+document.getElementById('huiyanArticleEntry').onclick=()=>showMode('article');document.getElementById('articleBack').onclick=()=>showMode('official');document.getElementById('articleClose').onclick=()=>showMode('official');
+
+// App windows
+function openWindow(id){document.getElementById(id).classList.add('show')}
+function closeWindow(id){document.getElementById(id).classList.remove('show')}
+document.getElementById('wechatIcon').ondblclick=()=>{openWindow('wechatWindow');showMode('chat')};document.getElementById('wechatClose').onclick=()=>closeWindow('wechatWindow');
+document.getElementById('memoIcon').ondblclick=()=>openWindow('memoWindow');document.getElementById('memoClose').onclick=()=>closeWindow('memoWindow');
+document.getElementById('qqIcon').ondblclick=()=>openWindow('qqWindow');document.getElementById('qqClose').onclick=()=>closeWindow('qqWindow');
+document.getElementById('browserIcon').ondblclick=()=>openWindow('browserWindow');document.getElementById('browserClose').onclick=()=>closeWindow('browserWindow');
+document.getElementById('reportClose').onclick=()=>document.getElementById('diagnosisModal').classList.remove('show');document.getElementById('diagnosisModal').onclick=e=>{if(e.target.id==='diagnosisModal')e.currentTarget.classList.remove('show')};
+
+// QQ login
+const QQ_ACCOUNT='260918890445',QQ_PASSWORD='20010927';
+document.getElementById('qqLoginBtn').onclick=()=>{const a=document.getElementById('qqAccount').value.trim(),p=document.getElementById('qqPassword').value.trim(),err=document.getElementById('qqError');if(a===QQ_ACCOUNT&&p===QQ_PASSWORD){err.textContent='';document.getElementById('qqLogin').style.display='none';document.getElementById('qqMain').classList.add('show');localStorage.setItem('shensuiQQLogged','1')}else err.textContent='账号或密码错误'};
+document.getElementById('qqPassword').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('qqLoginBtn').click()});if(localStorage.getItem('shensuiQQLogged')==='1'){document.getElementById('qqLogin').style.display='none';document.getElementById('qqMain').classList.add('show')}
+
+// QQ空间：作为独立页面打开
+const qqSpaceBtn=document.getElementById('qqSpaceBtn');
+if(qqSpaceBtn){
+  qqSpaceBtn.onclick=()=>window.open('./2f2f0e0b7d0d0267e0ebf815.html','_blank');
+}
+
+// Browser
+document.getElementById('baiduForm').onsubmit=e=>{
+  e.preventDefault();
+  const q=document.getElementById('baiduQuery').value.trim();
+  if(q==='惠言中学侠客三人组'||q==='惠言中学侠客三人组吧'){
+    window.open('./220f06a86858980a4a27d46c.html','_blank','noopener');
+    return;
+  }
+  if(q==='东南航空'){
+    window.open('./bf23ad35be792ff4d27a8ca6.html','_blank','noopener');
+    return;
+  }
+  window.open(q?`https://www.baidu.com/s?wd=${encodeURIComponent(q)}`:'https://www.baidu.com','_blank');
+};
+
+function updateClock(){const now=new Date();document.getElementById('time').textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')}updateClock();setInterval(updateClock,30000);
+selectContact('therapist');
+</script>
+</body>
+</html>

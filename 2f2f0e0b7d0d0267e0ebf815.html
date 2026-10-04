@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>沈岁的QQ空间</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;color:#d6d6d6;background:#111}
+body{background:linear-gradient(#161616,#101010 390px,#151515 390px)}
+a{color:inherit}
+.topbar{height:46px;background:#171717eF;border-bottom:1px solid #292929;display:flex;align-items:center;padding:0 28px;position:sticky;top:0;z-index:20}
+.logo{font-size:19px;font-weight:700;color:#f0f0f0;margin-right:34px}.logo span{font-weight:400;color:#888;font-size:13px;margin-left:7px}
+.topnav{display:flex;height:100%}.topnav div{padding:0 16px;display:flex;align-items:center;color:#aaa;font-size:13px}.topnav .active{background:#242424;color:#fff}
+.search{margin-left:auto;width:210px;height:28px;border:1px solid #383838;background:#202020;border-radius:3px;padding:0 10px;color:#aaa}
+.cover{height:290px;position:relative;border-bottom:1px solid #2a2a2a;background:
+radial-gradient(circle at 72% 22%,#393939 0,transparent 24%),
+linear-gradient(135deg,#292929,#171717 55%,#0e0e0e);overflow:hidden}
+.cover:before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 25%,#000b)}
+.profile{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:1000px;max-width:calc(100% - 40px);display:flex;align-items:flex-end}
+.avatar{width:92px;height:92px;border-radius:5px;border:3px solid #ddd;background:url('./images/avatars/shensui.jpg') center/cover,#333;box-shadow:0 3px 18px #0009}
+.identity{margin-left:18px;padding-bottom:7px}.name{font-size:25px;color:#fff;font-weight:600}.signature{font-size:12px;color:#aaa;margin-top:8px}
+.visit{margin-left:auto;text-align:right;padding-bottom:8px;color:#999;font-size:12px}.visit b{font-size:21px;color:#ddd;font-weight:400}
+.nav{height:51px;background:#1c1c1c;border-bottom:1px solid #2b2b2b;display:flex;justify-content:center}
+.nav button{border:0;background:none;color:#aaa;padding:0 23px;cursor:pointer;font-size:14px;border-bottom:2px solid transparent}
+.nav button:hover{color:#eee}.nav button.active{color:#fff;border-bottom-color:#aaa}
+.page{width:1000px;max-width:calc(100% - 40px);margin:22px auto 70px}
+.panel{background:#1b1b1b;border:1px solid #2a2a2a;border-radius:3px;min-height:380px}
+.panel-head{height:52px;border-bottom:1px solid #292929;display:flex;align-items:center;padding:0 20px;color:#ddd;font-size:15px}
+.panel-head small{color:#777;margin-left:9px}
+.content{display:none}.content.active{display:block}
+.empty{height:320px;display:grid;place-items:center;text-align:center;color:#666}.empty-icon{font-size:38px;color:#444;margin-bottom:12px}.empty strong{display:block;color:#888;font-size:14px;font-weight:400;margin-bottom:7px}.empty p{margin:0;font-size:12px;line-height:1.8}
+.disabled-note{margin:34px auto;width:420px;max-width:80%;padding:26px;text-align:center;border:1px dashed #353535;color:#666;background:#181818}.lock{font-size:26px;margin-bottom:10px;color:#555}
+.log-list{padding:0 20px}.log{padding:20px 4px;border-bottom:1px solid #292929}.log:last-child{border-bottom:0}.log-title{font-size:16px;color:#d8d8d8;margin-bottom:8px}.log-title.clickable{cursor:pointer}.log-title.clickable:hover{text-decoration:underline;color:#fff}.meta{font-size:11px;color:#666;margin-bottom:10px}.excerpt{font-size:13px;line-height:1.8;color:#8b8b8b}.repost{display:inline-block;margin-top:9px;font-size:11px;color:#666}
+.article{display:none;padding:30px 42px 55px;max-width:760px;margin:auto}.article.show{display:block}.article h1{font-size:25px;color:#e5e5e5;font-weight:500;margin:3px 0 10px}.article .article-meta{font-size:11px;color:#666;border-bottom:1px solid #2b2b2b;padding-bottom:18px;margin-bottom:25px}.article p{font-size:14px;line-height:2.05;color:#aaa;margin:16px 0}.article h3{font-size:16px;color:#ccc;margin-top:28px}.notice{background:#161616;border-left:3px solid #555;padding:14px 17px;color:#888;font-size:13px;line-height:1.9;margin:20px 0}
+.machine-link{display:block;margin-top:30px;padding:16px 18px;border:1px solid #3a3a3a;background:#222;text-decoration:none;color:#ddd;transition:.15s}.machine-link:hover{background:#292929;border-color:#555}.machine-link small{display:block;color:#777;margin-top:6px}
+.back{display:inline-block;color:#888;font-size:12px;cursor:pointer;margin-bottom:18px}.back:hover{color:#ddd}
+.footer{text-align:center;color:#4f4f4f;font-size:11px;padding:0 0 35px}
+@media(max-width:700px){.topnav{display:none}.profile{left:20px;transform:none}.visit{display:none}.nav{overflow-x:auto;justify-content:flex-start}.nav button{padding:0 16px}.article{padding:25px 22px}.avatar{width:72px;height:72px}.name{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">QQ空间 <span>Qzone</span></div>
+  <div class="topnav"><div>个人中心</div><div class="active">我的主页</div><div>好友</div><div>应用</div></div>
+  <input class="search" placeholder="搜索">
+</div>
+<section class="cover">
+  <div class="profile">
+    <div class="avatar"></div>
+    <div class="identity"><div class="name">沈岁</div><div class="signature">有些东西删掉就好了。</div></div>
+    <div class="visit">今日访问 <b>0</b><br>总访问量 1287</div>
+  </div>
+</section>
+<nav class="nav">
+  <button data-tab="home" class="active">主页</button>
+  <button data-tab="logs">日志</button>
+  <button data-tab="albums">相册</button>
+  <button data-tab="board">留言板</button>
+  <button data-tab="posts">说说</button>
+  <button data-tab="profile">个人档</button>
+  <button data-tab="more">更多</button>
+</nav>
+
+<main class="page">
+  <section class="content active" id="home">
+    <div class="panel"><div class="panel-head">主页</div><div class="empty"><div><div class="empty-icon">○</div><strong>这里什么也没有</strong><p>主人最近没有公开动态。</p></div></div></div>
+  </section>
+
+  <section class="content" id="posts">
+    <div class="panel"><div class="panel-head">说说 <small>0</small></div><div class="empty"><div><div class="empty-icon">—</div><strong>暂无说说</strong><p>所有历史说说均已清空。</p></div></div></div>
+  </section>
+
+  <section class="content" id="albums">
+    <div class="panel"><div class="panel-head">相册 <small>0</small></div><div class="empty"><div><div class="empty-icon">□</div><strong>暂无公开相册</strong><p>没有可以查看的照片。</p></div></div></div>
+  </section>
+
+  <section class="content" id="board">
+    <div class="panel"><div class="panel-head">留言板</div><div class="disabled-note"><div class="lock">⌁</div><div>该功能暂不可访问</div><p style="font-size:12px;color:#555;line-height:1.8">主人已关闭留言板展示。</p></div></div>
+  </section>
+
+  <section class="content" id="logs">
+    <div class="panel" id="logPanel">
+      <div id="logIndex">
+        <div class="panel-head">日志 <small>3篇</small></div>
+        <div class="log-list">
+          <article class="log">
+            <div class="log-title clickable" id="timeMachineLog">QQ空间时光机</div>
+            <div class="meta">转载于 2016-03-18　·　分类：默认分类</div>
+            <div class="excerpt">还记得你第一次进入QQ空间是什么时候吗？时光机可以帮助你重新寻找那些已经被遗忘的年份……</div>
+            <span class="repost">转载</span>
+          </article>
+          <article class="log">
+            <div class="log-title">关于旧照片备份的一些方法</div>
+            <div class="meta">转载于 2015-08-04　·　分类：默认分类</div>
+            <div class="excerpt">相册内容较多时，可以先按年份整理，再进行本地备份。本文内容来自旧版空间使用技巧整理。</div>
+            <span class="repost">转载</span>
+          </article>
+          <article class="log">
+            <div class="log-title">十年前你在听什么歌？</div>
+            <div class="meta">转载于 2014-12-29　·　分类：默认分类</div>
+            <div class="excerpt">一些歌只要前奏响起来，就会想起当时用过的头像、写过的签名和认识的人。</div>
+            <span class="repost">转载</span>
+          </article>
+        </div>
+      </div>
+
+      <article class="article" id="machineArticle">
+        <span class="back" id="backLogs">‹ 返回日志列表</span>
+        <h1>QQ空间时光机</h1>
+        <div class="article-meta">转载于 2016-03-18　　来源：藤寻空间产品日志</div>
+        <p>有些年份已经很久没有被打开过了。换过的头像、删掉的说说、曾经写下的日志，也许早就从现在的主页上消失。</p>
+        <p><b style="color:#ccc">QQ空间时光机</b>是藤寻公司于2011年上线的一项历史空间寻访功能。它按照年份保存用户在QQ空间中留下的部分历史页面状态，让用户可以从现在的空间返回过去某一个年份，重新浏览当时的个人主页。</p>
+        <h3>清空过空间，也还能回去吗？</h3>
+        <p>可以。时光机访问的是按年份留存的历史空间记录，因此，即使用户后来清空了当前QQ空间中的说说、日志或其他公开内容，仍有机会通过时光机访问对应年份曾经留存的页面。</p>
+        <div class="notice">为保护旧空间内容，历史年份不会直接开放。首次进入某个年份时，需要输入该年份曾经设置的<strong>独立访问密码</strong>。密码与当前QQ登录密码无关。</div>
+        <h3>如何使用</h3>
+        <p>进入时光机后选择年份。系统会显示该年份是否存在可寻访记录；若存在记录，输入对应年份的独立密码即可进入。不同年份可以使用不同密码。</p>
+        <p>部分被用户主动隐藏、删除或设置为私密的内容，可能以当年页面状态呈现。实际可恢复内容以时光机记录为准。</p>
+        <a class="machine-link" href="./6cae67047b6583e69c392167.html">
+          进入 QQ空间时光机　›
+          <small>选择年份，寻访过去的空间记录</small>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="content" id="profile">
+    <div class="panel"><div class="panel-head">个人档</div><div class="empty"><div><strong>沈岁</strong><p>QQ：260918890445<br>资料仅自己可见</p></div></div></div>
+  </section>
+  <section class="content" id="more">
+    <div class="panel"><div class="panel-head">更多</div><div class="empty"><div><p>没有更多公开内容。</p></div></div></div>
+  </section>
+</main>
+<div class="footer">QQ空间 · 2026　｜　游戏内虚构页面</div>
+<script>
+const buttons=[...document.querySelectorAll('.nav button')];
+const contents=[...document.querySelectorAll('.content')];
+function openTab(id){
+  buttons.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
+  contents.forEach(c=>c.classList.toggle('active',c.id===id));
+  if(id==='logs'){document.getElementById('logIndex').style.display='block';document.getElementById('machineArticle').classList.remove('show')}
+}
+buttons.forEach(b=>b.onclick=()=>openTab(b.dataset.tab));
+document.getElementById('timeMachineLog').onclick=()=>{
+  document.getElementById('logIndex').style.display='none';
+  document.getElementById('machineArticle').classList.add('show');
+  window.scrollTo({top:330,behavior:'smooth'});
+};
+document.getElementById('backLogs').onclick=()=>{
+  document.getElementById('machineArticle').classList.remove('show');
+  document.getElementById('logIndex').style.display='block';
+};
+</script>
+</body>
+</html>

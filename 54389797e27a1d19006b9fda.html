@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crystal的空间 - 2015</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+button,input{font:inherit}
+body{color:#15596a;background:#8ee6ed}
+#space2015{
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+  background:
+    linear-gradient(rgba(182,255,255,.13),rgba(128,244,212,.18)),
+    url('./images/qzone2015/theme_bg.jpg') top center/cover fixed no-repeat,
+    linear-gradient(180deg,#60d8ee 0%,#b9fff2 45%,#7bd6b3 100%);
+}
+#space2015:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 8% 18%,rgba(255,255,255,.80) 0 10px,rgba(255,255,255,.22) 11px 18px,transparent 19px),
+    radial-gradient(circle at 92% 24%,rgba(255,255,255,.72) 0 15px,rgba(255,255,255,.18) 16px 26px,transparent 27px),
+    radial-gradient(circle at 14% 72%,rgba(255,255,255,.55) 0 7px,rgba(255,255,255,.12) 8px 14px,transparent 15px),
+    radial-gradient(circle at 87% 79%,rgba(255,255,255,.55) 0 12px,rgba(255,255,255,.12) 13px 22px,transparent 23px);
+}
+.qtop{
+  height:38px;background:rgba(17,91,120,.82);color:#ecffff;display:flex;align-items:center;
+  padding:0 max(18px,calc((100% - 1040px)/2));font-size:12px;position:relative;z-index:10;
+  border-bottom:1px solid rgba(255,255,255,.45);box-shadow:0 1px 7px rgba(0,72,95,.22)
+}
+.qtop b{color:#fff3a4;margin-right:22px}.qtop span{margin-right:20px}.qtop .right{margin-left:auto;color:#d8fbff}
+.cover{
+  width:1040px;max-width:96vw;height:285px;margin:auto;position:relative;z-index:1;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.08),rgba(64,223,235,.18)),
+    url('./images/qzone2015/header.jpg') center/cover no-repeat,
+    linear-gradient(140deg,#54d8ed 0%,#bdfdfa 45%,#75e2bb 100%);
+  border-left:1px solid rgba(255,255,255,.5);border-right:1px solid rgba(255,255,255,.5);
+  box-shadow:0 8px 26px rgba(18,107,122,.22)
+}
+.cover:before,.cover:after{
+  content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.72);
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.95),rgba(255,255,255,.18) 30%,rgba(31,206,223,.12) 68%,rgba(255,255,255,.4));
+  box-shadow:inset -8px -10px 18px rgba(10,146,175,.15),inset 5px 5px 14px rgba(255,255,255,.72),0 5px 13px rgba(12,105,128,.16)
+}
+.cover:before{width:78px;height:78px;right:75px;top:50px}
+.cover:after{width:40px;height:40px;right:164px;top:29px}
+.profile{
+  position:absolute;left:30px;bottom:25px;z-index:2;display:flex;align-items:flex-end;gap:16px;
+  color:#fff;text-shadow:0 1px 4px rgba(0,80,105,.65)
+}
+.avatar{
+  width:96px;height:96px;
+  background:#eaffff url('./images/qzone2015/avatar.jpg') center/cover no-repeat;
+  border:4px solid rgba(255,255,255,.92);border-radius:7px;
+  box-shadow:0 6px 18px rgba(0,101,122,.25),inset 0 0 12px rgba(255,255,255,.55)
+}
+.profile h1{font-size:27px;font-weight:normal;margin:0 0 6px;letter-spacing:.3px}
+.profile p{font-size:12px;margin:0;color:#efffff}
+.cover-stats{position:absolute;right:28px;bottom:27px;z-index:2;display:flex;gap:24px;color:#fff;text-align:center;text-shadow:0 1px 4px #167d8a}
+.cover-stats b{display:block;font-size:18px}.cover-stats span{font-size:11px}
+.space-nav{
+  width:1040px;max-width:96vw;margin:auto;height:47px;position:relative;z-index:3;
+  display:flex;align-items:stretch;
+  background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(213,255,252,.72));
+  border:1px solid rgba(255,255,255,.92);
+  border-top:0;
+  box-shadow:0 4px 16px rgba(18,125,139,.20),inset 0 1px 0 #fff
+}
+.space-nav button{
+  border:0;border-right:1px solid rgba(89,204,211,.34);background:transparent;padding:0 22px;color:#24758a;cursor:pointer
+}
+.space-nav button.active,.space-nav button:hover{
+  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(100,233,224,.47));color:#08728b;text-shadow:0 1px #fff
+}
+.layout{width:1040px;max-width:96vw;margin:13px auto 55px;display:grid;grid-template-columns:190px 1fr 190px;gap:12px;position:relative;z-index:1}
+.box{
+  background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(220,255,250,.63));
+  border:1px solid rgba(255,255,255,.92);margin-bottom:12px;border-radius:10px;
+  box-shadow:0 7px 20px rgba(16,115,129,.15),inset 0 1px 0 rgba(255,255,255,.95);
+  backdrop-filter:blur(7px);overflow:hidden
+}
+.box-title{
+  height:37px;display:flex;align-items:center;padding:0 12px;
+  background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(120,232,230,.32));
+  border-bottom:1px solid rgba(66,185,199,.25);color:#13738b;font-size:13px;font-weight:bold
+}
+.box-body{padding:13px;font-size:12px;line-height:1.8}
+.profile-name{text-align:center;color:#16758a;font-weight:bold;margin:9px 0}.mini{color:#6899a3;font-size:11px}
+.quote{color:#357884;line-height:1.9}.qtab{display:none}.qtab.active{display:block}
+
+/* 说说 */
+.feed{padding:16px}.post{padding:4px 0 20px;margin-bottom:15px;border-bottom:1px dashed rgba(48,158,177,.34)}.post:last-child{border-bottom:0}
+.post-head{display:flex;gap:10px}.post-avatar{width:43px;height:43px;background:#eaffff url('./images/qzone2015/avatar.jpg') center/cover;border-radius:6px;border:1px solid rgba(80,186,201,.32);box-shadow:0 2px 7px rgba(0,104,128,.12)}
+.post-main{flex:1}.post-name{color:#0b7188;font-weight:bold}.post-text{margin:7px 0;color:#285f69;font-size:13px;line-height:1.82;white-space:normal}
+.post-img{width:286px;height:176px;background:#daf7f5 center/cover no-repeat;border:5px solid rgba(255,255,255,.9);box-shadow:0 0 0 1px rgba(84,182,195,.32),0 4px 12px rgba(0,91,111,.12);margin:9px 0;border-radius:5px}
+.post-time{font-size:11px;color:#72a3ab}.actions{font-size:11px;color:#25798d;margin-top:8px}.actions span{margin-right:15px;cursor:pointer}
+.social{background:rgba(234,255,252,.7);border:1px solid rgba(91,190,199,.23);border-radius:5px;margin-top:9px;padding:8px 10px;font-size:11px;line-height:1.9}
+.likes{color:#1a7a90}.reposts{color:#638f9a}.comment b{color:#13758a}
+
+/* 相册 */
+.album-grid{padding:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.album-card{background:rgba(255,255,255,.74);border:1px solid rgba(68,177,192,.30);padding:8px;cursor:pointer;border-radius:9px;box-shadow:0 5px 13px rgba(11,106,125,.11)}
+.album-card:hover{transform:translateY(-1px)}.album-cover{height:158px;background:#d8f7f4 center/cover no-repeat;border:1px solid rgba(95,187,197,.28);border-radius:5px}
+.album-name{margin-top:8px;color:#0f7489;font-size:13px}.album-count{font-size:11px;color:#77a3aa;margin-top:3px}
+.album-view{display:none;padding:18px}.back{color:#14768b;cursor:pointer;font-size:12px;margin-bottom:15px;display:inline-block}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.photo{aspect-ratio:4/3;background:#daf7f5 center/cover no-repeat;border:5px solid #fff;box-shadow:0 0 0 1px rgba(68,174,189,.30);border-radius:4px;cursor:pointer}
+.album-comments{margin-top:20px;border-top:1px dashed rgba(48,158,177,.34);padding-top:12px}.album-comment{font-size:12px;line-height:1.9}.album-comment b{color:#0e7488}
+.lock-panel{padding:50px 20px;text-align:center}.lock-panel h3{font-size:17px;color:#126f83}
+.lock-panel input{height:35px;border:1px solid #77bcc6;padding:0 10px;outline:none;background:rgba(255,255,255,.85)}
+.lock-panel button{height:35px;border:0;background:linear-gradient(#35bfd0,#198fa5);color:#fff;padding:0 18px}
+.lock-hint{font-size:12px;color:#729ca4;margin:8px}.err{height:22px;padding-top:7px;font-size:12px;color:#c05e68}
+
+/* 日志 */
+.logs{padding:18px}.log{padding:14px 3px;border-bottom:1px dashed rgba(48,158,177,.34)}.log.clickable{cursor:pointer}.log.clickable:hover h3{text-decoration:underline}
+.log h3{font-size:14px;color:#0f7488;margin:0 0 7px}.log p{font-size:12px;color:#608d95;line-height:1.8;margin:0}.log-meta{font-size:11px;color:#86a8ad;margin-top:7px}
+.article{display:none;padding:22px}.article.show{display:block}.article h1{font-size:21px;color:#126d80;font-weight:normal;margin:5px 0 6px}
+.article-meta{font-size:11px;color:#87a4a9;border-bottom:1px dashed rgba(48,158,177,.34);padding-bottom:12px}.article p{font-size:13px;line-height:2;color:#456f77}
+.flower-list{margin:18px 0;border:1px solid rgba(63,176,189,.26);border-radius:7px;overflow:hidden}
+.flower-row{display:grid;grid-template-columns:120px 1fr;background:rgba(245,255,253,.68);border-bottom:1px solid rgba(63,176,189,.18)}
+.flower-row:last-child{border-bottom:0}.flower-row b,.flower-row span{padding:11px 13px;font-size:12px}.flower-row b{color:#15758a;background:rgba(153,240,230,.18)}
+.article-comments{margin-top:20px;background:rgba(236,255,252,.72);border:1px solid rgba(72,179,192,.24);padding:11px}
+.article-comment{font-size:12px;line-height:1.9}.article-comment b{color:#107388}
+
+/* 留言板 */
+.board-list{padding:5px 17px 18px}.board-item{padding:14px 0;border-bottom:1px dashed rgba(48,158,177,.34)}
+.board-name{font-size:13px;color:#0b7188;font-weight:bold}.board-text{font-size:13px;color:#426d75;line-height:1.8;margin:5px 0}.board-time{font-size:11px;color:#89a9ae}
+.board-reply{margin-top:8px;background:rgba(236,255,252,.72);padding:8px 10px;font-size:12px;line-height:1.85;border-radius:5px}.board-reply b{color:#0e7488}
+
+/* lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(2,37,48,.82);z-index:200;align-items:center;justify-content:center;padding:30px}
+.lightbox.show{display:flex}.lightbox img{max-width:92vw;max-height:88vh;box-shadow:0 12px 45px #001b22;border:5px solid rgba(255,255,255,.9);border-radius:5px}
+.lightbox .close{position:absolute;right:30px;top:22px;color:white;font-size:32px;cursor:pointer}
+
+.visitor{display:flex;align-items:center;gap:8px;padding:5px 0}.vava{width:26px;height:26px;border-radius:6px;background:linear-gradient(145deg,#bafff6,#56cad7);border:1px solid rgba(255,255,255,.8)}
+.aero{text-align:center;font-size:18px;line-height:2.2;color:#16778a}
+@media(max-width:830px){.layout{grid-template-columns:1fr}.leftcol,.rightcol{display:none}.photo-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<section id="space2015">
+  <div class="qtop"><b>QQ空间</b><span>个人中心</span><span>我的主页</span><span>好友动态</span><span>应用</span><div class="right">装扮　设置　退出</div></div>
+
+  <header class="cover">
+    <div class="profile">
+      <div class="avatar"></div>
+      <div><h1>Crystal的空间</h1><p>愿每天都有一点闪闪发亮的东西。</p></div>
+    </div>
+    <div class="cover-stats"><div><b>146</b><span>说说</span></div><div><b>21</b><span>日志</span></div><div><b>12</b><span>相册</span></div></div>
+  </header>
+
+  <nav class="space-nav">
+    <button class="active" data-tab="home">主页</button>
+    <button data-tab="feedtab">说说</button>
+    <button data-tab="logs">日志</button>
+    <button data-tab="albums">相册</button>
+    <button data-tab="board">留言板</button>
+    <button>音乐</button><button>更多⌄</button>
+  </nav>
+
+  <div class="layout">
+    <aside class="leftcol">
+      <div class="box"><div class="box-title">个人资料</div><div class="box-body">
+        <div class="profile-name">Crystal</div>
+        <div class="mini">初二 · 惠言中学</div>
+        <div style="margin-top:9px">生日：9月27日<br>星座：天秤座<br>所在地：上城市</div>
+      </div></div>
+      <div class="box"><div class="box-title">Crystal's memo</div><div class="box-body quote">“未来一定会比现在更酷吧。”<br><span class="mini">2015 / keep shining ✧</span></div></div>
+    </aside>
+
+    <main>
+      <section class="qtab active" id="home">
+        <div class="box">
+          <div class="box-title">Crystal</div>
+          <div class="box-body">
+            <div style="font-size:14px;color:#16778a;margin-bottom:9px">Welcome to Crystal World ✧</div>
+            最近：听歌 / 拍照 / 喝奶茶 / 养猫 / 发呆。<br>
+            <span class="mini">未来感装扮持续施工中……不接受审美质疑 ˊ_>ˋ</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box-title">最近更新</div>
+          <div class="box-body" style="line-height:2.05">
+            ◌ 新说说：今年最后一天！！2016请对我好一点<br>
+            ◌ 新相册：校长美照<br>
+            ◌ 新日志：最近循环的歌♪<br>
+            ◌ 留言板：TvT、W. 最近来过
+          </div>
+        </div>
+      </section>
+
+      <section class="qtab" id="feedtab">
+        <div class="box"><div class="box-title">全部说说</div><div class="feed" id="feed"></div></div>
+      </section>
+
+      <section class="qtab" id="albums">
+        <div class="box"><div class="box-title">相册</div>
+          <div class="album-grid" id="albumIndex">
+            <div class="album-card" data-album="selfie"><div class="album-cover" style="background-image:url('./images/qzone2015/albums/selfie_01.jpg')"></div><div class="album-name">🔒 自拍</div><div class="album-count">2 张</div></div>
+            <div class="album-card" data-album="food"><div class="album-cover" style="background-image:url('./images/qzone2015/albums/food_01.jpg')"></div><div class="album-name">美食分享</div><div class="album-count">2 张</div></div>
+            <div class="album-card" data-album="cat"><div class="album-cover" style="background-image:url('./images/qzone2015/albums/cat_01.jpg')"></div><div class="album-name">校长美照</div><div class="album-count">2 张</div></div>
+          </div>
+          <div class="album-view" id="albumView"></div>
+        </div>
+      </section>
+
+      <section class="qtab" id="logs">
+        <div class="box"><div class="box-title">日志</div>
+          <div class="logs" id="logIndex">
+            <div class="log clickable" id="flowerLog"><h3>各种花的花语你知道多少？❀</h3><p>今天随手搜了一堆花语，感觉有些也太浪漫了……整理一下嘿嘿。</p><div class="log-meta">2015年9月30日 21:18 · 分类：转载 / 随笔</div></div>
+            <div class="log"><h3>初二生存日记（1）</h3><p>开学一个月，作业量已经让我认识到了人生的残酷。</p><div class="log-meta">2015年10月6日 22:03 · 分类：随笔</div></div>
+            <div class="log"><h3>最近循环的歌♪</h3><p>写作业的时候听还行，写数学的时候听什么都救不了。</p><div class="log-meta">2015年12月3日 20:41 · 分类：音乐</div></div>
+          </div>
+
+          <article class="article" id="flowerArticle">
+            <span class="back" id="backLogs">‹ 返回日志列表</span>
+            <h1>各种花的花语你知道多少？❀</h1>
+            <div class="article-meta">2015年9月30日 21:18　·　转载 / 随笔</div>
+            <p>今天看到有人整理花语，虽然不知道这些到底是谁定的，但有些真的很好听</p>
+            <div class="flower-list">
+              <div class="flower-row"><b>满天星</b><span>甘愿做配角的爱，也有“纯洁、守望”的意思。</span></div>
+              <div class="flower-row"><b>桔梗</b><span>永恒的爱、无悔的等待。</span></div>
+              <div class="flower-row"><b>向日葵</b><span>沉默的爱，也有人说是“追逐阳光”。</span></div>
+              <div class="flower-row"><b>勿忘我</b><span>不要忘记我、真挚的记忆。</span></div>
+              <div class="flower-row"><b>白玫瑰</b><span>纯粹、认真、安静的喜欢。</span></div>
+              <div class="flower-row"><b>无尽夏</b><span>“EndlessSummer”我们的夏天永远没有尽头。</span></div>
+            </div>
+            <p>无尽夏这个名字也太好听了吧。感觉像暑假永远不会结束一样（笑）。</p>
+            <div class="article-comments">
+              <div class="article-comment"><b>Zora</b>：你最近怎么突然这么少女哈哈哈哈</div>
+              <div class="article-comment"><b>Crystal</b> 回复 <b>Zora</b>：我一直都很少女好吗！！</div>
+              <div class="article-comment"><b>W.</b>：暑假早结束了 醒醒</div>
+              <div class="article-comment"><b>Crystal</b> 回复 <b>W.</b>：不要破坏气氛= =</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="qtab" id="board">
+        <div class="box"><div class="box-title">留言板</div><div class="board-list">
+          <div class="board-item">
+            <div class="board-name">TvT</div>
+            <div class="board-text">明天放学一起去喝奶茶不，我请客！</div>
+            <div class="board-time">2015年11月22日 22:08</div>
+            <div class="board-reply"><b>W.</b>：你们两个够了，认识第一天就这么好？</div>
+            <div class="board-reply"><b>Crystal</b>：你不懂我们之间的羁绊</div>
+            <div class="board-reply"><b>TvT</b>：你不懂我们之间的羁绊，人与人之间一眼就够了！</div>
+            <div class="board-reply"><b>W.</b>：你俩过去吧</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">W.</div>
+            <div class="board-text">你俩昨天不是才喝完奶茶吗，今天又去？</div>
+            <div class="board-time">2015年11月24日 20:46</div>
+            <div class="board-reply"><b>TvT</b>：这叫维系革命友谊</div>
+            <div class="board-reply"><b>Crystal</b>：而且今天第二杯半价！！</div>
+            <div class="board-reply"><b>W.</b>：重点果然是这个</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">TvT</div>
+            <div class="board-text">岁岁你下次别信他，他说“随便吃点”最后带我去吃了三碗面</div>
+            <div class="board-time">2015年11月29日 18:12</div>
+            <div class="board-reply"><b>W.</b>：你自己点的第三碗</div>
+            <div class="board-reply"><b>Crystal</b>：哈哈哈哈哈哈我站楼上！/div>
+            <div class="board-reply"><b>W.</b>：你站哪边有区别吗</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">Crystal</div>
+            <div class="board-text">友情提示：以后谁迟到谁请另外两个人喝东西</div>
+            <div class="board-time">2015年12月5日 21:37</div>
+            <div class="board-reply"><b>TvT</b>：同意！！！</div>
+            <div class="board-reply"><b>W.</b>：不同意</div>
+            <div class="board-reply"><b>Crystal</b>：反对无效。</div>
+            <div class="board-reply"><b>TvT</b>：2票对1票，民主通过~</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">W.</div>
+            <div class="board-text">把我昨天那张丑照删了</div>
+            <div class="board-time">2015年12月12日 22:19</div>
+            <div class="board-reply"><b>Crystal</b>：我觉得挺帅的啊？</div>
+            <div class="board-reply"><b>TvT</b>：我也觉得，建议设成头像</div>
+            <div class="board-reply"><b>W.</b>：你俩是不是商量好的</div>
+            <div class="board-reply"><b>Crystal</b>：没有哦^^</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">TvT</div>
+            <div class="board-text">校长今天看我那一眼很像在说“你谁”</div>
+            <div class="board-time">2015年12月18日 19:54</div>
+            <div class="board-reply"><b>Crystal</b>：它只是比较高冷！</div>
+            <div class="board-reply"><b>W.</b>：给孩子少吃点吧 越来越胖了</div>
+            <div class="board-reply"><b>Crystal</b>：？？？</div>
+            <div class="board-reply"><b>TvT</b>：哈哈哈哈哈哈哈哈</div>
+          </div>
+
+          <div class="board-item">
+            <div class="board-name">Crystal</div>
+            <div class="board-text">三人组第一次集体合照居然糊成这样 挫败！</div>
+            <div class="board-time">2015年12月26日 23:03</div>
+            <div class="board-reply"><b>W.</b>：是谁按快门的时候在那里笑个不停= =</div>
+            <div class="board-reply"><b>TvT</b>：没关系，糊得很有氛围感！</div>
+            <div class="board-reply"><b>Crystal</b>：这就是艺术，你们不懂</div>
+          </div>
+
+          <div class="board-item"><div class="board-name">Zora</div><div class="board-text">踩踩~你这个空间每次打开都像进入水族馆哈哈哈</div><div class="board-time">2015年10月8日 19:31</div><div class="board-reply"><b>Crystal</b>：明明是未来世界好吗！！</div></div>
+          <div class="board-item"><div class="board-name">W.</div><div class="board-text">生日快乐，岁岁平安</div><div class="board-time">2015年9月27日 00:02</div><div class="board-reply"><b>Crystal</b>：今年为什么晚了两分钟？？？</div></div>
+          <div class="board-item"><div class="board-name">薄荷汽水</div><div class="board-text">互踩！新装扮好闪哈哈哈</div><div class="board-time">2015年4月17日 18:20</div></div>
+        </div></div>
+      </section>
+    </main>
+
+    <aside class="rightcol">
+      <div class="box"><div class="box-title">最近访客</div><div class="box-body">
+        <div class="visitor"><span class="vava"></span>Zora</div>
+        <div class="visitor"><span class="vava"></span>W.</div>
+        <div class="visitor"><span class="vava"></span>TvT</div>
+        <div class="visitor"><span class="vava"></span>薄荷汽水</div>
+        <div class="visitor"><span class="vava"></span>草莓牛奶</div>
+      </div></div>
+      <div class="box"><div class="box-title">Crystal World</div><div class="box-body aero">◯　°　◌<br>water / glass / future<br><span class="mini">loading tomorrow...</span></div></div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><span class="close" id="lightboxClose">×</span><img id="lightboxImg" alt=""></div>
+
+<script>
+const posts=[
+{name:'Crystal',text:'换新空间装扮啦！！好有未来感哈哈哈哈\n这就是我展望的未来！（请不要质疑我的审美）',date:'2015年2月15日 16:42',img:'',likes:['Zora','W.','薄荷汽水','草莓牛奶','柠檬糖'],reposts:['薄荷汽水'],comments:[['W.','打开你的空间还以为我电脑中病毒了'],['Zora','这高饱和色闪瞎我的钛合金狗眼啊！'],['Crystal','Zora','你懂什么 这叫科技感！！']]},
+{name:'Crystal',text:'今天体育课跑完八百米差点原地升天……\n老师说下周还要测一次，我选择拒绝这个世界',date:'2015年4月10日 18:17',img:'',likes:['Zora','W.','一只团子'],reposts:[],comments:[['Zora','你最后一圈那个表情笑死我'],['W.','跑快点就早点结束'],['Crystal','W.','你说得倒轻松！！']]},
+{name:'Crystal',text:'又要放暑假了！！好兴奋！！\n我已经提前进入“什么都不想干只想睡到中午”的状态了嘿嘿',date:'2015年6月26日 21:05',img:'',likes:['Zora','W.','薄荷汽水','草莓牛奶'],reposts:['Zora'],comments:[['Zora','先把暑假作业忘掉！！'],['W.','开学前一天见'],['Crystal','W.','不许诅咒我= =']]},
+{name:'Crystal',text:'初二第一周生存成功√\n新教室居然比去年离小卖部更远了……这是赤裸裸的针对',date:'2015年9月6日 19:43',img:'',likes:['Zora','W.','薄荷汽水'],reposts:[],comments:[['Zora','重点居然是小卖部'],['Crystal','Zora','不然呢！！'],['W.','多走两步有益健康']]},
+{name:'Crystal',text:'人生收到的第一束花居然是朋友送的……说是今年过生日送点不一样的\n囧，好肉麻！！但是……还是挺高兴的嗯',date:'2015年9月27日 20:36',img:'./images/qzone2015/posts/post_05.jpg',likes:['Zora','W.','薄荷汽水','草莓牛奶','柠檬糖','纸飞机'],reposts:[],comments:[['Zora','好羡慕！我也想要个青梅竹马'],['Crystal','Zora','你重点怎么在这里！！'],['W.','早知道买蛋糕了'],['Crystal','W.','干嘛！我又没说我不喜欢！']]},
+{name:'Crystal',text:'为什么没选上我！！！明明我这个才叫艺术大作好吗！！\n评委老师你们真的不再考虑一下吗TAT',date:'2015年10月10日 20:14',img:'./images/qzone2015/posts/post_06.jpg',likes:['Zora','W.','薄荷汽水','草莓牛奶','纸飞机'],reposts:['Zora'],comments:[['W.','自己画一幅简笔画然后对着拍照是不能叫摄影作品的。'],['Zora','自己画一幅简笔画然后对着拍照是不能叫摄影作品的。'],['薄荷汽水','自己画一幅简笔画然后对着拍照是不能叫摄影作品的。'],['草莓牛奶','自己画一幅简笔画然后对着拍照是不能叫摄影作品的。'],['Crystal','你们为什么突然这么团结？？？']]},
+{name:'Crystal',text:'今天路过学校那边发现秋天真的来了\n风一吹树叶乱飞，结果有一片直接糊我脸上……毁气氛',date:'2015年10月18日 17:56',img:'',likes:['Zora','W.','纸飞机'],reposts:[],comments:[['Zora','哈哈哈哈哈哈画面出来了'],['W.','树叶都看不下去了']]},
+{name:'Crystal',text:'认识了一个很好很好的新朋友！！\n宣布一下，以后我们就是“惠言中学侠客三人组”了！听起来是不是很有江湖气！！',date:'2015年11月22日 18:33',img:'./images/qzone2015/posts/post_07.jpg',likes:['Zora','W.','TvT','薄荷汽水','草莓牛奶'],reposts:['TvT'],comments:[['W.','有没有好听点的名字？'],['TvT','嘿嘿٩(๑❛ᴗ❛๑)۶'],['Crystal','W.','驳回！侠客三人组就很好听！'],['Zora','等下怎么突然多了个人 快交代']]},
+{name:'Crystal',text:'拐卖了一只流浪小猫回家！！小名叫“校长”，大名嘛……你们猜猜吧嘿嘿\n现在正在我床上踩来踩去，完全没有寄人篱下的自觉= =',date:'2015年12月13日 20:11',img:'./images/qzone2015/posts/post_08.jpg',likes:['Zora','W.','TvT','草莓牛奶','一只团子','纸飞机'],reposts:['Zora'],comments:[['W.','......一定要叫可爱的小猫这种名字吗？'],['Crystal','W.','我养的猫当然跟我姓啦'],['TvT','突然发现跟你一个姓也就是跟我一个姓O.O'],['Crystal','TvT','那你就是它哥！'],['TvT','听上去好不对劲的感觉'],['Zora','好可爱！明天放学我去你家撸它！']]},
+{name:'Crystal',text:'今年最后一天！！\n2016请对我好一点，最好作业少一点、考试简单一点、每天都能睡够八小时（做梦）',date:'2015年12月31日 23:18',img:'',likes:['Zora','W.','TvT','薄荷汽水','柠檬糖'],reposts:['Zora','TvT'],comments:[['TvT','第一条：奶茶自由'],['Zora','第二条：不长胖'],['W.','第三条：先把作业写完'],['Crystal','W.','你退出群聊！！']]}
+];
+
+function esc(s){return String(s).replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function postHTML(p){return `<article class="post"><div class="post-head"><div class="post-avatar"></div><div class="post-main"><div class="post-name">${p.name}</div><div class="post-text">${esc(p.text).replace(/\n/g,'<br>')}</div>${p.img?`<div class="post-img" data-src="${p.img}" style="background-image:url('${p.img}');cursor:zoom-in" title="点击查看大图"></div>`:''}<div class="post-time">${p.date}</div><div class="actions"><span>赞 (${p.likes.length})</span><span>评论 (${p.comments.length})</span><span>转发${p.reposts.length?' ('+p.reposts.length+')':''}</span></div><div class="social"><div class="likes">♡ ${p.likes.join('、')}</div>${p.reposts.length?`<div class="reposts">↗ ${p.reposts.join('、')} 转发了这条说说</div>`:''}${p.comments.map(c=>c.length===2?`<div class="comment"><b>${c[0]}</b>：${c[1]}</div>`:`<div class="comment"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`).join('')}</div></div></div></article>`}
+document.getElementById('feed').innerHTML=posts.map(postHTML).join('');
+
+document.querySelectorAll('.post-img[data-src]').forEach(el=>el.onclick=()=>{
+  document.getElementById('lightboxImg').src=el.dataset.src;
+  document.getElementById('lightbox').classList.add('show');
+});
+
+
+const tabs=[...document.querySelectorAll('.space-nav button[data-tab]')];
+tabs.forEach(b=>b.onclick=()=>{
+  tabs.forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  document.querySelectorAll('.qtab').forEach(x=>x.classList.remove('active'));
+  document.getElementById(b.dataset.tab).classList.add('active');
+  if(b.dataset.tab==='logs'){
+    document.getElementById('logIndex').style.display='block';
+    document.getElementById('flowerArticle').classList.remove('show');
+  }
+});
+
+const albumData={
+  selfie:{
+    name:'自拍',locked:true,
+    photos:['./images/qzone2015/albums/selfie_01.jpg','./images/qzone2015/albums/selfie_02.jpg'],
+    comments:[['Zora','第二张好看！！这个滤镜好梦幻'],['W.','照片为什么比本人白'],['Crystal','W.','闭嘴= =']]
+  },
+  food:{
+    name:'美食分享',
+    photos:['./images/qzone2015/albums/food_01.jpg','./images/qzone2015/albums/food_02.jpg'],
+    comments:[['Zora','又背着我吃！！'],['Crystal','Zora','下次下次！！'],['TvT','第二张是哪家？']]
+  },
+  cat:{
+    name:'校长美照',
+    photos:['./images/qzone2015/albums/cat_01.jpg','./images/qzone2015/albums/cat_02.jpg'],
+    comments:[['Zora','我要偷走！！！'],['W.','比主人上镜'],['Crystal','W.','你再说？？'],['TvT','我弟挺帅。']]
+  }
+};
+
+function commentsHTML(a){
+  return `<div class="album-comments">${a.comments.map(c=>c.length===2?`<div class="album-comment"><b>${c[0]}</b>：${c[1]}</div>`:`<div class="album-comment"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`).join('')}</div>`;
+}
+function bindPhotos(){
+  document.querySelectorAll('.photo[data-src]').forEach(el=>el.onclick=()=>{
+    document.getElementById('lightboxImg').src=el.dataset.src;
+    document.getElementById('lightbox').classList.add('show');
+  });
+}
+function renderPhotos(a){
+  const v=document.getElementById('albumView');
+  document.getElementById('albumIndex').style.display='none';v.style.display='block';
+  v.innerHTML=`<span class="back" id="albumBack">‹ 返回相册</span><h3 style="color:#0f7489">${a.name}</h3><div class="photo-grid">${a.photos.map(p=>`<div class="photo" data-src="${p}" style="background-image:url('${p}')"></div>`).join('')}</div>${commentsHTML(a)}`;
+  document.getElementById('albumBack').onclick=backAlbums;
+  bindPhotos();
+}
+function backAlbums(){document.getElementById('albumView').style.display='none';document.getElementById('albumIndex').style.display='grid'}
+document.querySelectorAll('.album-card').forEach(card=>card.onclick=()=>{
+  const a=albumData[card.dataset.album],v=document.getElementById('albumView');
+  if(a.locked){
+    document.getElementById('albumIndex').style.display='none';v.style.display='block';
+    v.innerHTML=`<span class="back" id="albumBack">‹ 返回相册</span><div class="lock-panel"><div style="font-size:31px">🔒</div><h3>主人设置了回答问题可见</h3><div class="lock-hint">问题提示：天王盖地虎</div><div><input id="albumPw" placeholder="请输入答案"><button id="unlockAlbum">确定</button></div><div class="err" id="albumErr"></div></div>`;
+    document.getElementById('albumBack').onclick=backAlbums;
+    document.getElementById('unlockAlbum').onclick=()=>{
+      if(document.getElementById('albumPw').value.trim()==='称霸大峡谷')renderPhotos(a);
+      else document.getElementById('albumErr').textContent='回答错误。';
+    };
+    document.getElementById('albumPw').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('unlockAlbum').click()});
+  }else renderPhotos(a);
+});
+
+document.getElementById('flowerLog').onclick=()=>{
+  document.getElementById('logIndex').style.display='none';
+  document.getElementById('flowerArticle').classList.add('show');
+};
+document.getElementById('backLogs').onclick=()=>{
+  document.getElementById('flowerArticle').classList.remove('show');
+  document.getElementById('logIndex').style.display='block';
+};
+
+document.getElementById('lightboxClose').onclick=()=>document.getElementById('lightbox').classList.remove('show');
+document.getElementById('lightbox').onclick=e=>{if(e.target.id==='lightbox')e.currentTarget.classList.remove('show')};
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ネф̶ イω ᥬᥬ嵗嵗溏的空间 - 2013</title>
+<style>
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+body{background:#edf7fb;color:#49636d}
+button,input{font:inherit}
+.tm-top{height:48px;background:linear-gradient(#fff,#e9f5fb);border-bottom:1px solid #b9d8e6;display:flex;align-items:center;padding:0 24px;color:#347ba0;box-shadow:0 1px 5px #8eb8c544}
+.tm-logo{font-size:19px;font-weight:bold}.tm-logo small{font-size:11px;color:#89aab9;font-weight:normal;margin-left:9px}
+.tm-wrap{min-height:calc(100vh - 48px);display:grid;place-items:center;padding:32px;background:radial-gradient(circle at 20% 20%,#fff 0 3%,transparent 18%),linear-gradient(#dff4fb,#f9fdff)}
+.tm-box{width:700px;max-width:95vw;background:#fff;border:1px solid #b9d9e8;box-shadow:0 12px 35px #7fa9bb33;border-radius:5px;padding:36px}
+.tm-title{text-align:center;font-size:25px;color:#4387a6;margin-bottom:8px}.tm-desc{text-align:center;font-size:13px;color:#8ba6b1;line-height:1.8}
+.years{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:28px 0}.year{padding:10px 18px;border:1px solid #bad9e7;background:#eefaff;color:#6795aa;border-radius:3px;cursor:pointer}.year.active{background:#62b7d9;color:#fff;border-color:#4da5c8}
+.login-card{width:410px;max-width:100%;margin:20px auto 0;padding:24px;border:1px solid #d2e7ef;background:#f8fdff;border-radius:4px}
+.login-card h3{margin:0 0 17px;font-size:16px;color:#4b7f94;font-weight:normal}.hint{font-size:12px;color:#8aa0a8;margin-bottom:10px}.pwrow{display:flex}.pwrow input{flex:1;height:38px;border:1px solid #b9d8e5;padding:0 10px;outline:none}.pwrow button{width:92px;border:0;background:#55add0;color:#fff;cursor:pointer}.err{height:22px;padding-top:7px;font-size:12px;color:#df6868}.small{text-align:center;color:#9fb3bb;font-size:11px;margin-top:18px}
+
+/* 2013 space */
+#space2013{display:none;min-height:100vh;background:#dff7ff url('./images/qzone2013/theme_bg.gif') top center/cover fixed no-repeat;color:#3d6674}
+.pixel-sparkle{
+    display:none;
+}
+.qtop{height:37px;background:#242424;color:#ddd;display:flex;align-items:center;padding:0 calc((100% - 980px)/2);font-size:12px;position:relative;z-index:5}.qtop b{color:#ffd348;margin-right:20px}.qtop span{margin-right:19px}.qtop .right{margin-left:auto}
+.space-head{width:980px;max-width:96vw;height:225px;margin:auto;position:relative;background:url('./images/qzone2013/header.jpg') center/cover no-repeat;border-left:1px solid #b7e6ed;border-right:1px solid #b7e6ed}
+.space-head:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#ffffff99,transparent 42%,#ffffff20)}
+.owner{position:absolute;left:28px;bottom:24px;z-index:2;text-shadow:0 1px 0 #fff}.owner h1{margin:0;color:#337b91;font-size:25px;font-weight:normal}.owner p{margin:7px 0 0;font-size:12px;color:#6594a1}
+.space-nav{width:980px;max-width:96vw;margin:auto;height:43px;background:linear-gradient(#fff,#e9fbff);border:1px solid #aadbe7;display:flex;align-items:stretch;position:relative;z-index:3}.space-nav button{border:0;border-right:1px solid #ccebf2;background:transparent;padding:0 19px;color:#4e8ca0;cursor:pointer}.space-nav button.active,.space-nav button:hover{background:#dff7ff;color:#2482a1}
+.layout{width:980px;max-width:96vw;margin:12px auto 55px;display:grid;grid-template-columns:190px 1fr 180px;gap:10px;position:relative;z-index:2}
+.box{background:#ffffffdf;border:1px solid #b9dfe8;box-shadow:0 1px 3px #8ab6c733;margin-bottom:10px}.box-title{height:34px;display:flex;align-items:center;padding:0 11px;background:linear-gradient(#f8feff,#e8f8fc);border-bottom:1px solid #c8e6ed;color:#42849a;font-size:13px;font-weight:bold}.box-body{padding:12px;font-size:12px;line-height:1.75}
+.avatar{height:150px;background:url('./images/qzone2013/avatar.jpg') center/cover no-repeat;border:5px solid #fff;box-shadow:0 0 0 1px #c3e4eb}.profile-name{text-align:center;color:#ef76a8;font-weight:bold;margin:9px 0}.mini{color:#89a3aa;font-size:11px}
+.qtab{display:none}.qtab.active{display:block}
+.feed{padding:15px}.post{padding:4px 0 18px;margin-bottom:14px;border-bottom:1px dashed #bcdce4}.post:last-child{border-bottom:0}.post-head{display:flex;gap:9px}.post-avatar{width:40px;height:40px;background:url('./images/qzone2013/avatar.jpg') center/cover;border-radius:3px}.post-main{flex:1}.post-name{color:#4b89a1;font-weight:bold}.post-text{margin:7px 0;color:#47626a;font-size:13px;line-height:1.75}.post-img{width:250px;height:145px;background:#e6f7fb center/cover no-repeat;border:4px solid #fff;box-shadow:0 0 0 1px #c6e2e9;margin:9px 0}.post-time{font-size:11px;color:#9bb0b7}.actions{font-size:11px;color:#5590a7;margin-top:8px}.actions span{margin-right:13px;cursor:pointer}.social{background:#f2fbfd;border:1px solid #d9edf2;margin-top:9px;padding:7px 9px;font-size:11px;line-height:1.8}.likes{color:#4c91ad}.comment b{color:#568ba0}
+.album-grid{padding:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.album-card{background:#fff;border:1px solid #c6e4eb;padding:8px;cursor:pointer;box-shadow:0 2px 5px #8db5c522}.album-card:hover{transform:translateY(-1px)}.album-cover{height:150px;background:#e7f8fc center/cover no-repeat;border:1px solid #d2e9ee}.album-name{margin-top:8px;color:#4b8499;font-size:13px}.album-count{font-size:11px;color:#9bb0b7;margin-top:3px}
+.album-view{display:none;padding:18px}.back{color:#478da8;cursor:pointer;font-size:12px;margin-bottom:15px;display:inline-block}.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.photo{aspect-ratio:4/3;background:#edf8fa center/cover no-repeat;border:5px solid #fff;box-shadow:0 0 0 1px #c7e2e8}
+.lock-panel{padding:50px 20px;text-align:center}.lock-panel h3{font-size:17px;color:#5a8797}.lock-panel input{height:35px;border:1px solid #b7d9e4;padding:0 10px}.lock-panel button{height:35px;border:0;background:#5db1cf;color:#fff;padding:0 18px}.lock-hint{font-size:12px;color:#91a7ae;margin:8px}
+.logs{padding:18px}.log{padding:13px 3px;border-bottom:1px dashed #c5e1e8}.log h3{font-size:14px;color:#4b879c;margin:0 0 7px}.log p{font-size:12px;color:#78939b;line-height:1.8;margin:0}
+.right-list div{padding:5px 0;border-bottom:1px dashed #d6e9ed}.visitor{display:flex;gap:7px;align-items:center}.vava{width:28px;height:28px;border-radius:3px;background:#d8edf2}.decor{font-size:26px;text-align:center;letter-spacing:5px;color:#f29abe}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.left,.rightcol{display:none}.qtop{padding:0 12px}.space-head{height:180px}.space-nav{overflow:auto}.photo-grid{grid-template-columns:repeat(2,1fr)}}
+
+html,body{min-height:100%;}
+body{margin:0;}
+#space2013{display:block!important;}
+
+.album-comments{margin-top:20px;border-top:1px dashed #c5e1e8;padding-top:12px}.album-comments-title{font-size:12px;color:#6d98a6;margin-bottom:7px;font-weight:bold}.album-comment{font-size:12px;line-height:1.85;color:#607f89}.album-comment b{color:#4d8ba1}
+.board-list{padding:18px}.board-item{padding:13px 2px;border-bottom:1px dashed #c5e1e8}.board-name{font-size:13px;color:#4c8aa0;font-weight:bold}.board-text{font-size:13px;color:#55737c;line-height:1.8;margin:4px 0}.board-time{font-size:11px;color:#9bb0b7}.board-reply{margin-top:7px;background:#f0fafc;border:1px solid #d9edf2;padding:7px 9px;font-size:12px;color:#607f89}.board-reply b{color:#e477a0}.reposts{color:#7c9ca7;margin-top:3px;font-size:11px}
+.lightbox{display:none;position:fixed;inset:0;background:#000c;z-index:9999;align-items:center;justify-content:center;padding:35px}
+.lightbox.show{display:flex}
+.lightbox img{max-width:92vw;max-height:88vh;object-fit:contain;box-shadow:0 5px 30px #000;border:5px solid rgba(255,255,255,.94)}
+.lightbox-close{position:fixed;right:28px;top:18px;color:#fff;font-size:32px;cursor:pointer}
+.post-img.clickable,.photo.clickable{cursor:zoom-in}
+</style>
+</head>
+<body>
+<section id="space2013">
+
+<div class="pixel-sparkle"></div>
+<div class="qtop"><b>★ QQ空间</b><span>个人中心</span><span>我的主页⌄</span><span>应用⌄</span><span>装扮⌄</span><div class="right">ネф̶ イω ᥬᥬ嵗嵗溏　|　退出　⚙</div></div>
+<header class="space-head"><div class="owner"><h1>ネф̶ イω ᥬᥬ嵗嵗溏的空间</h1><p>☆ 嵗嵗の小窝 · 2013 ☆</p></div></header>
+<nav class="space-nav">
+<button class="active" data-tab="home">主页</button><button data-tab="posts">说说</button><button data-tab="logs">日志</button><button data-tab="albums">相册</button><button data-tab="board">留言板</button><button>音乐盒</button><button>个人档</button><button>更多⌄</button>
+</nav>
+<div class="layout">
+<aside class="left">
+ <div class="box"><div class="box-title">主人资料</div><div class="box-body"><div class="avatar"></div><div class="profile-name">ネф̶ イω ᥬᥬ嵗嵗溏</div><div class="mini">等级：★ ★ ★<br>星座：天秤座<br>今日访问：7</div></div></div>
+ <div class="box"><div class="box-title">空间装扮</div><div class="box-body decor">☆ ♫ ♡<br>✿ ☁ ✧</div></div>
+</aside>
+<main>
+<section class="qtab active" id="home"><div class="box"><div class="box-title">我的主页</div><div class="box-body"><b style="color:#e878a4">欢迎来到嵗嵗の小窝~\(≧▽≦)/~</b><br><br>最近动态都在说说里哦！<br>禁止偷图！！偷图的小盆友长不高！！</div></div><div class="box"><div class="box-title">最近更新</div><div class="box-body">♡ 新说说：表白行星团的欧巴们！！<br>♡ 新相册：运动会\(^o^)/<br>♡ 日志更新：开学第一周！！</div></div></section>
+
+<section class="qtab" id="posts"><div class="box"><div class="box-title">说说</div><div class="feed" id="feed"></div></div></section>
+
+<section class="qtab" id="albums"><div class="box"><div class="box-title">相册</div>
+<div class="album-grid" id="albumIndex">
+ <div class="album-card" data-album="selfie"><div class="album-cover" style="background-image:url('./images/qzone2013/albums/selfie_01.jpg')"></div><div class="album-name">🔒 自拍</div><div class="album-count">2张照片 · 回答问题可见</div></div>
+ <div class="album-card" data-album="food"><div class="album-cover" style="background-image:url('./images/qzone2013/albums/food_01.jpg')"></div><div class="album-name">美食分享</div><div class="album-count">2张照片</div></div>
+ <div class="album-card" data-album="planet"><div class="album-cover" style="background-image:url('./images/qzone2013/albums/planet_01.jpg')"></div><div class="album-name">行星团欧巴</div><div class="album-count">4张照片</div></div>
+ <div class="album-card" data-album="sports"><div class="album-cover" style="background-image:url('./images/qzone2013/albums/sports_01.jpg')"></div><div class="album-name">运动会\\(^o^)/</div><div class="album-count">4张照片</div></div>
+</div>
+<div class="album-view" id="albumView"></div>
+</div></section>
+
+<section class="qtab" id="logs"><div class="box"><div class="box-title">日志</div><div class="logs">
+<div class="log"><h3>开学第一周！！</h3><p>初中比小学大好多TAT 每天走楼梯走到腿断……不过食堂还可以！新同桌也很好玩嘿嘿。</p></div>
+<div class="log"><h3>无聊问卷100题（做到第23题放弃）</h3><p>1. 最喜欢的颜色：粉色和蓝色！　2. 最近单曲循环：行星团！！　3. 最讨厌：早起！！！</p></div>
+<div class="log"><h3>转载：十二星座谁最容易赖床</h3><p>天秤座居然第三？？？不准！！我只是每天早上都比较困而已！！</p></div>
+</div></div></section>
+<section class="qtab" id="board"><div class="box"><div class="box-title">留言板</div><div class="board-list">
+<div class="board-item"><div class="board-name">帅得拖网速</div><div class="board-text">生日快乐，岁岁平安</div><div class="board-time">2013年9月27日 00:00</div><div class="board-reply"><b>ネф̶ イω ᥬᥬ嵗嵗溏</b>：哇你居然卡零点！！！谢谢啦哈哈哈</div></div>
+<div class="board-item"><div class="board-name">斑马公主</div><div class="board-text">踩踩踩~~窝来占领岁岁空间啦！！以后每天都要一起吃饭(づ￣3￣)づ</div><div class="board-time">2013年9月15日 19:26</div><div class="board-reply"><b>ネф̶ イω ᥬᥬ嵗嵗溏</b>：准了准了！！老汪专属位置哈哈哈哈</div></div>
+<div class="board-item"><div class="board-name">ゞ糖果尐妹</div><div class="board-text">路过留爪印 ฅ( ̳• ·̫ • ̳ฅ) 空间好漂酿！！</div><div class="board-time">2013年10月6日 16:43</div></div>
+<div class="board-item"><div class="board-name">℡尐儍苽</div><div class="board-text">互踩互踩~~踩完记得回踩！！不回的是小狗！！</div><div class="board-time">2013年10月19日 20:11</div><div class="board-reply"><b>ネф̶ イω ᥬᥬ嵗嵗溏</b>：回啦！！才不是小狗= =</div></div>
+<div class="board-item"><div class="board-name">☆浅蓝铯dě梦</div><div class="board-text">你空间背景也太好看了吧！！求素材QAQ</div><div class="board-time">2013年11月2日 14:08</div></div>
+<div class="board-item"><div class="board-name">帅得拖网速</div><div class="board-text">来看看某人运动会第二名之后有没有膨胀</div><div class="board-time">2013年11月9日 21:02</div><div class="board-reply"><b>ネф̶ イω ᥬᥬ嵗嵗溏</b>：你真的很烦！！！</div></div>
+</div></div></section>
+</main>
+<aside class="rightcol">
+ <div class="box"><div class="box-title">最近访客</div><div class="box-body right-list"><div class="visitor"><span class="vava"></span>斑马公主</div><div class="visitor"><span class="vava"></span>帅得拖网速</div><div class="visitor"><span class="vava"></span>ゞ糖果尐妹</div><div class="visitor"><span class="vava"></span>℡尐儍苽</div></div></div>
+ <div class="box"><div class="box-title">花藤</div><div class="box-body" style="text-align:center;font-size:34px">🌱🌸<div class="mini">今日已浇水</div></div></div>
+</aside>
+</div>
+
+</section>
+<div class="lightbox" id="lightbox"><span class="lightbox-close" id="lightboxClose">×</span><img id="lightboxImg" alt="照片大图"></div>
+<script>
+function openLightbox(src){
+  document.getElementById('lightboxImg').src=src;
+  document.getElementById('lightbox').classList.add('show');
+}
+function bindClickablePhotos(){
+  document.querySelectorAll('.post-img[data-src],.photo[data-src]').forEach(el=>{
+    el.onclick=()=>openLightbox(el.dataset.src);
+  });
+}
+document.getElementById('lightboxClose').onclick=()=>document.getElementById('lightbox').classList.remove('show');
+document.getElementById('lightbox').onclick=e=>{if(e.target.id==='lightbox')e.currentTarget.classList.remove('show')};
+
+
+const posts=[
+{name:'ネф̶ イω ᥬᥬ嵗嵗溏',text:'就是今天！！一周年！！',date:'2013年4月8日 18:36',img:'',likes:['ゞ糖果尐妹','☆浅蓝铯dě梦','草莓味の夏天','帅得拖网速'],reposts:['☆浅蓝铯dě梦'],comments:[['帅得拖网速','今天怎么了？什么一周年？？'],['ネф̶ イω ᥬᥬ嵗嵗溏','帅得拖网速','今天是仅次于我生日那样重要的日子！'],['ゞ糖果尐妹','一周年粗卡！！！十二只大发！！']]},
+
+{name:'ネф̶ イω ᥬᥬ嵗嵗溏',text:'终于进理想初中了，今天开始再也不是小学森了\\n新学校比想象中大好多！！不要迷路啊啊啊TAT',date:'2013年9月2日 18:41',img:'./images/qzone2013/posts/post_01.jpg',likes:['帅得拖网速','ゞ糖果尐妹','小布丁不加糖','夏末゛微凉'],reposts:[],comments:[['帅得拖网速','小学生换了校服还是小学生'],['ネф̶ イω ᥬᥬ嵗嵗溏','帅得拖网速','滚！！！']]},
+{name:'ネф̶ イω ᥬᥬ嵗嵗溏',text:'军训好热\\n为什么太阳每天都要上班！！！我不允许！！！',date:'2013年9月5日 17:26',img:'./images/qzone2013/posts/post_02.jpg',likes:['℡尐儍苽','帅得拖网速','小布丁不加糖','火星の喵'],reposts:['℡尐儍苽'],comments:[['帅得拖网速','多喝水小矮子'],['ネф̶ イω ᥬᥬ嵗嵗溏','帅得拖网速','你才矮！！']]},
+{name:'ネф̶ イω ᥬᥬ嵗嵗溏',text:'交到了新的好朋友@斑马公主，老汪爱你哦~~ \\(^o^)/',date:'2013年9月13日 20:09',img:'./images/qzone2013/posts/post_03.jpg',likes:['斑马公主','帅得拖网速','☆浅蓝铯dě梦','℡尐儍苽','小布丁不加糖'],reposts:['斑马公主'],comments:[['斑马公主','窝也爱你！！！亲亲亲=3='],['帅得拖网速','认识十天就老汪了'],['斑马公主','帅得拖网速','你不懂女生の友谊']]},
+{name:'ネф̶ イω ᥬᥬ嵗嵗溏',text:'我的生日当然是一年中最重要的日子。\\n今天谁敢忘记谁就完蛋了哼！！',date:'2013年9月27日 00:03',img:'./images/qzone2013/posts/post_04.jpg',likes:['斑马公主','帅得拖网速','ゞ糖果尐妹','℡尐儍苽','☆浅蓝铯dě梦','小布丁不加糖'],reposts:['斑马公主','ゞ糖果尐妹'],comments:[['斑马公主','生日快乐岁岁！！！明天给你礼物'],['帅得拖网速','礼物在我这 明天自己来拿'],['ネф̶ イω ᥬᥬ嵗嵗溏','帅得拖网速','为什么还要我自己拿= =']]},
+{name:'ネф̶ イω ᥬᥬ嵗嵗溏',text:'表白行星团的欧巴们，十二个都好帅呀！！\\n救命为什么世界上会有十二个帅哥在一个团里面>///<',date:'2013年10月11日 21:17',img:'./images/qzone2013/posts/post_05.jpg',likes:['斑马公主','☆浅蓝铯dě梦','ゞ糖果尐妹','草莓味の夏天'],reposts:['斑马公主','☆浅蓝铯dě梦'],comments:[['斑马公主','窝站灿白！！！'],['ゞ糖果尐妹','鹿晗最帅不接受反驳！！'],['帅得拖网速','一个都不认识']]},
+{name:'ネф̶ イω ᥬᥬ嵗嵗溏',text:'明天运动会！！！我要带一书包零食去给我们班加油哈哈哈哈',date:'2013年11月7日 22:06',img:'./images/qzone2013/posts/post_06.jpg',likes:['斑马公主','帅得拖网速','℡尐儍苽','小布丁不加糖'],reposts:['斑马公主'],comments:[['斑马公主','重点是零食吧！！'],['帅得拖网速','你们班靠薯片加油？']]},
+{name:'ネф̶ イω ᥬᥬ嵗嵗溏',text:'今天值日忘记倒垃圾……希望明天班主任失忆QAQ',date:'2013年12月3日 19:52',img:'',likes:['斑马公主','帅得拖网速','火星の喵'],reposts:[],comments:[['℡尐儍苽','祝你好运哈哈哈哈'],['帅得拖网速','建议现在回学校']]},
+];
+function esc(s){return s.replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+document.getElementById('feed').innerHTML=posts.map((p,i)=>`<article class="post"><div class="post-head"><div class="post-avatar"></div><div class="post-main"><div class="post-name">${p.name}</div><div class="post-text">${esc(p.text).replace(/\\n/g,'<br>')}</div>${p.img?`<div class="post-img clickable" data-src="${p.img}" style="background-image:url('${p.img}')" title="点击查看大图"></div>`:''}<div class="post-time">${p.date}</div><div class="actions"><span>赞</span><span>评论</span><span>转发${p.reposts&&p.reposts.length?' ('+p.reposts.length+')':''}</span></div><div class="social"><div class="likes">♡ ${p.likes.join('、')}</div>${p.reposts&&p.reposts.length?`<div class="reposts">↗ ${p.reposts.join('、')} 转发了这条说说</div>`:''}${p.comments.map(c=>c.length===2?`<div class="comment"><b>${c[0]}</b>：${c[1]}</div>`:`<div class="comment"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`).join('')}</div></div></div></article>`).join('');
+bindClickablePhotos();
+
+
+const tabs=[...document.querySelectorAll('.space-nav button[data-tab]')];
+tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.qtab').forEach(x=>x.classList.remove('active'));document.getElementById(b.dataset.tab).classList.add('active')});
+
+const albumData={
+ selfie:{name:'自拍',locked:true,comments:[['斑马公主','眼镜好可爱！！'],['ゞ糖果尐妹','抱图啦抱图啦~']],photos:['./images/qzone2013/albums/selfie_01.jpg','./images/qzone2013/albums/selfie_02.jpg']},
+ food:{name:'美食分享',comments:[['斑马公主','你怎么又在吃！！'],['ネф̶ イω ᥬᥬ嵗嵗溏','斑马公主','民以食为天懂不懂！']],photos:['./images/qzone2013/albums/food_01.jpg','./images/qzone2013/albums/food_02.jpg']},
+ planet:{name:'行星团欧巴',comments:[['☆浅蓝铯dě梦','啊啊啊全部抱走！！'],['帅得拖网速','这四张有什么区别'],['ネф̶ イω ᥬᥬ嵗嵗溏','帅得拖网速','区别大了去了！！']],photos:['./images/qzone2013/albums/planet_01.jpg','./images/qzone2013/albums/planet_02.jpg','./images/qzone2013/albums/planet_03.jpg','./images/qzone2013/albums/planet_04.jpg']},
+ sports:{name:'运动会\\\\(^o^)/',comments:[['帅得拖网速','仰卧起坐比赛...第二名...'],['ネф̶ イω ᥬᥬ嵗嵗溏','帅得拖网速','不许吐槽！明年一定拿个第一！'],['帅得拖网速','ネф̶ イω ᥬᥬ嵗嵗溏','明年见'],['斑马公主','第二名已经很厉害了好嘛！！']],photos:['./images/qzone2013/albums/sports_01.jpg','./images/qzone2013/albums/sports_02.jpg','./images/qzone2013/albums/sports_03.jpg','./images/qzone2013/albums/sports_04.jpg']}
+};
+function renderPhotos(a){
+ const v=document.getElementById('albumView');v.style.display='block';document.getElementById('albumIndex').style.display='none';
+ v.innerHTML=`<span class="back" id="albumBack">‹ 返回相册</span><h3 style="color:#4d8497">${a.name}</h3><div class="photo-grid">${a.photos.map(p=>`<div class="photo clickable" data-src="${p}" style="background-image:url('${p}')" title="点击查看大图"></div>`).join('')}</div>${a.comments&&a.comments.length?`<div class="album-comments"><div class="album-comments-title">相册留言</div>${a.comments.map(c=>c.length===2?`<div class="album-comment"><b>${c[0]}</b>：${c[1]}</div>`:`<div class="album-comment"><b>${c[0]}</b> 回复 <b>${c[1]}</b>：${c[2]}</div>`).join('')}</div>`:''}`;
+ document.getElementById('albumBack').onclick=backAlbums;
+ bindClickablePhotos();
+}
+function backAlbums(){document.getElementById('albumView').style.display='none';document.getElementById('albumIndex').style.display='grid'}
+document.querySelectorAll('.album-card').forEach(card=>card.onclick=()=>{
+ const a=albumData[card.dataset.album],v=document.getElementById('albumView');
+ if(a.locked){document.getElementById('albumIndex').style.display='none';v.style.display='block';v.innerHTML=`<span class="back" id="albumBack">‹ 返回相册</span><div class="lock-panel"><div style="font-size:32px">🔒</div><h3>主人设置了回答问题可见</h3><div class="lock-hint">问题提示：天王盖地虎</div><div><input id="albumPw" placeholder="请输入答案"><button id="unlockAlbum">确定</button></div><div class="err" id="albumErr"></div></div>`;document.getElementById('albumBack').onclick=backAlbums;document.getElementById('unlockAlbum').onclick=()=>{if(document.getElementById('albumPw').value.trim()==='学习要刻苦')renderPhotos(a);else document.getElementById('albumErr').textContent='回答错误。';};}
+ else renderPhotos(a);
+});
+
+</script>
+</body>
+</html>

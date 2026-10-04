@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>记忆记录｜测试版</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#e9e4db;color:#34353a;font-family:"Microsoft YaHei","PingFang SC",sans-serif}
+.paper{width:min(920px,calc(100% - 28px));margin:32px auto;background:#faf7ef;padding:42px 46px 50px;box-shadow:0 12px 36px #0002;border:1px solid #d7cfc2}
+h1{font:500 30px Georgia,"Songti SC",serif;letter-spacing:5px;margin:0 0 10px}.intro{color:#777;line-height:1.9;font-size:14px}
+.notice{margin:18px 0 28px;padding:12px 15px;background:#f0ece4;border-left:2px solid #999084;font-size:13px;line-height:1.8}
+table{width:100%;border-collapse:collapse} th,td{border-bottom:1px solid #ddd6cc;padding:13px 8px;text-align:left;vertical-align:middle} th{font-size:12px;color:#999187;font-weight:normal}
+.q{width:57%}.a{width:31%}.c{width:12%;text-align:center}.a input{width:100%;background:transparent;border:0;border-bottom:1px dashed #bdb5aa;outline:0;padding:5px 2px;font:inherit}
+.a input:focus{border-bottom-color:#555}.c button{width:22px;height:22px;border:1px solid #8e877d;background:#faf8f1;color:transparent;cursor:pointer;font-size:17px}.c button:disabled{cursor:not-allowed}
+.c button.ok{background:#555;color:#fff;border-color:#555} tr.ok td{color:#aaa;text-decoration:line-through}.status{height:14px;font-size:10px;color:#9a8170;margin-top:3px}
+footer{display:flex;justify-content:space-between;border-top:1px solid #d7d0c5;margin-top:30px;padding-top:16px;color:#888;font-size:12px}
+@media(max-width:600px){.paper{padding:30px 19px}.q{width:54%}.a{width:33%}}
+</style>
+
+<style id="questionnaireEndingTransition">
+#endingFade{
+  position:fixed;inset:0;z-index:9999;background:#050505;opacity:0;
+  pointer-events:none;transition:opacity 5.2s ease;
+}
+#endingFade.show{opacity:1}
+</style>
+
+</head>
+<body>
+<div id="endingFade"></div>
+<main class="paper">
+<h1>记忆记录</h1>
+<div class="intro">心理咨询记录 · 记忆整理</div>
+<div class="notice">
+请根据能够找到的旧资料，填写下列问题。<br>
+填写后点击右侧方框进行确认；正确答案会被勾选。
+</div>
+<div id="game"></div>
+<p id="saveStatus" role="status" style="font-size:12px;color:#888;margin-top:18px">填写进度会自动保存在当前浏览器。</p>
+<footer><span>记忆整理 · 共 <b id="totalLabel">0</b> 项</span><span>已确认 <b id="count">0</b> / <b id="total">0</b></span></footer>
+</main>
+<script>
+const data = [
+  {
+    question:"你的中学叫什么名字？",
+    groups:[["惠言中学"]]
+  },
+  {
+    question:"你当时有哪些好朋友？",
+    groups:[["汪怡菲"],["沈桐"],["吴俊宇"]],
+    unordered:true
+  },
+  {
+    question:"当时有什么很喜欢的事物吗？（比如喜欢的明星，动漫，游戏，或者其它的事物？）",
+    groups:[["行星团","exo"],["撤退的矮子"],["无尽夏"],["英雄联盟","lol","LOL"]],
+    unordered:true
+  },
+  {
+    question:"学校里举办了什么活动？",
+    groups:[["运动会"],["摄影比赛","惠言中学校际摄影比赛","校际摄影比赛"]],
+    unordered:true
+  },
+  {
+    question:"有没有养宠物？给宠物起了什么名字？",
+    groups:[["沈金满"]]
+  },
+  {
+    question:"暑假去了什么地方？",
+    groups:[["南部岛"]]
+  },
+  {
+    question:"有没有喜欢的人？",
+    groups:[["夏绪霖"]]
+  },
+  {
+    question:"放学经常去哪里？",
+    groups:[["麦香飘飘"],["巡味记"]],
+    unordered:true
+  },
+  {
+    question:"课余时间参加了什么社团？",
+    groups:[["魔方","魔方社团","魔方社"]]
+  }
+];
+
+const SAVE_KEY='shensuiQuestionnaireProgress_v1';
+const rows=[];
+let restored={};
+try{
+  const saved=JSON.parse(localStorage.getItem(SAVE_KEY)||'{}');
+  if(saved && saved.version===1 && saved.items && typeof saved.items==='object')restored=saved.items;
+}catch(e){}
+function saveProgress(){
+  const items={};
+  rows.forEach(row=>{items[row.item.question]={values:row.inputs.map(input=>input.value),confirmed:row.tr.classList.contains('ok')}});
+  try{
+    localStorage.setItem(SAVE_KEY,JSON.stringify({version:1,items}));
+    document.getElementById('saveStatus').textContent='进度已自动保存';
+  }catch(e){document.getElementById('saveStatus').textContent='当前浏览器无法保存进度，请暂时保留此页面。'}
+}
+let transitionStarted=false;
+function continueWhenComplete(){
+  if(done!==total || !total || transitionStarted)return;
+  transitionStarted=true;
+  setTimeout(()=>{
+    document.getElementById('endingFade').classList.add('show');
+    setTimeout(()=>{window.location.href='./5f48c323769e2b7349688e8c.html';},5400);
+  },700);
+}
+let total=0,done=0;
+const game=document.querySelector("#game");
+const norm=s=>String(s).trim().toLowerCase().replace(/[“”‘’"'「」『』，。！？、\s]/g,"");
+
+function valueMatchesGroup(value,group){
+  const v=norm(value);
+  return group.some(ans=>v===norm(ans));
+}
+
+function validateQuestion(values,item){
+  if(values.some(v=>!norm(v))) return false;
+
+  if(!item.unordered){
+    return values.every((v,i)=>valueMatchesGroup(v,item.groups[i]));
+  }
+
+  // Multi-answer questions: answers may be entered in any order,
+  // but each required answer group must be used exactly once.
+  const used=new Set();
+  for(const value of values){
+    let matched=-1;
+    for(let i=0;i<item.groups.length;i++){
+      if(!used.has(i) && valueMatchesGroup(value,item.groups[i])){
+        matched=i;
+        break;
+      }
+    }
+    if(matched<0) return false;
+    used.add(matched);
+  }
+  return used.size===item.groups.length;
+}
+
+const table=document.createElement("table");
+table.innerHTML=`<thead><tr><th class="q">问题</th><th class="a">答案</th><th class="c">确认</th></tr></thead>`;
+const body=document.createElement("tbody");
+
+data.forEach(item=>{
+  total++;
+  const tr=document.createElement("tr");
+  const inputCount=item.groups.length;
+  const inputsHTML=Array.from({length:inputCount},()=>
+    `<input type="text" autocomplete="off" placeholder="">`
+  ).join('<div style="height:7px"></div>');
+
+  tr.innerHTML=`<td class="q">${item.question}</td><td class="a">${inputsHTML}</td><td class="c"><button>✓</button><div class="status"></div></td>`;
+
+  const inputs=[...tr.querySelectorAll("input")];
+  const btn=tr.querySelector("button");
+  const status=tr.querySelector(".status");
+
+  rows.push({item,tr,inputs});
+  const previous=restored[item.question];
+  if(previous && Array.isArray(previous.values)){
+    inputs.forEach((input,i)=>{if(typeof previous.values[i]==='string')input.value=previous.values[i]});
+    if(previous.confirmed===true && validateQuestion(inputs.map(input=>input.value),item)){
+      tr.classList.add('ok');
+      inputs.forEach(input=>input.disabled=true);
+      btn.disabled=true;
+      btn.classList.add('ok');
+      status.textContent='已确认';
+      done++;
+    }
+  }
+  inputs.forEach(input=>input.addEventListener('input',saveProgress));
+
+  btn.onclick=()=>{
+    if(tr.classList.contains("ok"))return;
+
+    const values=inputs.map(input=>input.value);
+    if(validateQuestion(values,item)){
+      tr.classList.add("ok");
+      inputs.forEach(input=>input.disabled=true);
+      btn.disabled=true;
+      btn.classList.add("ok");
+      status.textContent="已确认";
+      done++;
+      document.querySelector("#count").textContent=done;
+      saveProgress();
+      continueWhenComplete();
+    }else{
+      status.textContent="不正确，再看看记录";
+      setTimeout(()=>status.textContent="",1200);
+    }
+  };
+
+  inputs.forEach((input,index)=>{
+    input.addEventListener("keydown",e=>{
+      if(e.key==="Enter"){
+        if(index<inputs.length-1){
+          inputs[index+1].focus();
+        }else{
+          btn.click();
+        }
+      }
+    });
+  });
+
+  body.appendChild(tr);
+});
+
+table.appendChild(body);
+game.appendChild(table);
+document.querySelector("#total").textContent=total;
+document.querySelector("#totalLabel").textContent=total;
+document.querySelector("#count").textContent=done;
+if(Object.keys(restored).length)document.getElementById('saveStatus').textContent='已恢复上次填写进度';
+continueWhenComplete();
+</script>
+</body>
+</html>

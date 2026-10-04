@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>惠言校园论坛</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei","SimSun",Arial,sans-serif;color:#333;background:#e9edf1}
+a{color:#245a9b;text-decoration:none}a:hover{text-decoration:underline}
+.top{height:32px;background:#3f4b58;color:#dbe1e6;font-size:12px;display:flex;align-items:center;padding:0 calc((100% - 1000px)/2)}
+.top span{margin-right:18px}.top .right{margin-left:auto}
+.head{background:#fff;border-bottom:1px solid #cbd2d8}
+.headin{width:1000px;max-width:96vw;margin:auto;height:95px;display:flex;align-items:center}
+.logo{font-family:"STKaiti","KaiTi","SimSun",serif;font-size:31px;color:#304d6a;letter-spacing:3px}
+.logo small{display:block;font-family:Arial,"Microsoft YaHei";font-size:11px;letter-spacing:1px;color:#9aa4ad;margin-top:6px}
+.search{margin-left:auto;display:flex;width:430px;height:34px}.search input{flex:1;border:1px solid #aeb8c2;border-right:0;padding:0 10px;outline:none}.search button{width:78px;border:0;background:#57799a;color:#fff}
+.nav{height:40px;background:#57799a;color:#fff}.navin{width:1000px;max-width:96vw;margin:auto;height:100%;display:flex;align-items:center}.nav a{color:#fff;padding:0 22px;height:40px;line-height:40px;border-right:1px solid #6f8da8}
+.wrap{width:1000px;max-width:96vw;margin:14px auto 45px;display:grid;grid-template-columns:720px 260px;gap:18px}
+.panel{background:#fff;border:1px solid #cfd6dc}.ph{height:38px;background:#f3f5f7;border-bottom:1px solid #d9dee3;display:flex;align-items:center;padding:0 12px;font-size:13px;font-weight:bold;color:#4d5b67}
+.breadcrumb{font-size:12px;color:#7c8790;margin-bottom:10px}.breadcrumb a{color:#54789c}
+.notice{padding:12px 15px;background:#fffbe8;border:1px solid #eadfaa;font-size:12px;line-height:1.7;margin-bottom:12px;color:#6c644c}
+.thread-list{background:#fff;border:1px solid #cfd6dc}
+.row{display:grid;grid-template-columns:44px 1fr 130px;min-height:66px;border-bottom:1px solid #e5e8eb;align-items:center}.row:last-child{border-bottom:0}
+.num{text-align:center;color:#9aa4ad;font-size:11px}.num b{display:block;font-size:14px;color:#687986}
+.rmain{padding:10px}.title{font-size:14px;margin-bottom:5px}.desc{font-size:11px;color:#8a949c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{font-size:11px;color:#9099a1;line-height:1.8}
+.sidebox{background:#fff;border:1px solid #cfd6dc;margin-bottom:12px}.sidebox h3{margin:0;background:#f3f5f7;border-bottom:1px solid #d9dee3;padding:10px 12px;font-size:13px}.sidebox div{padding:12px;font-size:12px;line-height:1.9;color:#69747d}
+.search-results{display:none}.search-results.show{display:block}.empty{padding:35px;text-align:center;color:#999;background:#fff;border:1px solid #cfd6dc}
+.thread-page{display:none;background:#fff;border:1px solid #cfd6dc}.thread-page.show{display:block}
+.thread-title{padding:16px 18px;border-bottom:1px solid #dfe3e6;font-size:18px;color:#3f566b;background:#fbfbfc}
+.post{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #e0e4e8;min-height:130px}
+.user{background:#f5f7f8;border-right:1px solid #e0e4e8;padding:16px 10px;text-align:center;font-size:12px;color:#6e7982}.user b{display:block;color:#4e6e8d;margin-bottom:6px}.avatar{width:58px;height:58px;background:#dce2e7;margin:0 auto 8px;border:1px solid #c9d0d6}
+.content{padding:17px 20px;position:relative;font-size:13px;line-height:1.9;white-space:pre-line}.floor{position:absolute;right:12px;bottom:10px;font-size:10px;color:#aaa}
+.back{display:inline-block;margin:11px 0;color:#4e7194;font-size:12px;cursor:pointer}
+.footer{text-align:center;color:#9aa2a9;font-size:11px;padding:20px 0}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}.side{display:none}.top{padding:0 2%}.search{width:45vw}.post{grid-template-columns:90px 1fr}}
+</style>
+</head>
+<body>
+<div class="top"><span>惠言中学</span><span>校园论坛</span><span>旧站存档</span><div class="right">游客　|　登录</div></div>
+<div class="head"><div class="headin"><div class="logo">惠言校园论坛<small>HUIYAN CAMPUS BBS · 旧版社区</small></div>
+<form class="search" id="forumSearch"><input id="forumQuery" placeholder="搜索帖子 / 用户 / 关键词"><button>搜索</button></form></div></div>
+<div class="nav"><div class="navin"><a href="#" id="homeBtn">论坛首页</a><a href="#">校园生活</a><a href="#">闲聊灌水</a><a href="#">社团活动</a><a href="#">学习交流</a><a href="#">照片墙</a></div></div>
+
+<div class="wrap">
+<main>
+<div class="breadcrumb"><a href="#" id="crumbHome">惠言校园论坛</a> › <span id="crumbText">首页</span></div>
+<div class="notice">提示：本页为校园论坛历史内容存档。部分帖子来自学生用户，内容仅代表发帖者个人观点，未经学校核实。</div>
+
+<section id="forumHome">
+<div class="thread-list">
+  <div class="ph">今日热帖</div>
+  <div class="row"><div class="num"><b>54</b>回复</div><div class="rmain"><div class="title"><a href="#">【闲聊】食堂二楼那家窗口是不是换老板了</a></div><div class="desc">今天的鸡排居然能吃了，震惊。</div></div><div class="meta">橘子汽水<br>2017-10-06</div></div>
+  <div class="row"><div class="num"><b>31</b>回复</div><div class="rmain"><div class="title"><a href="#">高三晚自习到底几点放啊</a></div><div class="desc">每个班怎么还不一样……</div></div><div class="meta">楼梯口的风<br>2017-10-04</div></div>
+  <div class="row"><div class="num"><b>24</b>回复</div><div class="rmain"><div class="title"><a href="#">摄影社招新有人去吗</a></div><div class="desc">想问下学长学姐活动多不多。</div></div><div class="meta">纸飞机<br>2017-09-27</div></div>
+  <div class="row"><div class="num"><b>47</b>回复</div><div class="rmain"><div class="title"><a href="#">【吐槽】体育馆门口那台自动贩卖机是不是坏了</a></div><div class="desc">投了两次币都没掉饮料……</div></div><div class="meta">路过一只猫<br>2017-11-02</div></div>
+  <div class="row"><div class="num"><b>18</b>回复</div><div class="rmain"><div class="title"><a href="#">期中考后有谁想组队去唱歌</a></div><div class="desc">周六下午，人数多一点便宜。</div></div><div class="meta">草莓汽水<br>2017-11-10</div></div>
+</div>
+</section>
+
+<section class="search-results" id="searchResults"></section>
+
+<section class="thread-page" id="looksThread">
+  <div class="thread-title">【闲聊】盘点一下惠言那些长得好看的男生</div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>草莓牛奶不加冰</b>高二</div><div class="content">突然想开个帖盘点一下我们学校长得好看的男生2333
+不分排名！！纯属个人审美，别打我！！
+我先提名几个，欢迎补充～
+
+陈嘉树：打篮球那个！上次陪同学去看比赛，本来只想坐一会儿，结果看完了全场2333。笑起来很好看，就是他跑太快了我拍的全是糊的。
+沈桐：皮肤好白，五官是很清秀的那种，笑起来特别好看。之前在走廊问过一次路，说话也很温柔TAT
+████：高高的，平时看起来话不多，有点不敢上去搭话……但运动会的时候真的很显眼，穿校服也好看！！
+许明远：戴眼镜那个，上次升旗念稿子才注意到他，声音好听，本人也很干净斯文。有没有人懂这种！！
+周子谦：艺术节弹吉他的！我旁边的女生当场就开始问他哪个班了哈哈哈哈。
+
+暂时想到这几个，你们还有没有！！只聊长相，不要扒联系方式啊。<div class="floor">1楼　2017-09-29 20:14</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>半瓶橘子汽水</b>高二</div><div class="content">陈嘉树有名字了！！我跟朋友一直叫他篮球场那个笑得很开心的男生2333<div class="floor">2楼　2017-09-29 20:18</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>每天都想放假</b>高一</div><div class="content">投许明远一票！终于有人提他了，我还以为只有我觉得他好看。<div class="floor">3楼　2017-09-29 20:23</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>耳机分你一半</b>高二</div><div class="content">周子谦平时头发乱翘着来上课，你们看见了可能就冷静了哈哈哈哈
+不过艺术节那天确实帅，这个我承认。<div class="floor">4楼　2017-09-29 20:28</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>自动铅笔</b>高二</div><div class="content">████也算我一票！运动会在跑道边上见过，真人比楼主描述的好看。<div class="floor">5楼　2017-09-29 20:31</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>草莓牛奶不加冰</b>高二</div><div class="content">回复4楼：不要拆台！！好不容易开个帖还被你们说得笑死2333
+而且许明远摘眼镜也好看，我朋友跟他一个班的。<div class="floor">6楼　2017-09-29 20:34</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>小熊软糖</b>高一</div><div class="content">沈桐真的很可以吧！！真人比照片好看，皮肤巨白，发型也很好看TAT<div class="floor">7楼　2017-09-29 20:37</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>今天不想背单词</b>高二</div><div class="content">+1 而且人感觉挺好说话的。
+不过他是不是经常跟楼主提到的████一起？<div class="floor">8楼　2017-09-29 20:40</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>走廊摄像头</b>高一</div><div class="content">对对对就是那个挺高的！他俩关系是真的好，感觉天天都在一起。<div class="floor">10楼　2017-09-29 20:44</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>匿名用户</b>游客</div><div class="content">小声说一句……没人觉得他俩有点像一对吗<div class="floor">13楼　2017-09-29 20:52</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>一只咸鱼</b>高二</div><div class="content">哈哈哈哈你不是第一个这么说的
+我们班也有人讲过，不过这种事还是别乱说吧<div class="floor">14楼　2017-09-29 20:54</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>玻璃汽水</b>高三</div><div class="content">我是真的听过这个传闻，不是这帖才开始传的。<div class="floor">18楼　2017-09-29 21:03</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>作业写完了吗</b>高二</div><div class="content">我上周去办公室交作业的时候好像看到沈桐和████都被叫过去了。
+但我不知道是不是因为这个，别拿我当消息源= =<div class="floor">21楼　2017-09-29 21:11</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>物理课代表</b>高三</div><div class="content">被叫办公室就是谈恋爱啊？？？你们脑洞也太大了吧。班主任找人有一百种理由。<div class="floor">22楼　2017-09-29 21:13</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>晚自习逃兵</b>高二</div><div class="content">+1 少造谣吧，人家关系好也不能说明什么。<div class="floor">24楼　2017-09-29 21:19</div></div></div>
+  <div class="post"><div class="user"><div class="avatar"></div><b>草莓牛奶不加冰</b>高二</div><div class="content">歪楼了歪楼了！！本帖只是盘点帅哥好吗！！
+再讨论私人八卦我找版主锁楼了啊= =
+前面提陈嘉树、许明远和周子谦的同学呢，快回来，继续聊你们的！！<div class="floor">25楼　2017-09-29 21:22</div></div></div>
+</section>
+
+<section class="thread-page" id="rumorThread">
+  <div class="thread-title">【匿名】沈桐和████到底什么情况？</div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>匿名用户</b>游客</div><div class="content">先说不是我造谣啊，就是最近听到太多人在讲了。
+沈桐和████是不是被家里发现了？有人知道具体什么情况吗？
+前阵子不是还有人说他俩一起被叫办公室了。<div class="floor">1楼　2017-11-16 21:08</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>隔壁班路人</b>高二</div><div class="content">我只知道沈桐家长好像真的来过学校。
+那天下午办公室门口站了挺久的，不知道是不是因为这个。<div class="floor">3楼　2017-11-16 21:13</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>一只咸鱼</b>高二</div><div class="content">████家里也来过吧？
+我们老师那天还让大家别围着办公室看热闹。<div class="floor">5楼　2017-11-16 21:18</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>晚自习逃兵</b>高三</div><div class="content">████最近确实经常请假。
+有时候一两天都不来，回来以后也不怎么跟人说话。
+至于为什么请假我不知道，别乱对号入座。<div class="floor">8楼　2017-11-16 21:27</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>没写完作业</b>高一</div><div class="content">不是……男的跟男的真的能这样吗？看着就有点接受不了。
+<div class="floor">11楼　2017-11-16 21:35</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>玻璃汽水</b>高三</div><div class="content">楼上管得也太宽了吧，跟你有什么关系？
+又没影响你上课。<div class="floor">12楼　2017-11-16 21:37</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>数学不及格</b>高二</div><div class="content">+1，这有什么的。
+如果是真的就是真的呗，他们又没干什么坏事<div class="floor">14楼　2017-11-16 21:41</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>匿名用户2</b>游客</div><div class="content">
+这种事情还是别在论坛越传越具体吧，已经够麻烦了。<div class="floor">18楼　2017-11-16 21:52</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>高三老咸鱼</b>高三</div><div class="content">████这阵子状态确实不太对，以前还能在走廊碰见，现在基本看不到。
+希望大家别堵着人问，真有什么事也不是论坛里能解决的。<div class="floor">23楼　2017-11-16 22:06</div></div></div>
+
+  <div class="post"><div class="user"><div class="avatar"></div><b>路过看看</b>高二</div><div class="content">不管真的假的，拿别人这种事当连续剧追也挺没意思的。
+尤其都牵扯到家长了，少说两句吧。<div class="floor">27楼　2017-11-16 22:14</div></div></div>
+</section>
+
+<span class="back" id="backFromThread" style="display:none">‹ 返回搜索结果</span>
+</main>
+
+<aside class="side">
+  <div class="sidebox"><h3>版块</h3><div>校园生活　12894帖<br>闲聊灌水　23671帖<br>社团活动　4812帖<br>学习交流　9730帖<br>失物招领　3201帖</div></div>
+  <div class="sidebox"><h3>论坛公告</h3><div>请勿公开同学真实联系方式。<br>禁止人身攻击与恶意造谣。<br>涉及个人隐私的帖子将视情况删除。</div></div>
+</aside>
+</div>
+<div class="footer">惠言校园论坛 · 历史页面存档　|　上城市惠言路123号</div>
+
+<script>
+const home=document.getElementById('forumHome');
+const results=document.getElementById('searchResults');
+const thread=document.getElementById('looksThread');
+const rumorThread=document.getElementById('rumorThread');
+const back=document.getElementById('backFromThread');
+const crumb=document.getElementById('crumbText');
+function showHome(){home.style.display='block';results.classList.remove('show');thread.classList.remove('show');rumorThread.classList.remove('show');back.style.display='none';crumb.textContent='首页';}
+function showThreadById(id,fromSearch=true){home.style.display='none';results.classList.remove('show');thread.classList.remove('show');rumorThread.classList.remove('show');document.getElementById(id).classList.add('show');back.style.display='inline-block';back.textContent=fromSearch?'‹ 返回搜索结果':'‹ 返回论坛首页';back.dataset.fromSearch=fromSearch?'1':'0';crumb.textContent='帖子详情';window.scrollTo({top:0,behavior:'smooth'});}
+document.getElementById('forumSearch').addEventListener('submit',e=>{
+  e.preventDefault();const raw=document.getElementById('forumQuery').value.trim();
+  home.style.display='none';thread.classList.remove('show');rumorThread.classList.remove('show');back.style.display='none';results.classList.add('show');crumb.textContent='搜索：'+raw;
+  if(raw==='沈桐'){
+    results.innerHTML=`<div class="thread-list"><div class="ph">搜索“沈桐” - 找到 5 条相关帖子</div>
+      <div class="row"><div class="num"><b>63</b>回复</div><div class="rmain"><div class="title"><a href="#" id="searchRumor">【匿名】沈桐和████到底什么情况？</a></div><div class="desc">……有人说双方家长都被叫到学校，████最近也经常请假……</div></div><div class="meta">匿名用户<br>2017-11-16</div></div>
+      <div class="row"><div class="num"><b>89</b>回复</div><div class="rmain"><div class="title"><a href="#" id="searchLooks">【闲聊】盘点一下惠言那些长得好看的男生</a></div><div class="desc">……沈桐真的很可以吧！！真人比照片好看……</div></div><div class="meta">草莓牛奶不加冰<br>2017-09-29</div></div>
+      <div class="row"><div class="num"><b>16</b>回复</div><div class="rmain"><div class="title"><a href="#">高二篮球赛照片楼（持续更新）</a></div><div class="desc">3班那个是不是沈桐？有人有高清图吗</div></div><div class="meta">镜头盖<br>2017-04-18</div></div>
+      <div class="row"><div class="num"><b>12</b>回复</div><div class="rmain"><div class="title"><a href="#">求问高二3班沈桐是不是摄影社的</a></div><div class="desc">上次活动好像看到他帮忙搬器材。</div></div><div class="meta">一颗柠檬<br>2017-05-07</div></div>
+      <div class="row"><div class="num"><b>7</b>回复</div><div class="rmain"><div class="title"><a href="#">艺术节后台抓拍</a></div><div class="desc">沈桐在第六张右边，别问我为什么拍糊了TAT</div></div><div class="meta">半糖乌龙<br>2017-06-02</div></div>
+    </div>`;
+    document.getElementById('searchLooks').addEventListener('click',ev=>{ev.preventDefault();showThreadById('looksThread',true)});
+    document.getElementById('searchRumor').addEventListener('click',ev=>{ev.preventDefault();showThreadById('rumorThread',true)});
+  }else{
+    results.innerHTML='<div class="empty">没有找到与“'+raw.replace(/[<>]/g,'')+'”相关的帖子。</div>';
+  }
+});
+back.addEventListener('click',()=>{
+  if(back.dataset.fromSearch==='1'){
+    thread.classList.remove('show');rumorThread.classList.remove('show');results.classList.add('show');back.style.display='none';crumb.textContent='搜索：沈桐';
+  }else showHome();
+});
+document.getElementById('homeBtn').addEventListener('click',e=>{e.preventDefault();showHome()});
+document.getElementById('crumbHome').addEventListener('click',e=>{e.preventDefault();showHome()});
+</script>
+</body>
+</html>

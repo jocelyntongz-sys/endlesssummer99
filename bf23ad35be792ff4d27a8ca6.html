@@ -1,0 +1,86 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>东南航空_百度搜索</title><style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,"Microsoft YaHei","PingFang SC",sans-serif;color:#222;background:#fff}
+a{color:#2440b3;text-decoration:none}a:hover{text-decoration:underline}
+.top{height:34px;border-bottom:1px solid #eee;display:flex;align-items:center;padding:0 18px;font-size:12px;color:#555}
+.top span{margin-right:18px}.top .right{margin-left:auto}
+.search-head{padding:18px 0 15px 155px;border-bottom:1px solid #f1f1f1;display:flex;align-items:center;gap:18px}
+.logo{font-size:35px;font-weight:800;letter-spacing:-3px;color:#315efb;line-height:1}
+.logo i{font-style:normal;color:#e53935}
+.searchbar{display:flex;width:640px;height:40px}
+.searchbar input{flex:1;border:2px solid #4e6ef2;border-right:0;border-radius:7px 0 0 7px;padding:0 12px;font-size:15px;outline:none}
+.searchbar button{width:104px;border:0;border-radius:0 7px 7px 0;background:#4e6ef2;color:#fff;font-size:15px}
+.nav{padding:11px 0 11px 155px;font-size:13px;color:#626675}
+.nav span{margin-right:24px}.nav .active{color:#222;font-weight:bold}
+.wrap{width:1080px;margin-left:155px;display:grid;grid-template-columns:650px 280px;gap:52px;padding:15px 0 70px}
+.summary{font-size:12px;color:#9195a3;margin-bottom:17px}
+.result{margin:0 0 25px}
+.result-title{font-size:18px;line-height:1.45;margin-bottom:5px}
+.result-snippet{font-size:13px;line-height:1.72;color:#333}
+.result-url{font-size:12px;color:#008000;margin-top:4px}
+.tag{display:inline-block;font-size:11px;padding:1px 4px;border-radius:2px;background:#f1f3f4;color:#70757a;margin-right:5px}
+.side-card{border:1px solid #eee;padding:15px 16px;margin-top:30px}
+.side-card h3{font-size:15px;margin:0 0 13px}.side-card div{font-size:12px;line-height:2;color:#555}
+.footer{margin-left:155px;width:650px;border-top:1px solid #eee;padding:20px 0 50px;color:#999;font-size:12px}
+@media(max-width:900px){.search-head,.nav,.wrap,.footer{margin-left:0;padding-left:20px}.search-head{padding-right:20px}.wrap{width:auto;grid-template-columns:1fr;margin:0;padding:15px 20px}.searchbar{width:min(640px,70vw)}.side{display:none}}
+
+.flight-card{border:1px solid #e1e4e8;border-radius:3px;margin:8px 0 26px;background:#fff;box-shadow:0 1px 2px #00000008}
+.flight-card h2{font-size:17px;font-weight:normal;margin:0;padding:13px 15px;border-bottom:1px solid #eee;color:#2440b3}
+.flight-form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;padding:15px}
+.flight-form label{font-size:11px;color:#777;display:block;margin-bottom:5px}
+.flight-form input{width:100%;height:37px;border:1px solid #c9ced6;padding:0 9px;outline:none}
+.flight-form button{align-self:end;height:37px;border:0;background:#4e6ef2;color:#fff;padding:0 20px;border-radius:2px}
+.flight-error{padding:0 15px 13px;color:#d23;font-size:12px;display:none}
+.flight-result{display:none;border-top:1px solid #eee;padding:16px}
+.route{display:flex;align-items:center;justify-content:center;gap:26px;padding:15px 0}
+.airport{text-align:center}.airport .city{font-size:22px}.airport .time{font-size:18px;margin-top:4px}.arrow{color:#4e6ef2;font-size:24px}
+.flight-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#eee;border:1px solid #eee;margin-top:7px}
+.flight-meta div{background:#fafafa;padding:9px;font-size:12px}.flight-meta b{display:block;color:#777;font-weight:normal;margin-bottom:4px}
+.status-ok{color:#168a3e;font-weight:bold}
+</style></head><body>
+<div class="top"><span>网页</span><span>新闻</span><span>贴吧</span><span>知道</span><span>图片</span><span>视频</span><span>地图</span><div class="right">设置　登录</div></div>
+<div class="search-head"><div class="logo">Bai<i>du</i></div><div class="searchbar"><input value="东南航空"><button>百度一下</button></div></div>
+<div class="nav"><span class="active">网页</span><span>资讯</span><span>航班</span><span>地图</span><span>更多</span></div>
+<div class="wrap"><main>
+<div class="summary">百度为您找到相关结果约 12,300 个</div>
+
+<div class="flight-card">
+  <h2>东南航空航班查询</h2>
+  <div class="flight-form">
+    <div><label>航班号</label><input id="flightNo" placeholder="例如 DNxxxx"></div>
+    <div><label>日期</label><input id="flightDate" type="date"></div>
+    <button id="flightBtn">查询航班</button>
+  </div>
+  <div class="flight-error" id="flightError">未查询到对应航班，请检查航班号和日期。</div>
+  <div class="flight-result" id="flightResult">
+    <div style="font-size:13px;color:#555">东南航空　<strong>DN8236</strong>　2016年7月25日　<span class="status-ok">已执行</span></div>
+    <div class="route">
+      <div class="airport"><div class="city">上城市</div><div class="time">13:30</div><div style="font-size:11px;color:#888">上城国际机场 T2</div></div>
+      <div class="arrow">→</div>
+      <div class="airport"><div class="city">南部岛</div><div class="time">16:05</div><div style="font-size:11px;color:#888">南部岛机场</div></div>
+    </div>
+    <div class="flight-meta">
+      <div><b>航空公司</b>东南航空</div><div><b>航班号</b>DN8236</div><div><b>机型</b>A320</div>
+      <div><b>计划起飞</b>13:30</div><div><b>计划到达</b>16:05</div><div><b>航线</b>上城市 → 南部岛</div>
+    </div>
+  </div>
+</div>
+
+<div class="result"><div class="result-title"><a href="#">东南航空官方网站</a></div><div class="result-snippet">机票预订、航班动态、值机服务、行李规定及旅客服务信息。</div><div class="result-url">www.dongnanair.example.com</div></div>
+<div class="result"><div class="result-title"><a href="#">东南航空旅客须知 - 行李与值机</a></div><div class="result-snippet">国内航班值机截止时间、随身行李及托运行李相关说明。</div><div class="result-url">www.dongnanair.example.com/service</div></div>
+<div class="result"><div class="result-title"><a href="#">东南航空 - 百度百科</a></div><div class="result-snippet">东南航空是一家提供国内及地区航线服务的航空公司。</div><div class="result-url">baike.baidu.com/item/东南航空</div></div>
+</main>
+<aside class="side"><div class="side-card"><h3>相关搜索</h3><div>东南航空航班动态</div><div>东南航空值机</div><div>东南航空客服电话</div><div>上城市机场航班</div><div>南部岛机票</div></div></aside>
+</div>
+<div class="footer">帮助　举报　用户反馈　© Baidu</div>
+<script>
+document.getElementById('flightBtn').onclick=function(){
+  const n=document.getElementById('flightNo').value.trim().toUpperCase();
+  const d=document.getElementById('flightDate').value;
+  const ok=n==='DN8236'&&d==='2016-07-25';
+  document.getElementById('flightResult').style.display=ok?'block':'none';
+  document.getElementById('flightError').style.display=ok?'none':'block';
+};
+document.getElementById('flightNo').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('flightBtn').click()});
+</script>
+</body></html>

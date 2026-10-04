@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QQ空间时光机</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101010;color:#aaa;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+.top{height:48px;background:#181818;border-bottom:1px solid #2b2b2b;display:flex;align-items:center;padding:0 28px;color:#ddd;font-weight:600}
+.wrap{min-height:calc(100vh - 48px);display:grid;place-items:center;padding:30px}
+.box{width:620px;max-width:94vw;text-align:center;border:1px solid #2c2c2c;background:#181818;padding:55px 35px;border-radius:4px}
+.icon{font-size:48px;color:#555}
+.box h1{font-size:24px;color:#ddd;font-weight:500}
+.box p{font-size:13px;line-height:1.9;color:#777}
+.years{margin:30px 0;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.year{font:inherit;padding:9px 15px;border:1px solid #333;background:transparent;color:#666;border-radius:3px;cursor:default}
+.year.available{cursor:pointer;color:#aaa;border-color:#555}
+.year.selected{background:#2a2a2a;color:#eee;border-color:#777}
+.password-card{display:none;margin:26px auto 0;max-width:380px;padding:22px;border:1px solid #333;background:#141414;text-align:left}
+.password-card.show{display:block}
+.card-year{font-size:14px;color:#aaa;margin-bottom:8px}
+.hint{font-size:12px;color:#666;margin-bottom:12px}
+.row{display:flex}
+.row input{flex:1;height:38px;border:1px solid #333;background:#0f0f0f;color:#ddd;padding:0 10px;outline:none}
+.row button{width:82px;border:0;background:#333;color:#ddd;cursor:pointer}
+.error{height:20px;padding-top:7px;color:#a85f5f;font-size:11px}
+.tip{font-size:12px;color:#555;margin-top:25px}
+</style>
+</head>
+<body>
+<div class="top">QQ空间时光机</div>
+<main class="wrap">
+  <div class="box">
+    <div class="icon">◷</div>
+    <h1>选择要寻访的年份</h1>
+    <p>选择一个年份，输入当年设置的独立访问密码。</p>
+
+    <div class="years">
+      <button class="year available selected" data-year="2013" type="button">2013</button>
+      <button class="year available" data-year="2014" type="button">2014</button>
+      <button class="year available" data-year="2015" type="button">2015</button>
+      <button class="year available" data-year="2016" type="button">2016</button>
+      <button class="year available" data-year="2017" type="button">2017</button>
+      <button class="year available" data-year="2018" type="button">2018</button>
+    </div>
+
+    <div class="password-card show" id="card2013">
+      <div class="card-year">2013 年</div>
+      <div class="hint">密码提示：也是生日。</div>
+      <div class="row">
+        <input id="pw2013" type="password" placeholder="请输入2013年独立密码">
+        <button id="btn2013" type="button">进入</button>
+      </div>
+      <div class="error" id="err2013"></div>
+    </div>
+
+    <div class="password-card" id="card2014">
+      <div class="card-year">2014 年</div>
+      <div class="hint">密码提示：欧巴们大发！</div>
+      <div class="row">
+        <input id="pw2014" type="password" placeholder="请输入2014年独立密码">
+        <button id="btn2014" type="button">进入</button>
+      </div>
+      <div class="error" id="err2014"></div>
+    </div>
+
+
+    <div class="password-card" id="card2015">
+      <div class="card-year">2015 年</div>
+      <div class="hint">密码提示：他的生日♡</div>
+      <div class="row">
+        <input id="pw2015" type="password" placeholder="请输入2015年独立密码">
+        <button id="btn2015" type="button">进入</button>
+      </div>
+      <div class="error" id="err2015"></div>
+    </div>
+
+    <div class="password-card" id="card2016">
+      <div class="card-year">2016 年</div>
+      <div class="hint">密码提示：我最喜欢的花。</div>
+      <div class="row">
+        <input id="pw2016" type="password" placeholder="请输入2016年独立密码">
+        <button id="btn2016" type="button">进入</button>
+      </div>
+      <div class="error" id="err2016"></div>
+    </div>
+
+    <div class="password-card" id="card2017">
+      <div class="card-year">2017 年</div>
+      <div class="hint">密码提示：旅行日</div>
+      <div class="row">
+        <input id="pw2017" type="password" placeholder="请输入2017年独立密码">
+        <button id="btn2017" type="button">进入</button>
+      </div>
+      <div class="error" id="err2017"></div>
+    </div>
+
+
+    <div class="password-card" id="card2018">
+      <div class="card-year">2018 年</div>
+      <div class="hint">密码提示：我最好的朋友。</div>
+      <div class="row">
+        <input id="pw2018" type="password" placeholder="请输入2018年独立密码">
+        <button id="btn2018" type="button">进入</button>
+      </div>
+      <div class="error" id="err2018"></div>
+    </div>
+
+    <div class="tip">2013—2018 年历史空间已接入</div>
+  </div>
+</main>
+
+<script>
+const yearBtns=[...document.querySelectorAll('.year.available')];
+yearBtns.forEach(btn=>btn.addEventListener('click',()=>{
+  yearBtns.forEach(x=>x.classList.toggle('selected',x===btn));
+  document.querySelectorAll('.password-card').forEach(x=>x.classList.remove('show'));
+  document.getElementById('card'+btn.dataset.year).classList.add('show');
+}));
+
+function enterYear(inputId,errorId,password,url){
+  const input=document.getElementById(inputId);
+  const err=document.getElementById(errorId);
+  if(input.value.trim()===password){
+    err.textContent='';
+    window.open(url,'_blank');
+  }else{
+    err.textContent='密码错误。';
+  }
+}
+document.getElementById('btn2013').onclick=()=>enterYear('pw2013','err2013','20010927','./e2efc9a2725ad2b8f224b8f2.html');
+document.getElementById('btn2014').onclick=()=>enterYear('pw2014','err2014','20120408','./e5017a851e65811d7490cfc4.html');
+document.getElementById('btn2015').onclick=()=>enterYear('pw2015','err2015','0124','./54389797e27a1d19006b9fda.html');
+document.getElementById('btn2016').onclick=()=>enterYear('pw2016','err2016','EndlessSummer','./44b82408d7614db0014d9e6d.html');
+document.getElementById('btn2017').onclick=()=>enterYear('pw2017','err2017','20160725','./0939747990af7c63221e89b5.html');
+document.getElementById('btn2018').onclick=()=>enterYear('pw2018','err2018','wujunyu','./ec99a73212475c44887f17bf.html');
+document.getElementById('pw2013').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('btn2013').click()});
+document.getElementById('pw2014').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('btn2014').click()});
+document.getElementById('pw2015').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('btn2015').click()});
+document.getElementById('pw2016').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('btn2016').click()});
+document.getElementById('pw2017').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('btn2017').click()});
+document.getElementById('pw2018').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('btn2018').click()});
+</script>
+</body>
+</html>
